@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client ACL Blocked Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client ACL Blocked Count Rate [ /minute ] query",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Request Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Request Count Rate [ /minute ] query",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Exceeded Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Exceeded Count Rate [ /minute ] query",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Failed Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Failed Count Rate [ /minute ] query",
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Register Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Register Count Rate [ /minute ] query",
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Success Catalog Register Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Success Catalog Register Count Rate [ /minute ] query",
@@ -142,7 +142,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Register Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Register Count Rate [ /minute ] query",
@@ -164,7 +164,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Error Catalog Deregister Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Error Catalog Deregister Count Rate [ /minute ] query",
@@ -186,7 +186,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Deregister Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Deregister Count Rate [ /minute ] query",
@@ -208,7 +208,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Datacenter Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Datacenter Count Rate [ /minute ] query",
@@ -230,7 +230,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Success Catalog Datacenter Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Success Catalog Datacenter Count Rate [ /minute ] query",
@@ -252,7 +252,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Error Catalog Datacenter Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Error Catalog Datacenter Count Rate [ /minute ] query",
@@ -274,7 +274,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Nodes Count Rate [ /minute ] query",
@@ -296,7 +296,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Success Catalog Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Success Catalog Nodes Count Rate [ /minute ] query",
@@ -318,7 +318,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Nodes Count Rate [ /minute ] query",
@@ -340,7 +340,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Services Count Rate [ /minute ] query",
@@ -362,7 +362,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Success Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Success Services Count Rate [ /minute ] query",
@@ -384,7 +384,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Services Count Rate [ /minute ] query",
@@ -406,7 +406,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Service Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Service Nodes Count Rate [ /minute ] query",
@@ -428,7 +428,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Success Catalog Service Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Success Catalog Service Nodes Count Rate [ /minute ] query",
@@ -450,7 +450,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Service Nodes Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Service Nodes Count Rate [ /minute ] query",
@@ -472,7 +472,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Catalog Node Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Catalog Node Services Count Rate [ /minute ] query",
@@ -494,7 +494,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client API Success Catalog Node Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client API Success Catalog Node Services Count Rate [ /minute ] query",
@@ -516,7 +516,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client RPC Error Catalog Node Services Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client RPC Error Catalog Node Services Count Rate [ /minute ] query",
@@ -538,7 +538,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client Runtime Num of Go Routines query",
                     "options": {
                         "description": "Client Runtime Num of Go Routines query",
@@ -560,7 +560,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client Runtime Bytes Allocated query",
                     "options": {
                         "description": "Client Runtime Bytes Allocated query",
@@ -582,7 +582,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client Runtime Heap Objects query",
                     "options": {
                         "description": "Client Runtime Heap Objects query",
@@ -604,7 +604,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client ACL Cache Hit Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client ACL Cache Hit Count Rate [ /minute ] query",
@@ -626,7 +626,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client ACL Cache Miss Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client ACL Cache Miss Count Rate [ /minute ] query",
@@ -648,7 +648,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client ACL Replication Hit Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client ACL Replication Hit Count Rate [ /minute ] query",
@@ -670,7 +670,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client DNS Stale Queries Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client DNS Stale Queries Count Rate [ /minute ] query",
@@ -692,7 +692,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client DNS PTR query Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client DNS PTR query Count Rate [ /minute ] query",
@@ -714,7 +714,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client DNS Domain Query Count Rate [ /minute ] query",
                     "options": {
                         "description": "Client DNS Domain Query Count Rate [ /minute ] query",
@@ -736,7 +736,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client consul_http_GET_* Time p50 - p50 query",
                     "options": {
                         "description": "Client consul_http_GET_* Time p50 - p50 query",
@@ -758,7 +758,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client consul_http_GET_* Time p90 - p50 query",
                     "options": {
                         "description": "Client consul_http_GET_* Time p90 - p50 query",
@@ -780,7 +780,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Client consul_http_GET_* Time p99 - p50 query",
                     "options": {
                         "description": "Client consul_http_GET_* Time p99 - p50 query",

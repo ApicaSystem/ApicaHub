@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Mover",
                     "options": {
                         "description": "Mover Count",
@@ -35,7 +35,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Ingest - go_memstats_heap_alloc_bytes",
                     "options": {
                         "label": "GB",
@@ -58,7 +58,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Per Pod Ingested Rate",
                     "options": {
                         "label": "GB",
@@ -81,7 +81,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "go_memstats_heap_alloc_bytes - API",
                     "options": {
                         "description": "Number of heap bytes allocated and still in use in API nodes",
@@ -103,7 +103,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Back Pressure",
                     "options": {
                         "description": "Back Pressure",
@@ -125,7 +125,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GB/h",
                     "options": {
                         "description": "GB/h",
@@ -147,7 +147,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GB/h (7 days)",
                     "options": {
                         "description": "GB/h 7d",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Ingest free disk space (%)",
                     "options": {
                         "description": "GB / day",
@@ -191,7 +191,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "Number of messages per second by namespace",
@@ -213,7 +213,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Batch size [5m]",
                     "options": {
                         "description": "Batch size [5m]",
@@ -235,7 +235,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "IngestDB Files Count",
                     "options": {
                         "description": "IngestDB Files Count",
@@ -257,7 +257,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Ingest free disk % per pod",
                     "options": {
                         "description": "Ingest free disk % per pod",

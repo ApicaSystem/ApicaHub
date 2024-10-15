@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Messages / sec",
                     "options": {
                         "description": "Messages / sec",
@@ -35,7 +35,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Log events (24h)",
                     "options": {
                         "label": "million",
@@ -58,7 +58,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total ingested bytes (30d)",
                     "options": {
                         "label": "GB",
@@ -81,7 +81,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Ingest capacity utilization",
                     "options": {
                         "description": "Ingest capacity utilization",
@@ -103,7 +103,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "# Messages/sec by Namespace",
@@ -125,7 +125,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Daily GB/h 30d",
                     "options": {
                         "description": "Daily GB/h 30d",
@@ -147,7 +147,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections",
                     "options": {
                         "description": "Connections",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GB Ingested / day",
                     "options": {
                         "description": "GB / day",

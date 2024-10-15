@@ -11,7 +11,7 @@
             "type": "metrics",
             "queriesList": [
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Status query",
                     "options": {
                         "description": "Status query",
@@ -32,7 +32,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Uptime query",
                     "options": {
                         "description": "Uptime query",
@@ -53,7 +53,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Start time query",
                     "options": {
                         "description": "Start time query",
@@ -74,7 +74,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Version query",
                     "options": {
                         "description": "JVM Version query",
@@ -95,7 +95,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Available CPUs query",
                     "options": {
                         "description": "Available CPUs query",
@@ -116,7 +116,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "System load average query",
                     "options": {
                         "description": "System load average query",
@@ -137,7 +137,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Open file descriptors query",
                     "options": {
                         "description": "Open file descriptors query",
@@ -159,7 +159,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU load - System query",
                     "options": {
                         "description": "CPU load - System query",
@@ -181,7 +181,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU load - JVM query",
                     "options": {
                         "description": "CPU load - JVM query",
@@ -203,7 +203,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory area [$memarea] - Used query",
                     "options": {
                         "description": "Memory area [$memarea] - Used query",
@@ -225,7 +225,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory area [$memarea] - Max query",
                     "options": {
                         "description": "Memory area [$memarea] - Max query",
@@ -247,7 +247,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory area [$memarea] - Usage % query",
                     "options": {
                         "description": "Memory area [$memarea] - Usage % query",
@@ -269,7 +269,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC time query",
                     "options": {
                         "description": "GC time query",
@@ -291,7 +291,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory pool [$mempool] - Max query",
                     "options": {
                         "description": "Memory pool [$mempool] - Max query",
@@ -313,7 +313,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class loading query",
                     "options": {
                         "description": "Class loading query",
@@ -335,7 +335,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC count increase query",
                     "options": {
                         "description": "GC count increase query",
@@ -357,7 +357,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Threads used - JVM current threads query",
                     "options": {
                         "description": "Threads used - JVM current threads query",
@@ -379,7 +379,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Threads used - JVM daemon threads query",
                     "options": {
                         "description": "Threads used - JVM daemon threads query",
@@ -401,7 +401,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Threads used - JVM deadlocked threads query",
                     "options": {
                         "description": "Threads used - JVM deadlocked threads query",
@@ -423,7 +423,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Total physical memory query",
                     "options": {
                         "description": "Physical memory - Total physical memory query",
@@ -445,7 +445,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Committed virtual memory query",
                     "options": {
                         "description": "Physical memory - Committed virtual memory query",
@@ -467,7 +467,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Free physical memory query",
                     "options": {
                         "description": "Physical memory - Free physical memory query",

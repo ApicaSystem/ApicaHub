@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "MySql Questions (rate)",
                     "options": {
                         "description": "MySql Questions (rate)",
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Queries causing full table Scans",
                     "options": {
                         "description": "Queries causing full table Scans",
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pages Created in Innodb",
                     "options": {
                         "description": "Pages Created in Innodb",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pages read from Innodb",
                     "options": {
                         "description": "Pages read from Innodb",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Innodb Buffer pool size (rate)",
                     "options": {
                         "description": "Innodb Buffer pool size (rate)",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Connections to mysqld (rate)",
                     "options": {
                         "description": "Total Connections to mysqld (rate)",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Transactions by Handlers (rate) ",
                     "options": {
                         "description": "Transactions by Handlers (rate) ",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Top 5 Commands Hourly",
                     "options": {
                         "description": "Top 5 Commands Hourly",
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Status Commands (rate)",
                     "options": {
                         "description": "Total Status Commands (rate)",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "No.of Read Requests (rate)",
                     "options": {
                         "description": "No.of Read Requests (rate)",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pages written in Innodb",
                     "options": {
                         "description": "Pages written in Innodb",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Top 5 Commands of last 5 min",
                     "options": {
                         "description": "Top 5 Commands of last 5 min",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Server Status Variables",
                     "options": {
                         "description": "Server Status Variables",
@@ -298,7 +298,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Threads Cached",
                     "options": {
                         "description": "Threads Cached",
@@ -320,7 +320,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "MySql Queries/Sec",
                     "options": {
                         "description": "MySql Queries/Sec",
@@ -342,7 +342,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections in last 24h",
                     "options": {
                         "description": "Connections in last 24h",
@@ -364,7 +364,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Threads Created in last 24h",
                     "options": {
                         "description": "Threads Created in last 24h",
@@ -386,7 +386,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Network Traffic Received (rate)",
                     "options": {
                         "description": "Network Traffic Received (rate)",
@@ -408,7 +408,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Network Traffic Sent (rate)",
                     "options": {
                         "description": "Network Traffic Sent (rate)",
@@ -430,7 +430,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Rows Operations",
                     "options": {
                         "description": "Rows Operations",

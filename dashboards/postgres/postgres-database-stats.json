@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Avg Cpu process",
                     "options": {
                         "description": "PG-Avg Cpu process",
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Updated",
                     "options": {
                         "description": "PG-Updated",
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Connected Clients",
                     "options": {
                         "description": "PG-Connected Clients",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Idle Sessions",
                     "options": {
                         "description": "PG-Idle Sessions",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Deleted",
                     "options": {
                         "description": "PG-Deleted",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Settings",
                     "options": {
                         "description": "PG-Settings",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Open FIle Descriptors",
                     "options": {
                         "description": "PG-Open FIle Descriptors",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Inserted",
                     "options": {
                         "description": "PG-Inserted",
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Checkpont Stats",
                     "options": {
                         "description": "PG-Checkpont Stats",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Fetched",
                     "options": {
                         "description": "PG-Fetched",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Buffers(bgwriter)",
                     "options": {
                         "description": "PG-Buffers(bgwriter)",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Transactions Commited",
                     "options": {
                         "description": "PG-Transactions Commited",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Activity",
                     "options": {
                         "description": "PG-Activity",
@@ -298,7 +298,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Transactions Rolled Back ",
                     "options": {
                         "description": "PG-Transactions Rolled Back ",
@@ -320,7 +320,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Conflicts & Deadlocks",
                     "options": {
                         "description": "PG-Conflicts & Deadlocks",
@@ -342,7 +342,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "PG-Temp Files (Bytes)",
                     "options": {
                         "description": "PG-Temp Files (Bytes)",

@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Services query",
                     "options": {
                         "description": "Total Services query",
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Consul Peers and Leaders - peers query",
                     "query": "consul_raft_peers&duration=1h&step=5m",
                     "schema": "consul_raft_peers",
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Consul Peers and Leaders - leader query",
                     "query": "consul_raft_leader&duration=1h&step=5m",
                     "schema": "consul_raft_leader",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Consul Peers and Leaders - serf lan members query",
                     "query": "consul_serf_lan_members&duration=1h&step=5m",
                     "schema": "consul_serf_lan_members",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Unhealthy Consul Services query",
                     "query": "sum by (service_name, status) (consul_health_service_status{status!='passing'})&duration=1h&step=5m",
                     "schema": "consul_health_service_status",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Unhealthy Consul Nodes query",
                     "query": "consul_health_node_status{status!='passing'}&duration=1h&step=5m",
                     "schema": "consul_health_node_status",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Consul Services and Checks query",
                     "query": "sum by (node,service_id,status) (consul_health_service_status)&duration=1h&step=5m",
                     "schema": "consul_health_service_status",

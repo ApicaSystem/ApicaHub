@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "State - State query",
                     "options": {
                         "description": "State - State query",
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Uptime query",
                     "options": {
                         "description": "Uptime query",
@@ -57,7 +57,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JDK query",
                     "options": {
                         "description": "JDK query",
@@ -80,7 +80,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory Utilization - Memory Utilization query",
                     "options": {
                         "description": "Memory Utilization - Memory Utilization query",
@@ -102,7 +102,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "SWAP Utilization - SWAP Utilization query",
                     "options": {
                         "description": "SWAP Utilization - SWAP Utilization query",
@@ -124,7 +124,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU load - System query",
                     "options": {
                         "description": "CPU load - System query",
@@ -146,7 +146,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU load - Process query",
                     "options": {
                         "description": "CPU load - Process query",
@@ -168,7 +168,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Process Memory - Virtual query",
                     "options": {
                         "description": "Process Memory - Virtual query",
@@ -190,7 +190,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Used [$memarea] - Used query",
                     "options": {
                         "description": "JVM Memory Used [$memarea] - Used query",
@@ -212,7 +212,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Cpu Time - Process query",
                     "options": {
                         "description": "Cpu Time - Process query",
@@ -235,7 +235,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Open File Descriptors - Descriptors query",
                     "options": {
                         "description": "Open File Descriptors - Descriptors query",
@@ -257,7 +257,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Usage [$memarea] - System query",
                     "options": {
                         "description": "JVM Memory Usage [$memarea] - System query",
@@ -279,7 +279,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC count rate query",
                     "options": {
                         "description": "GC count rate query",
@@ -301,7 +301,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Deadlocked query",
                     "options": {
                         "description": "JVM Threads current - Deadlocked query",
@@ -323,7 +323,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Deadlocked query",
                     "options": {
                         "description": "JVM Threads current increase - Deadlocked query",
@@ -345,7 +345,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Deadlocked query",
                     "options": {
                         "description": "JVM Threads current rate - Deadlocked query",
@@ -367,7 +367,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count increase - unloaded query",
                     "options": {
                         "description": "Class Loading count increase - unloaded query",
@@ -389,7 +389,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Cpu Time - Current Thread query",
                     "options": {
                         "description": "Cpu Time - Current Thread query",
@@ -412,7 +412,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Usage [$memarea] - JVM query",
                     "options": {
                         "description": "JVM Memory Usage [$memarea] - JVM query",
@@ -434,7 +434,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Cpu Time - Total Spent query",
                     "options": {
                         "description": "Cpu Time - Total Spent query",
@@ -457,7 +457,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Free query",
                     "options": {
                         "description": "Physical memory - Free query",
@@ -479,7 +479,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory committed query",
                     "options": {
                         "description": "JVM Memory committed query",
@@ -501,7 +501,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC Time rate query",
                     "options": {
                         "description": "GC Time rate query",
@@ -523,7 +523,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Peak query",
                     "options": {
                         "description": "JVM Threads current - Peak query",
@@ -545,7 +545,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Peak query",
                     "options": {
                         "description": "JVM Threads current increase - Peak query",
@@ -567,7 +567,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Peak query",
                     "options": {
                         "description": "JVM Threads current rate - Peak query",
@@ -589,7 +589,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded increase - total query",
                     "options": {
                         "description": "Classes Loaded increase - total query",
@@ -611,7 +611,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU System load average - CPU System load average query",
                     "options": {
                         "description": "CPU System load average - CPU System load average query",
@@ -633,7 +633,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Total query",
                     "options": {
                         "description": "Physical memory - Total query",
@@ -655,7 +655,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU Process Load (1m avg) - CPU Process Load  1m avg query",
                     "options": {
                         "description": "CPU Process Load (1m avg) - CPU Process Load  1m avg query",
@@ -677,7 +677,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Physical memory - Committed VM query",
                     "options": {
                         "description": "Physical memory - Committed VM query",
@@ -699,7 +699,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory pool [$mempool] - Max query",
                     "options": {
                         "description": "Memory pool [$mempool] - Max query",
@@ -721,7 +721,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads - Current query",
                     "options": {
                         "description": "JVM Threading Threads - Current query",
@@ -743,7 +743,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads increase - Current query",
                     "options": {
                         "description": "JVM Threading Threads increase - Current query",
@@ -765,7 +765,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads rate - Current query",
                     "options": {
                         "description": "JVM Threading Threads rate - Current query",
@@ -787,7 +787,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count rate - unloaded query",
                     "options": {
                         "description": "Class Loading count rate - unloaded query",
@@ -809,7 +809,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU System Load (1m avg) - CPU System Load  1m avg query",
                     "options": {
                         "description": "CPU System Load (1m avg) - CPU System Load  1m avg query",
@@ -831,7 +831,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Process Memory - Resident query",
                     "options": {
                         "description": "Process Memory - Resident query",
@@ -853,7 +853,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory pool [$mempool] - Used query",
                     "options": {
                         "description": "Memory pool [$mempool] - Used query",
@@ -875,7 +875,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Used [$memarea] - Max query",
                     "options": {
                         "description": "JVM Memory Used [$memarea] - Max query",
@@ -897,7 +897,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory pool [$mempool] - Committed query",
                     "options": {
                         "description": "Memory pool [$mempool] - Committed query",
@@ -919,7 +919,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads - Peak query",
                     "options": {
                         "description": "JVM Threading Threads - Peak query",
@@ -941,7 +941,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads increase - Peak query",
                     "options": {
                         "description": "JVM Threading Threads increase - Peak query",
@@ -963,7 +963,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads rate - Peak query",
                     "options": {
                         "description": "JVM Threading Threads rate - Peak query",
@@ -985,7 +985,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count - unloaded query",
                     "options": {
                         "description": "Class Loading count - unloaded query",
@@ -1007,7 +1007,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded rate - total query",
                     "options": {
                         "description": "Classes Loaded rate - total query",
@@ -1029,7 +1029,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory pool [$mempool] - Committed Rate query",
                     "options": {
                         "description": "Memory pool [$mempool] - Committed Rate query",
@@ -1051,7 +1051,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC count increase query",
                     "options": {
                         "description": "GC count increase query",
@@ -1073,7 +1073,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads - Daemon query",
                     "options": {
                         "description": "JVM Threading Threads - Daemon query",
@@ -1095,7 +1095,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads - Started query",
                     "options": {
                         "description": "JVM Threading Threads - Started query",
@@ -1117,7 +1117,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Daemon query",
                     "options": {
                         "description": "JVM Threads current - Daemon query",
@@ -1139,7 +1139,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Deadlocked monitor query",
                     "options": {
                         "description": "JVM Threads current - Deadlocked monitor query",
@@ -1161,7 +1161,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads increase - Daemon query",
                     "options": {
                         "description": "JVM Threading Threads increase - Daemon query",
@@ -1183,7 +1183,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads increase - Started query",
                     "options": {
                         "description": "JVM Threading Threads increase - Started query",
@@ -1205,7 +1205,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Current query",
                     "options": {
                         "description": "JVM Threads current - Current query",
@@ -1227,7 +1227,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Current query",
                     "options": {
                         "description": "JVM Threads current increase - Current query",
@@ -1249,7 +1249,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Current query",
                     "options": {
                         "description": "JVM Threads current rate - Current query",
@@ -1271,7 +1271,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded - total query",
                     "options": {
                         "description": "Classes Loaded - total query",
@@ -1293,7 +1293,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Daemon query",
                     "options": {
                         "description": "JVM Threads current increase - Daemon query",
@@ -1315,7 +1315,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Started Total query",
                     "options": {
                         "description": "JVM Threads current increase - Started Total query",
@@ -1337,7 +1337,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Started Total query",
                     "options": {
                         "description": "JVM Threads current rate - Started Total query",
@@ -1359,7 +1359,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count rate - loaded query",
                     "options": {
                         "description": "Class Loading count rate - loaded query",
@@ -1381,7 +1381,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current increase - Deadlocked monitor query",
                     "options": {
                         "description": "JVM Threads current increase - Deadlocked monitor query",
@@ -1403,7 +1403,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded increase - currently query",
                     "options": {
                         "description": "Classes Loaded increase - currently query",
@@ -1425,7 +1425,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads rate - Daemon query",
                     "options": {
                         "description": "JVM Threading Threads rate - Daemon query",
@@ -1447,7 +1447,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count - loaded query",
                     "options": {
                         "description": "Class Loading count - loaded query",
@@ -1469,7 +1469,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded rate - currently query",
                     "options": {
                         "description": "Classes Loaded rate - currently query",
@@ -1491,7 +1491,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Status - Status query",
                     "options": {
                         "description": "Status - Status query",
@@ -1514,7 +1514,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU Cores - CPU Cores query",
                     "options": {
                         "description": "CPU Cores - CPU Cores query",
@@ -1537,7 +1537,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current - Started Total query",
                     "options": {
                         "description": "JVM Threads current - Started Total query",
@@ -1559,7 +1559,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "GC Time increase query",
                     "options": {
                         "description": "GC Time increase query",
@@ -1581,7 +1581,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading count increase - loaded query",
                     "options": {
                         "description": "Class Loading count increase - loaded query",
@@ -1603,7 +1603,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Classes Loaded - currently query",
                     "options": {
                         "description": "Classes Loaded - currently query",
@@ -1625,7 +1625,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threading Threads rate - Started query",
                     "options": {
                         "description": "JVM Threading Threads rate - Started query",
@@ -1647,7 +1647,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Start time - Start time query",
                     "options": {
                         "description": "Start time - Start time query",
@@ -1670,7 +1670,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Open file descriptors - Open FDs query",
                     "options": {
                         "description": "Open file descriptors - Open FDs query",
@@ -1693,7 +1693,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total SWAP - Total SWAP query",
                     "options": {
                         "description": "Total SWAP - Total SWAP query",
@@ -1716,7 +1716,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total RAM query",
                     "options": {
                         "description": "Total RAM query",
@@ -1739,7 +1739,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Daemon query",
                     "options": {
                         "description": "JVM Threads current rate - Daemon query",
@@ -1761,7 +1761,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Threads current rate - Deadlocked monitor query",
                     "options": {
                         "description": "JVM Threads current rate - Deadlocked monitor query",

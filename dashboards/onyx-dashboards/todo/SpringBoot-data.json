@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Min query",
                     "options": {
                         "description": "Min query",
@@ -33,7 +33,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Active query",
                     "options": {
                         "description": "Active query",
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Max query",
                     "options": {
                         "description": "Max query",
@@ -87,7 +87,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections - Active connections query",
                     "options": {
                         "description": "Connections - Active connections query",
@@ -109,7 +109,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections - Idle connections query",
                     "options": {
                         "description": "Connections - Idle connections query",
@@ -131,7 +131,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections - Pending threads query",
                     "options": {
                         "description": "Connections - Pending threads query",
@@ -153,7 +153,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Max query",
                     "options": {
                         "description": "Max query",
@@ -176,7 +176,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Min query",
                     "options": {
                         "description": "Min query",
@@ -199,7 +199,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Timeout query",
                     "options": {
                         "description": "Total Timeout query",
@@ -222,7 +222,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections Time - Usage time query",
                     "options": {
                         "description": "Connections Time - Usage time query",
@@ -244,7 +244,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections Time - Creation time query",
                     "options": {
                         "description": "Connections Time - Creation time query",
@@ -266,7 +266,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Connections Time - Acquire time query",
                     "options": {
                         "description": "Connections Time - Acquire time query",

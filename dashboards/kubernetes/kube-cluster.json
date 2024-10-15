@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Memory by Node",
                     "options": {
                         "description": "Total Memory by Node",
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total CPU Cores",
                     "options": {
                         "description": "Total CPU Cores",
@@ -57,7 +57,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total Node Memory",
                     "options": {
                         "description": "Total Node Memory",
@@ -80,7 +80,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pod Restarts",
                     "options": {
                         "description": "Pod Restarts",
@@ -102,7 +102,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pods By Ready status",
                     "options": {
                         "description": "Pods By Ready status",
@@ -124,7 +124,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "P-Volume Capacity",
                     "options": {
                         "description": "P-Volume Capacity",
@@ -146,7 +146,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total-Pods Configurable/Node",
                     "options": {
                         "description": "Total-Pods Configurable/Node",
@@ -168,7 +168,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Kube Total Nodes",
                     "options": {
                         "description": "Kube Total Nodes",
@@ -191,7 +191,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Available Memory by Node",
                     "options": {
                         "description": "Available Memory by Node",
@@ -213,7 +213,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Pod By Phase",
                     "options": {
                         "description": "Pod By Phase",
@@ -235,7 +235,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Cluster CPU Usage",
                     "options": {
                         "description": "Cluster CPU Usage",
@@ -257,7 +257,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Available Pods By Namespace",
                     "options": {
                         "description": "Available Pods By Namespace",

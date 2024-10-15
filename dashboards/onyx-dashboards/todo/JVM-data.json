@@ -11,7 +11,7 @@
             "type": "metrics",
             "queriesList": [
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Status",
                     "options": {
                         "description": "Status",
@@ -32,7 +32,7 @@
                     "schema": "up"
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Uptime",
                     "options": {
                         "description": "Uptime",
@@ -53,7 +53,7 @@
                     "schema": ""
                 },
                 {
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Start time",
                     "options": {
                         "description": "Start time",
@@ -75,7 +75,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory area - Used",
                     "options": {
                         "description": "Memory area - Used",
@@ -97,7 +97,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM CPU Utilization",
                     "options": {
                         "description": "JVM CPU Utilization Ratio",
@@ -115,7 +115,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Loaded Classes",
                     "options": {
                         "description": "Number of loaded JVM classes",
@@ -133,7 +133,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Committed",
                     "options": {
                         "description": "Amount of memory committed to JVM",
@@ -151,7 +151,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Usage After GC",
                     "options": {
                         "description": "Memory usage after last garbage collection",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Buffer Count",
                     "options": {
                         "description": "Number of buffers in the JVM",
@@ -187,7 +187,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "System CPU Load (1m avg)",
                     "options": {
                         "description": "System CPU load average over 1 minute",
@@ -205,7 +205,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Total JVM Classes Loaded",
                     "options": {
                         "description": "Total number of classes loaded since JVM start",
@@ -223,7 +223,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Buffer Usage",
                     "options": {
                         "description": "JVM buffer memory usage in bytes",
@@ -241,7 +241,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Classes Unloaded",
                     "options": {
                         "description": "Total number of classes unloaded since JVM start",
@@ -259,7 +259,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "System CPU Utilization Ratio",
                     "options": {
                         "description": "Ratio of CPU utilization by the system",
@@ -277,7 +277,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Init",
                     "options": {
                         "description": "Initial amount of memory requested by JVM",
@@ -295,7 +295,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Memory Limit",
                     "options": {
                         "description": "Limit of memory that can be used by JVM",
@@ -313,7 +313,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "JVM Buffer Limit",
                     "options": {
                         "description": "Limit of buffer memory in the JVM",
@@ -331,7 +331,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory Usage vs Committed",
                     "options": {
                         "description": "Comparison of used memory to committed memory",
@@ -349,7 +349,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory Commit Rate",
                     "options": {
                         "description": "Ratio of committed memory to memory limit",
@@ -367,7 +367,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Loading Rate",
                     "options": {
                         "description": "Rate of class loading per minute",
@@ -385,7 +385,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Class Unloading Rate",
                     "options": {
                         "description": "Rate of class unloading per minute",
@@ -403,7 +403,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory Allocation Rate",
                     "options": {
                         "description": "Rate of memory allocation per second",
@@ -421,7 +421,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "Memory Usage Trend",
                     "options": {
                         "description": "Trend of memory usage over time",
@@ -439,7 +439,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Metrics",
+                    "data_source_name": "Ascent Metrics",
                     "name": "CPU Usage Saturation",
                     "options": {
                         "description": "How close CPU usage is to its limit",

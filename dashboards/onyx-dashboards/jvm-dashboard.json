@@ -25,7 +25,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "round(sum by (hostname) (jvm_uptime{hostname=~'.*'})/3600000,1)",
@@ -46,7 +46,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname) (thread_count{hostname=~'.*',ostype='linux|windows'})&duration=1h&step=5m",
@@ -68,7 +68,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname) (process_runtime_jvm_threads_count{daemon='true',hostname=~'.*'})&duration=1h&step=1m",
@@ -90,7 +90,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname) (process_runtime_jvm_classes_current_loaded{hostname=~'.*',ostype=~'linux|windows'})&duration=1h&step=1m",
@@ -111,7 +111,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname) (open_fd_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -133,7 +133,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "100 * (heap_memory_usage_used{hostname=~'.*',ostype='linux|windows'})/(heap_memory_usage_max{hostname=~'.*',ostype='linux|windows'})&duration=1h&step=5m",
@@ -154,7 +154,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (__name__, hostname)({__name__=~'heap_memory_usage_used|heap_memory_usage_max',ostype='linux|windows',hostname=~'.*'})&duration=1h&step=5m",
@@ -175,7 +175,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (__name__, hostname)({__name__=~'non_heap_memory_usage_used|non_heap_memory_usage_max',ostype='linux|windows',hostname=~'.*'})&duration=1h&step=5m",
@@ -196,7 +196,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "(non_heap_memory_usage_used{hostname=~'.*',ostype='linux'})/(non_heap_memory_usage_max{hostname=~'.*',ostype='linux'})&duration=1h&step=5m",
@@ -217,7 +217,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "round(100*increase(process_runtime_jvm_gc_duration_seconds_sum{ostype=~'linux',hostname=~'.*'} [5m])/300,0.01)&duration=1h&step=1m",
@@ -238,7 +238,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname,action) (process_runtime_jvm_gc_duration_seconds_count{hostname=~'.*'})",
@@ -259,7 +259,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               },
               {
                 "query": "sum by (hostname,action) (process_runtime_jvm_gc_duration_seconds_sum{hostname=~'.*'})",
@@ -280,7 +280,7 @@
                     "errorColumn": ""
                   }
                 },
-                "data_source_name": "Apica Metrics"
+                "data_source_name": "Ascent Metrics"
               }
             ]
           }
@@ -292,21 +292,21 @@
           "customer": {
             "query": "group by (customer) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Customer Selection",
-            "data_source_name": "Apica Metrics"
+            "data_source_name": "Ascent Metrics"
           }
         },
         {
           "hostname": {
             "query": "group by (hostname) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Host Selection",
-            "data_source_name": "Apica Metrics"
+            "data_source_name": "Ascent Metrics"
           }
         },
         {
           "runtime": {
             "query": "group by (runtime) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Runtime selection",
-            "data_source_name": "Apica Metrics"
+            "data_source_name": "Ascent Metrics"
           }
         }
       ]
