@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Consul Services and Checks query",
                     "query": "sum by (node,service_id,status) (consul_health_service_status)&duration=1h&step=5m",
                     "schema": "consul_health_service_status",

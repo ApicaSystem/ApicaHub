@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections - Active connections",
                     "options": {
                         "description": "Connections - Active connections",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections - Idle connections",
                     "options": {
                         "description": "Connections - Idle connections",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections - Pending threads",
                     "options": {
                         "description": "Connections - Pending threads",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Min",
                     "options": {
                         "description": "Min",
@@ -99,7 +99,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections per instance - Active connections",
                     "options": {
                         "description": "Connections per instance - Active connections",
@@ -121,7 +121,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections per instance - Pending threads",
                     "options": {
                         "description": "Connections per instance - Pending threads",
@@ -143,7 +143,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Max",
                     "options": {
                         "description": "Max",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Timeout",
                     "options": {
                         "description": "Total Timeout",
@@ -197,7 +197,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections Time - Usage time",
                     "options": {
                         "description": "Connections Time - Usage time",
@@ -219,7 +219,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections Time - Creation time",
                     "options": {
                         "description": "Connections Time - Creation time",
@@ -241,7 +241,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections Time - Connection acquired",
                     "options": {
                         "description": "Connections Time - Connection acquired",
@@ -263,7 +263,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connection usage",
                     "options": {
                         "description": "Connection usage",
@@ -285,7 +285,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connection creation",
                     "options": {
                         "description": "Connection creation",
@@ -307,7 +307,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connection acquired time",
                     "options": {
                         "description": "Connection acquired time",

@@ -103,7 +103,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Up Time",
                     "options": {
                         "description": "Up Time",
@@ -126,7 +126,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total No.of Items stored",
                     "options": {
                         "description": "Total No.of Items stored",
@@ -149,7 +149,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Reclaims",
                     "options": {
                         "description": "Total Reclaims",
@@ -171,7 +171,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Current Connections",
                     "options": {
                         "description": "Current Connections",
@@ -193,7 +193,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "MemCache Total Commands",
                     "options": {
                         "description": "MemCache Total Commands",
@@ -215,7 +215,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of bytes read from network",
                     "options": {
                         "description": "No.of bytes read from network",
@@ -237,7 +237,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Storage allocated for memcache",
                     "options": {
                         "description": "Storage allocated for memcache",
@@ -260,7 +260,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "% of storage used",
                     "options": {
                         "description": "% of storage used",
@@ -282,7 +282,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total no.of Evictions",
                     "options": {
                         "description": "Total no.of Evictions",
@@ -304,7 +304,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of connections opened",
                     "options": {
                         "description": "No.of connections opened",

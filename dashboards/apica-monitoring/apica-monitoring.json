@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "go memstats heap alloc bytes - api",
                     "options": {
                         "description": "go memstats heap alloc bytes - api",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Ingest free disk space (%)",
                     "options": {
                         "description": "Ingest free disk space (%)",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "GB/h",
                     "options": {
                         "description": "GB/h",
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "# Messages/sec by Namespace",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Batch size [5m]",
                     "options": {
                         "description": "Batch size [5m]",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "IngestDb files",
                     "options": {
                         "description": "IngestDb files",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "apica metadata db usage",
                     "options": {
                         "description": "apica metadata db usage",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Ingest free disk %  per pod",
                     "options": {
                         "description": "Ingest free disk %  per pod",

@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Queues",
                     "options": {
                         "description": "RMQ Queues",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Authentication attempts",
                     "options": {
                         "description": "RMQ Authentication attempts",
@@ -145,7 +145,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Queued messages",
                     "options": {
                         "description": "RMQ Queued messages",
@@ -167,7 +167,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Disk space available",
                     "options": {
                         "description": "RMQ Disk space available",
@@ -189,7 +189,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Consumers",
                     "options": {
                         "description": "RMQ Consumers",
@@ -212,7 +212,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ tcp sockets available",
                     "options": {
                         "description": "RMQ tcp sockets available",
@@ -234,7 +234,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Messages Published / sec",
                     "options": {
                         "description": "RMQ Messages Published / sec",
@@ -256,7 +256,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Auth attempts succeeded",
                     "options": {
                         "description": "RMQ Auth attempts succeeded",
@@ -278,7 +278,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Messages confirmed to publishers / sec",
                     "options": {
                         "description": "RMQ Messages confirmed to publishers / sec",
@@ -300,7 +300,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Messages routed to queues / sec",
                     "options": {
                         "description": "RMQ Messages routed to queues / sec",
@@ -322,7 +322,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Unroutable messages dropped / sec",
                     "options": {
                         "description": "RMQ Unroutable messages dropped / sec",
@@ -344,7 +344,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Uptime",
                     "options": {
                         "description": "RMQ Uptime",
@@ -367,7 +367,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Auth attempts Failed",
                     "options": {
                         "description": "RMQ Auth attempts Failed",
@@ -389,7 +389,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RabbitMQ version",
                     "options": {
                         "description": "RabbitMQ version",
@@ -412,7 +412,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ File descriptors available",
                     "options": {
                         "description": "RMQ File descriptors available",
@@ -435,7 +435,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Channels",
                     "options": {
                         "description": "RMQ Channels",
@@ -458,7 +458,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Connections",
                     "options": {
                         "description": "RMQ Connections",
@@ -481,7 +481,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RMQ Erlang processes",
                     "options": {
                         "description": "RMQ Erlang processes",

@@ -147,7 +147,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "GB/h (7 days)",
                     "options": {
                         "description": "GB/h 7d",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Ingest free disk space (%)",
                     "options": {
                         "description": "GB / day",
@@ -191,7 +191,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "Number of messages per second by namespace",
@@ -213,7 +213,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Batch size [5m]",
                     "options": {
                         "description": "Batch size [5m]",
@@ -235,7 +235,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "IngestDB Files Count",
                     "options": {
                         "description": "IngestDB Files Count",
@@ -257,7 +257,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Ingest free disk % per pod",
                     "options": {
                         "description": "Ingest free disk % per pod",

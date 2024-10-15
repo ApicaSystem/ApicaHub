@@ -147,7 +147,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Connections",
                     "options": {
                         "description": "Connections",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "GB per day",
                     "options": {
                         "description": "GB per day",

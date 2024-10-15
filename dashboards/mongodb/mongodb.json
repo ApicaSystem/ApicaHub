@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Query Operations",
                     "options": {
                         "description": "Query Operations",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Metrics Created/Min",
                     "options": {
                         "description": "Metrics Created/Min",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "UpTime",
                     "options": {
                         "description": "UpTime",
@@ -123,7 +123,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Currently available connections",
                     "options": {
                         "description": "Currently available connections",
@@ -146,7 +146,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total available Connections",
                     "options": {
                         "description": "Total available Connections",
@@ -169,7 +169,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Mongodb Version",
                     "options": {
                         "description": "Mongodb Version",
@@ -192,7 +192,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Active Connections",
                     "options": {
                         "description": "Active Connections",
@@ -215,7 +215,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Open Connections",
                     "options": {
                         "description": "Open Connections",
@@ -238,7 +238,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "DB Size",
                     "options": {
                         "description": "DB Size",
@@ -260,7 +260,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CPU Usage",
                     "options": {
                         "description": "CPU Usage",
@@ -282,7 +282,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Metrics Operations",
                     "options": {
                         "description": "Metrics Operations",
@@ -304,7 +304,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of Objects i.e. documents (counter)",
                     "options": {
                         "description": "No.of Objects i.e. documents (counter)",
@@ -326,7 +326,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Asserts",
                     "options": {
                         "description": "Asserts",
@@ -348,7 +348,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Metrics Created",
                     "options": {
                         "description": "Total Metrics Created",
@@ -371,7 +371,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Memory",
                     "options": {
                         "description": "Memory",
@@ -393,7 +393,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Memory Used",
                     "options": {
                         "description": "Total Memory Used",
@@ -415,7 +415,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Collections/db",
                     "options": {
                         "description": "Collections/db",
@@ -437,7 +437,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Network Sent",
                     "options": {
                         "description": "Network Sent",
@@ -459,7 +459,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "wiredTiger Transactions (rate)",
                     "options": {
                         "description": "wiredTiger Transactions (rate)",
@@ -481,7 +481,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Storage Engine",
                     "options": {
                         "description": "Storage Engine",
@@ -504,7 +504,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Network Received",
                     "options": {
                         "description": "Network Received",
@@ -526,7 +526,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Index Size (counter)",
                     "options": {
                         "description": "Index Size (counter)",
@@ -548,7 +548,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Replica QPS",
                     "options": {
                         "description": "Replica QPS",
@@ -570,7 +570,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Query Executor Operations",
                     "options": {
                         "description": "Query Executor Operations",
@@ -592,7 +592,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "wiredTiger Transactions (counter)",
                     "options": {
                         "description": "wiredTiger Transactions (counter)",
@@ -614,7 +614,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "QPS (type)",
                     "options": {
                         "description": "QPS (type)",
@@ -636,7 +636,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "QPS (sum)",
                     "options": {
                         "description": "QPS (sum)",
@@ -658,7 +658,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Query Operation Latency",
                     "options": {
                         "description": "Query Operation Latency",
@@ -680,7 +680,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Queued Operations",
                     "options": {
                         "description": "Queued Operations",
@@ -702,7 +702,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Page Faults",
                     "options": {
                         "description": "Page Faults",
@@ -724,7 +724,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of Indexes (counter)",
                     "options": {
                         "description": "No.of Indexes (counter)",
@@ -746,7 +746,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "wiredTiger Log Operations",
                     "options": {
                         "description": "wiredTiger Log Operations",

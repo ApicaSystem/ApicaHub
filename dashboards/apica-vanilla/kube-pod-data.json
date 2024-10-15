@@ -281,7 +281,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CPU Usage - Total query",
                     "options": {
                         "description": "CPU Usage - Total query",
@@ -304,7 +304,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RAM Usage - Real query",
                     "options": {
                         "description": "RAM Usage - Real query",
@@ -327,7 +327,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RAM Usage - Requests query",
                     "options": {
                         "description": "RAM Usage - Requests query",
@@ -350,7 +350,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RAM Usage - Limits query",
                     "options": {
                         "description": "RAM Usage - Limits query",
@@ -373,7 +373,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "RAM Usage - Total query",
                     "options": {
                         "description": "RAM Usage - Total query",
@@ -396,7 +396,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Running Pods query",
                     "options": {
                         "description": "Running Pods query",
@@ -419,7 +419,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Utilization - auto query",
                     "options": {
                         "description": "Cluster CPU Utilization - auto query",
@@ -441,7 +441,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Memory Utilization - auto query",
                     "options": {
                         "description": "Cluster Memory Utilization - auto query",
@@ -463,7 +463,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Network Traffic - auto query",
                     "options": {
                         "description": "Total Network Traffic - auto query",
@@ -485,7 +485,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Network Traffic - auto query",
                     "options": {
                         "description": "Total Network Traffic - auto query",
@@ -507,7 +507,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Disk I/O - auto query",
                     "options": {
                         "description": "Disk I/O - auto query",
@@ -529,7 +529,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Disk I/O - auto query",
                     "options": {
                         "description": "Disk I/O - auto query",
@@ -551,7 +551,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CPU Utilization by namespace - auto query",
                     "options": {
                         "description": "CPU Utilization by namespace - auto query",
@@ -573,7 +573,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Memory Utilization by namespace - auto query",
                     "options": {
                         "description": "Memory Utilization by namespace - auto query",
@@ -595,7 +595,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CoreDNS - Total Forward Requests - auto query",
                     "options": {
                         "description": "CoreDNS - Total Forward Requests - auto query",
@@ -617,7 +617,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CoreDNS - Cache Size query",
                     "options": {
                         "description": "CoreDNS - Cache Size query",
@@ -639,7 +639,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod Network Utilization - auto query",
                     "options": {
                         "description": "Pod Network Utilization - auto query",
@@ -661,7 +661,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod Read/Write Iops - auto query",
                     "options": {
                         "description": "Pod Read/Write Iops - auto query",
@@ -683,7 +683,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod CPU Limits - auto query",
                     "options": {
                         "description": "Pod CPU Limits - auto query",
@@ -705,7 +705,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod Memory Limits - auto query",
                     "options": {
                         "description": "Pod Memory Limits - auto query",
@@ -727,7 +727,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod CPU Request - auto query",
                     "options": {
                         "description": "Pod CPU Request - auto query",
@@ -749,7 +749,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pod Memory Requests - auto query",
                     "options": {
                         "description": "Pod Memory Requests - auto query",

@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Alert Notifications Sent (rate)",
                     "options": {
                         "description": "Total Alert Notifications Sent (rate)",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Compaction Chunk Range Sec (le=400) ",
                     "options": {
                         "description": "Compaction Chunk Range Sec (le=400) ",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Notification Latency by duration (msec)",
                     "options": {
                         "description": "Notification Latency by duration (msec)",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Loaded TSDB Blocks",
                     "options": {
                         "description": "Loaded TSDB Blocks",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Syncs Failures (rate)",
                     "options": {
                         "description": "Total Syncs Failures (rate)",
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Entries In Cache",
                     "options": {
                         "description": "Entries In Cache",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Prometheus Used Disk Space %",
                     "options": {
                         "description": "Prometheus Used Disk Space %",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total number of scrapes by HTTP code 500 ",
                     "options": {
                         "description": "Total number of scrapes by HTTP code 500 ",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Operations",
                     "options": {
                         "description": "Total Operations",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "HTTP Request Latency 90th Quantile",
                     "options": {
                         "description": "HTTP Request Latency 90th Quantile",
@@ -298,7 +298,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Updates Received (rate)",
                     "options": {
                         "description": "Total Updates Received (rate)",
@@ -320,7 +320,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Metadata Cache Storage (rate)",
                     "options": {
                         "description": "Metadata Cache Storage (rate)",
@@ -342,7 +342,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "HTTP Responce Size (90th quantile)",
                     "options": {
                         "description": "HTTP Responce Size (90th quantile)",
@@ -364,7 +364,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total number of scrapes by HTTP code 503",
                     "options": {
                         "description": "Total number of scrapes by HTTP code 503",
@@ -386,7 +386,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total No.of Time Series",
                     "options": {
                         "description": "Total No.of Time Series",
@@ -408,7 +408,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Prometheus HTTP Requests (QPS)",
                     "options": {
                         "description": "Prometheus HTTP Requests (QPS)",
@@ -430,7 +430,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Prometheus Local Storage Used",
                     "options": {
                         "description": "Prometheus Local Storage Used",
@@ -452,7 +452,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Metadata Metric Entries (rate)",
                     "options": {
                         "description": "Metadata Metric Entries (rate)",
@@ -474,7 +474,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Updates Sent",
                     "options": {
                         "description": "Total Updates Sent",
@@ -496,7 +496,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Update Updates Received",
                     "options": {
                         "description": "Update Updates Received",
@@ -518,7 +518,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total Updates Sent (rate)",
                     "options": {
                         "description": "Total Updates Sent (rate)",
@@ -540,7 +540,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Total number of scrapes by HTTP code 200 ",
                     "options": {
                         "description": "Total number of scrapes by HTTP code 200 ",
@@ -562,7 +562,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Interval Length between Scrapes (rate)",
                     "options": {
                         "description": "Interval Length between Scrapes (rate)",
@@ -584,7 +584,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Memory Chunks",
                     "options": {
                         "description": "Memory Chunks",
@@ -606,7 +606,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Kubernetes events handled",
                     "options": {
                         "description": "Kubernetes events handled",
@@ -628,7 +628,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of bytes allocated & still in use (rate)",
                     "options": {
                         "description": "No.of bytes allocated & still in use (rate)",
@@ -650,7 +650,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Metadata Cache Storage",
                     "options": {
                         "description": "Metadata Cache Storage",
@@ -672,7 +672,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Prometheus Required Disk Space per day",
                     "options": {
                         "description": "Prometheus Required Disk Space per day",
@@ -694,7 +694,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "No.of heap bytes allocated & still in use (rate)",
                     "options": {
                         "description": "No.of heap bytes allocated & still in use (rate)",

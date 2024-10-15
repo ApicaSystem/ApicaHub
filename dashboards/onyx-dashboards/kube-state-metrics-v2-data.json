@@ -6,21 +6,21 @@
                 "customer": {
                   "query": "group by (customer) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Customer Selection",
-                  "data_source_name": "Apica Monitoring"
+                  "data_source_name": "Apica Metrics"
                 }
               },
               {
                 "hostname": {
                   "query": "group by (hostname) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Host Selection",
-                  "data_source_name": "Apica Monitoring"
+                  "data_source_name": "Apica Metrics"
                 }
               },
               {
                 "runtime": {
                   "query": "group by (runtime) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Runtime selection",
-                  "data_source_name": "Apica Monitoring"
+                  "data_source_name": "Apica Metrics"
                 }
               }
         ]
@@ -32,7 +32,7 @@
             "queriesList": [
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Requested",
                     "options": {
                         "description": "% Cluster CPU Requested",
@@ -55,7 +55,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Memory Requested",
                     "options": {
                         "description": "% Cluster Memory  Requested",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Pod Capacity - allocatable",
                     "options": {
                         "description": "Cluster Pod Capacity - allocatable",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Pod Capacity - requested",
                     "options": {
                         "description": "Cluster Pod Capacity - requested",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Capacity - allocatable",
                     "options": {
                         "description": "Cluster CPU Capacity - allocatable",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Capacity - capacity",
                     "options": {
                         "description": "Cluster CPU Capacity - capacity",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Capacity - requested",
                     "options": {
                         "description": "Cluster CPU Capacity - requested",
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster CPU Capacity - limited",
                     "options": {
                         "description": "Cluster CPU Capacity - limited",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Mem Capacity - allocatable",
                     "options": {
                         "description": "Cluster Mem Capacity - allocatable",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Mem Capacity - capacity",
                     "options": {
                         "description": "Cluster Mem Capacity - capacity",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Mem Capacity - requested",
                     "options": {
                         "description": "Cluster Mem Capacity - requested",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Cluster Mem Capacity - limited",
                     "options": {
                         "description": "Cluster Mem Capacity - limited",
@@ -306,7 +306,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Number Of Nodes",
                     "options": {
                         "description": "Nodes",
@@ -329,7 +329,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Nodes Unavailable",
                     "options": {
                         "description": "Nodes Unavailable",
@@ -352,7 +352,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Node NotReady",
                     "options": {
                         "description": "Node NotReady",
@@ -374,7 +374,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Node Pressure",
                     "options": {
                         "description": "Node Pressure",
@@ -396,7 +396,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Node Pressure",
                     "options": {
                         "description": "Node Pressure",
@@ -418,7 +418,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "node number",
                     "options": {
                         "description": "node number",
@@ -448,7 +448,7 @@
             "queriesList": [
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Deployment Replicas - Table",
                     "options": {
                         "description": "Deployment Replicas",
@@ -470,7 +470,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Deployment Replicas",
                     "options": {
                         "description": "Deployment Replicas",
@@ -493,7 +493,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Deployment Replicas - Updated",
                     "options": {
                         "description": "Deployment Replicas - Updated",
@@ -516,7 +516,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Deployment Replicas - Unavailable",
                     "options": {
                         "description": "Deployment Replicas - Unavailable",
@@ -547,7 +547,7 @@
             "queriesList": [
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Statefulset Replicas - Up To Date",
                     "options": {
                         "description": "Statefulset Replicas - Up To Date",
@@ -577,7 +577,7 @@
             "queriesList": [
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods restart in 30m",
                     "options": {
                         "description": "Pods restart in 30m",
@@ -599,7 +599,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Evicted",
                     "options": {
                         "description": "Evicted",
@@ -621,7 +621,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods Running",
                     "options": {
                         "description": "Pods Running",
@@ -644,7 +644,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods Succeeded",
                     "options": {
                         "description": "Pods Succeeded",
@@ -667,7 +667,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods Failed",
                     "options": {
                         "description": "Pods Failed",
@@ -690,7 +690,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods Pending",
                     "options": {
                         "description": "Pods Pending",
@@ -713,7 +713,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Pods Unknown",
                     "options": {
                         "description": "Pods Unknown",
@@ -744,7 +744,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Containers Running",
                     "options": {
                         "description": "Containers Running",
@@ -767,7 +767,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Containers Waiting",
                     "options": {
                         "description": "Containers Waiting",
@@ -790,7 +790,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Containers Terminated",
                     "options": {
                         "description": "Containers Terminated",
@@ -813,7 +813,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Containers Restarts (Last 30 Minutes)",
                     "options": {
                         "description": "Containers Restarts (Last 30 Minutes)",
@@ -836,7 +836,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "CPU Cores Requested by Containers",
                     "options": {
                         "description": "CPU Cores Requested by Containers",
@@ -859,7 +859,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Memory Requested By Containers",
                     "options": {
                         "description": "Memory Requested By Containers",
@@ -890,7 +890,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Jobs Succeeded",
                     "options": {
                         "description": "Jobs Succeeded",
@@ -913,7 +913,7 @@
                 },
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Job last success time from now",
                     "options": {
                         "description": "Job last success time from now",
@@ -935,7 +935,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Jobs Failed",
                     "options": {
                         "description": "Jobs Failed",
@@ -958,7 +958,7 @@
                 },
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Job failed",
                     "options": {
                         "description": "Job failed",
@@ -980,7 +980,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Jobs Active",
                     "options": {
                         "description": "Jobs Active",
@@ -1011,7 +1011,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "pvc is bound",
                     "options": {
                         "description": "pvc is bound",
@@ -1034,7 +1034,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "pvc is not bound",
                     "options": {
                         "description": "pvc is not bound",
@@ -1057,7 +1057,7 @@
                 },
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "pvc",
                     "options": {
                         "description": "pvc",

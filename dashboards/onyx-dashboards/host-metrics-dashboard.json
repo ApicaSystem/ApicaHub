@@ -6,21 +6,21 @@
           "customer": {
             "query": "group by (customer) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Customer Selection",
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         },
         {
           "hostname": {
             "query": "group by (hostname) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Host Selection",
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         },
         {
           "runtime": {
             "query": "group by (runtime) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
             "name": "Runtime selection",
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         }
       ]
@@ -52,7 +52,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(avg(sum by (hostname) (round(100 - system_cpu_utilization_ratio{ostype=~'linux|windows',state=~'idle',customer=~'.*',hostname=~'.*',runtime=~'.*'}*100, 0.1))), 0.01)",
@@ -79,7 +79,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(avg(sum by (hostname) (round(system_memory_utilization_ratio{ostype=~'linux|windows',state=~'used',customer=~'.*',hostname=~'.*',runtime=~'.*'}*100, 0.1))), 0.01)",
@@ -104,7 +104,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(avg by (hostname) (system_cpu_load_average_5m{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*'}), 0.01)*100",
@@ -125,7 +125,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "(sum by (hostname) (avg_over_time(system_filesystem_inodes_usage{ostype=~'linux|windows',device=~'.*',customer=~'.*',hostname=~'.*',runtime=~'.*'}[5m])))&duration=1h&step=1m",
@@ -146,7 +146,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "(sum by (hostname) (system_filesystem_inodes_usage{ostype=~'linux|windows',mountpoint='/',customer=~'.*',hostname=~'.*',runtime=~'.*'}))",
@@ -167,7 +167,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         ]
       },
@@ -196,7 +196,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round((1-(avg_over_time(system_cpu_utilization_ratio{ostype=~'linux|windows',state=~'idle',customer=~'.*',hostname=~'.*',runtime=~'.*'}[5m])))*100,0.01)&duration=1.000h&step=1m",
@@ -217,7 +217,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(max_over_time(system_cpu_load_average_5m{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*'}[5m])*100,0.01)&duration=1.000h&step=1m",
@@ -238,7 +238,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(avg_over_time(system_cpu_load_average_5m{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*'}[5m])*100,0.01)&duration=1.000h&step=1m",
@@ -259,7 +259,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "sum by (hostname,status) (system_processes_count{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1.000h&step=1m",
@@ -278,7 +278,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round((avg by (hostname) (irate(system_cpu_time_seconds_total{ostype=~'linux',customer=~'.*',hostname=~'.*',runtime=~'.*',runtime=~'.*',state='wait'}[5m]))) * 100,0.01)&duration=1h&step=1m",
@@ -299,7 +299,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "100*round((avg by (hostname) (irate(system_cpu_time_seconds_total{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*',state='wait'}[5m]))) * 100,0.01)&duration=1h&step=1m",
@@ -337,7 +337,7 @@
               },
               "rearm": 300
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round((avg by (hostname) (irate(system_cpu_time_seconds_total{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*',state='wait'}[5m]))) * 100,0.01)&duration=1h&step=1m",
@@ -358,7 +358,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round((avg by (hostname) (irate(system_cpu_time_seconds_total{ostype=~'linux|windows',customer=~'.*',hostname=~'.*',runtime=~'.*',state='wait'}[5m]))) * 100,0.01)&duration=1h&step=1m",
@@ -379,7 +379,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "",
@@ -400,7 +400,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         ]
       },
@@ -429,7 +429,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "100 * (sum by (hostname) (avg_over_time(system_filesystem_inodes_usage{ostype=~'linux|windows',device=~'.*',customer=~'.*',hostname=~'.*',runtime=~'.*'}[5m])))&duration=1h&step=1m",
@@ -450,7 +450,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "(sum by (hostname) (rate(system_disk_io_bytes_total{ostype=~'linux|windows',device=~'.*',customer=~'.*',hostname=~'.*',runtime=~'.*',direction='write'}[5m])))&duration=1h&step=1m",
@@ -471,7 +471,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "(sum by (hostname) (rate(system_disk_io_bytes_total{ostype=~'linux|windows',device=~'.*',customer=~'.*',hostname=~'.*',runtime=~'.*',direction='read'}[5m])))&duration=1h&step=1m",
@@ -492,7 +492,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         ]
       },
@@ -521,7 +521,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round((sum by (hostname) (system_linux_memory_available_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}))/(1024*1024*1024),0.01)",
@@ -542,7 +542,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "100*sum by (hostname) (1-system_memory_utilization_ratio{customer=~'.*',hostname=~'.*',runtime=~'.*',state='free'})&duration=1h&step=1m",
@@ -563,7 +563,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         ]
       },
@@ -592,7 +592,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_io_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*',direction='receive'}[5m])),0.01)&duration=1h&step=1m",
@@ -613,7 +613,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_connections{customer=~'.*',hostname=~'.*',runtime=~'.*',state='ESTABLISHED'}[15m])),0.01)&duration=1h&step=1m",
@@ -634,7 +634,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_dropped_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[15m])),0.01)&duration=1h&step=1m",
@@ -655,7 +655,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_packets_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[15m])),0.01)&duration=1h&step=1m",
@@ -676,7 +676,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_errors_total{customer=~'.*',hostname=~'.*',runtime=~'.*',direction='receive'}[5m])),0.01)&duration=1h&step=1m",
@@ -697,7 +697,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           },
           {
             "query": "round(sum by (hostname) (rate(system_network_errors_total{customer=~'.*',hostname=~'.*',runtime=~'.*',direction='transmit'}[5m])),0.01)&duration=1h&step=1m",
@@ -718,7 +718,7 @@
                 "errorColumn": ""
               }
             },
-            "data_source_name": "Apica Monitoring"
+            "data_source_name": "Apica Metrics"
           }
         ]
       },

@@ -252,7 +252,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List Gossip Time - p50",
                     "options": {
                         "description": "Member List Gossip Time - p50",
@@ -274,7 +274,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List Gossip Time - p90",
                     "options": {
                         "description": "Member List Gossip Time - p90",
@@ -296,7 +296,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List Gossip Time - p99",
                     "options": {
                         "description": "Member List Gossip Time - p99",
@@ -318,7 +318,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List Gossip Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List Gossip Count Rate [ /minute ]",
@@ -340,7 +340,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List MSG Alive Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List MSG Alive Count Rate [ /minute ]",
@@ -362,7 +362,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List MSG Dead Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List MSG Dead Count Rate [ /minute ]",
@@ -384,7 +384,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List MSG Suspect Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List MSG Suspect Count Rate [ /minute ]",
@@ -406,7 +406,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List MSG Suspect Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List MSG Suspect Count Rate [ /minute ]",
@@ -428,7 +428,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Serf Member Failed Count Rate [ /minute ]",
                     "options": {
                         "description": "Serf Member Failed Count Rate [ /minute ]",
@@ -450,7 +450,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Serf Member Flap Count Rate [ /minute ]",
                     "options": {
                         "description": "Serf Member Flap Count Rate [ /minute ]",
@@ -472,7 +472,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Serf Member Left Count Rate [ /minute ]",
                     "options": {
                         "description": "Serf Member Left Count Rate [ /minute ]",
@@ -494,7 +494,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Serf Events Count [ /minute ]",
                     "options": {
                         "description": "Serf Events Count [ /minute ]",
@@ -516,7 +516,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "AutoPilot Failure Tolerance Count ",
                     "options": {
                         "description": "AutoPilot Failure Tolerance Count ",
@@ -538,7 +538,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "AutoPilot Healthy Count ",
                     "options": {
                         "description": "AutoPilot Healthy Count ",
@@ -560,7 +560,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Session TTL Active Count",
                     "options": {
                         "description": "Session TTL Active Count",
@@ -582,7 +582,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List ProbeNode Time",
                     "options": {
                         "description": "Member List ProbeNode Time",
@@ -604,7 +604,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List Prob Node Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List Prob Node Count Rate [ /minute ]",
@@ -626,7 +626,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List PushPullNode Time",
                     "options": {
                         "description": "Member List PushPullNode Time",
@@ -648,7 +648,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Member List PushPullNode Count Rate [ /minute ]",
                     "options": {
                         "description": "Member List PushPullNode Count Rate [ /minute ]",
@@ -670,7 +670,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Service Count Rate [ /minute ]",
                     "options": {
                         "description": "Catalog Service Count Rate [ /minute ]",
@@ -692,7 +692,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Service Tags Count Rate [ /minute ]",
                     "options": {
                         "description": "Catalog Service Tags Count Rate [ /minute ]",
@@ -714,7 +714,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Health Service Count Rate [ /minute ]",
                     "options": {
                         "description": "Health Service Count Rate [ /minute ]",
@@ -736,7 +736,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Health Service Tags Count Rate [ /minute ]",
                     "options": {
                         "description": "Health Service Tags Count Rate [ /minute ]",
@@ -768,7 +768,7 @@
             "queriesList": [
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Total Services",
                 "options": {
                   "description": "Total Services",
@@ -790,7 +790,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Peers and Leaders - peers",
                 "query": "consul_raft_peers{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_peers",
@@ -812,7 +812,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Peers and Leaders - leader",
                 "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_leader_dispatchLog_count",
@@ -834,7 +834,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Peers and Leaders - serf lan members",
                 "query": "consul_serf_lan_members{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_serf_lan_members",
@@ -856,7 +856,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Unhealthy Consul Services",
                 "query": "sum by (service_name, status) (consul_autopilot_healthy{status!='passing',customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
                 "schema": "consul_autopilot_healthy",
@@ -878,7 +878,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Unhealthy Consul Nodes",
                 "query": "consul_health_node_status{status!='passing',customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_health_node_status",
@@ -900,7 +900,7 @@
               },
               {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Services and Checks",
                 "query": "sum by (node,service_id,status) (consul_health_service_status{customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
                 "schema": "consul_health_service_status",
@@ -922,7 +922,7 @@
               },
               {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Leader",
                 "options": {
                     "description": "Consul Leader",
@@ -945,7 +945,7 @@
             },
             {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "# servers in cluster",
                 "options": {
                     "description": "# servers in cluster",
@@ -968,7 +968,7 @@
             },
             {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "CPU Idle",
                 "options": {
                     "description": "CPU Idle",
@@ -991,7 +991,7 @@
             },
             {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Load 1",
                 "options": {
                     "description": "Load 1",
@@ -1014,7 +1014,7 @@
             },
             {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Load 5",
                 "options": {
                     "description": "Load 5",
@@ -1037,7 +1037,7 @@
             },
             {
                 "chart_type": "counter",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Load 15",
                 "options": {
                     "description": "Load 15",
@@ -1068,7 +1068,7 @@
         "queriesList": [
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Memberlist TCP Messages",
                 "options": {
                     "description": "Memberlist TCP Messages",
@@ -1090,7 +1090,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Memberlist UDP Messages",
                 "options": {
                     "description": "Memberlist UDP Messages",
@@ -1112,7 +1112,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Log replication from leader to servers",
                 "options": {
                     "description": "Log replication from leader to servers",
@@ -1134,7 +1134,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Consul Raft Replication Heartbeat",
                 "options": {
                     "description": "Consul Raft Replication Heartbeat",
@@ -1156,7 +1156,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Write logs",
                 "options": {
                     "description": "Write logs",
@@ -1178,7 +1178,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Commit time Leader",
                 "options": {
                     "description": "Commit time Leader",
@@ -1200,7 +1200,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Raft Transactions - Transactions",
                 "options": {
                     "description": "Raft Transactions - Transactions",
@@ -1222,7 +1222,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Leader last Contact",
                 "options": {
                     "description": "Leader last Contact",
@@ -1244,7 +1244,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "RPC Requests - Requests",
                 "options": {
                     "description": "RPC Requests - Requests",
@@ -1266,7 +1266,7 @@
             },
             {
                 "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
+                "data_source_name": "Apica Metrics",
                 "name": "Serf Coordinates",
                 "options": {
                     "description": "Serf Coordinates",
@@ -1294,7 +1294,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Raft Commit Time",
                     "options": {
                         "description": "Raft Commit Time",
@@ -1316,7 +1316,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Raft Commits per 5m",
                     "options": {
                         "description": "Raft Commits per 5m",
@@ -1346,7 +1346,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Last Contacted Leader",
                     "options": {
                         "description": "Last Contacted Leader",
@@ -1368,7 +1368,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Election Events",
                     "options": {
                         "description": "Election Events",
@@ -1390,7 +1390,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Election Events",
                     "options": {
                         "description": "Election Events",
@@ -1412,7 +1412,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Autopilot Health",
                     "options": {
                         "description": "Autopilot Health",
@@ -1442,7 +1442,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "DNS Queries per 5m",
                     "options": {
                         "description": "DNS Queries per 5m",
@@ -1464,7 +1464,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "DNS Domain Query Time",
                     "options": {
                         "description": "DNS Domain Query Time",
@@ -1494,7 +1494,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "KV Applies per 5m",
                     "options": {
                         "description": "KV Applies per 5m",
@@ -1516,7 +1516,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "KV Apply Time",
                     "options": {
                         "description": "KV Apply Time",
@@ -1538,7 +1538,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Transaction Apply Time",
                     "options": {
                         "description": "Transaction Apply Time",
@@ -1568,7 +1568,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "ACL Resolves per 5min",
                     "options": {
                         "description": "ACL Resolves per 5min",
@@ -1590,7 +1590,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "ACL ResolveToken Time",
                     "options": {
                         "description": "ACL ResolveToken Time",
@@ -1612,7 +1612,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "ACL Updates per 5m",
                     "options": {
                         "description": "ACL Updates per 5m",
@@ -1634,7 +1634,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "ACL Apply Time",
                     "options": {
                         "description": "ACL Apply Time",
@@ -1666,7 +1666,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Operations per 5m",
                     "options": {
                         "description": "Catalog Operations per 5m",
@@ -1688,7 +1688,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Deregister Operations per 5m",
                     "options": {
                         "description": "Catalog Deregister Operations per 5m",
@@ -1710,7 +1710,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Operation Time",
                     "options": {
                         "description": "Catalog Operation Time",
@@ -1732,7 +1732,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Catalog Deregister Operation Time",
                     "options": {
                         "description": "Catalog Deregister Operation Time",
