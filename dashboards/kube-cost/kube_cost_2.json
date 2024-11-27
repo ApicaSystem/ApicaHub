@@ -1,0 +1,500 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "data_explorer_15714_rev1",
+            "order": 1,
+            "queriesList": [
+                {
+                    "name": "Monthly CPU Cost query",
+                    "options": {
+                        "description": "Monthly CPU Cost query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100) +  avg(node_gpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100))&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Memory Cost query",
+                    "options": {
+                        "description": "Monthly Memory Cost query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730 * (1-$useDiscount/100))&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Storage Cost query",
+                    "options": {
+                        "description": "Monthly Storage Cost query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(avg(pv_hourly_cost) by (persistentvolume) * 730 * avg(kube_persistentvolume_capacity_bytes) by (persistentvolume) / 1024 / 1024 / 1024) +(sum(sum(container_fs_limit_bytes{device!=\"tmpfs\", id=\"/\"}) by (instance) / 1024 / 1024 / 1024) * $localStorageGBCost OR on() vector(0))&duration=1h&step=5m",
+                    "schema": "container_fs_limit_bytes"
+                },
+                {
+                    "name": "Total Monthly Cost query",
+                    "options": {
+                        "description": "Total Monthly Cost query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "# Compute\nsum(  avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100) +  avg(node_gpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100)) +# Memory\nsum(  avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730 * (1-$useDiscount/100)) +# Storage \nsum(avg(pv_hourly_cost) by (persistentvolume) * 730 * avg(kube_persistentvolume_capacity_bytes) by (persistentvolume) / 1024 / 1024 / 1024) +(sum(sum(container_fs_limit_bytes{device!=\"tmpfs\", id=\"/\"}) by (instance) / 1024 / 1024 / 1024) * $localStorageGBCost OR on() vector(0))&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "CPU Utilization query",
+                    "options": {
+                        "description": "CPU Utilization query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "( sum(   count(irate(container_cpu_usage_seconds_total{id=\"/\"}[10m])) by (instance)   * on (instance)    sum(irate(container_cpu_usage_seconds_total{id=\"/\"}[10m])) by (instance) )  /  (sum (kube_node_status_allocatable{resource=\"cpu\", unit=\"core\"}))) * 100&duration=1h&step=5m",
+                    "schema": "container_cpu_usage_seconds_total"
+                },
+                {
+                    "name": "CPU Requests query",
+                    "options": {
+                        "description": "CPU Requests query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "SUM(kube_pod_container_resource_requests{resource=\"cpu\", unit=\"core\"}) / SUM(kube_node_status_allocatable{resource=\"cpu\", unit=\"core\"}) * 100&duration=1h&step=5m",
+                    "schema": "kube_pod_container_resource_requests"
+                },
+                {
+                    "name": "RAM Utilization -  query",
+                    "options": {
+                        "description": "RAM Utilization -  query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "SUM(container_memory_working_set_bytes{namespace!=\"\"}) / SUM(kube_node_status_allocatable{resource=\"memory\", unit=\"byte\"}) * 100&duration=1h&step=5m",
+                    "schema": "container_memory_working_set_bytes"
+                },
+                {
+                    "name": "RAM Utilization -  query",
+                    "options": {
+                        "description": "RAM Utilization -  query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "name": "RAM Requests query",
+                    "options": {
+                        "description": "RAM Requests query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "( sum(kube_pod_container_resource_requests{resource=\"memory\", unit=\"byte\", namespace!=\"\"}) / sum(kube_node_status_allocatable{resource=\"memory\", unit=\"byte\"})) * 100&duration=1h&step=5m",
+                    "schema": "kube_pod_container_resource_requests"
+                },
+                {
+                    "name": "Storage Utilization query",
+                    "options": {
+                        "description": "Storage Utilization query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum ( sum(kube_persistentvolumeclaim_info) by (persistentvolumeclaim, namespace) + on (persistentvolumeclaim, namespace) sum(pod_pvc_allocation) by (persistentvolumeclaim, namespace) or up * 0 + sum(container_fs_usage_bytes{device=~\"^/dev/[sv]d[a-z][1-9]$\",id=\"/\"})) /\nsum ( sum(kube_persistentvolumeclaim_info) by (persistentvolumeclaim, namespace) + on (persistentvolumeclaim, namespace) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes) by (persistentvolumeclaim, namespace) or up * 0 + sum(container_fs_limit_bytes{device=~\"^/dev/[sv]d[a-z][1-9]$\",id=\"/\"})) * 100&duration=1h&step=5m",
+                    "schema": "container_fs_usage_bytes"
+                },
+                {
+                    "name": "Compute Cost query",
+                    "options": {
+                        "description": "Compute Cost query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 +  avg(node_gpu_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Memory Cost query",
+                    "options": {
+                        "description": "Memory Cost query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Storage Cost query",
+                    "options": {
+                        "description": "Storage Cost query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(avg_over_time(pv_hourly_cost[$timeRange] offset 1m)) by (persistentvolume) * 730   * avg(avg_over_time(kube_persistentvolume_capacity_bytes[$timeRange] offset 1m)) by (persistentvolume) / 1024 / 1024 / 1024) +(sum(sum(container_fs_limit_bytes{device!=\"tmpfs\", id=\"/\"}) by (instance) / 1024 / 1024 / 1024) * $localStorageGBCost OR on() vector(0))&duration=1h&step=5m",
+                    "schema": "container_fs_limit_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Total Cost query",
+                    "options": {
+                        "description": "Total Cost query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "# Compute\nsum(  avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100) +  avg(node_gpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100)) +# Memory\nsum(  avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730 * (1-$useDiscount/100)) +# Storage \nsum(avg(pv_hourly_cost) by (persistentvolume) * 730 * avg(kube_persistentvolume_capacity_bytes) by (persistentvolume) / 1024 / 1024 / 1024) +(sum(sum(container_fs_limit_bytes{device!=\"tmpfs\", id=\"/\"}) by (instance) / 1024 / 1024 / 1024) * $localStorageGBCost OR on() vector(0))&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Monthly Cost by Node -  query",
+                    "options": {
+                        "description": "Monthly Cost by Node -  query",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost or up * 0) by (node) * 730 * (1-$useDiscount/100)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Cost by Node -  query",
+                    "options": {
+                        "description": "Monthly Cost by Node -  query",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730 * (1-$useDiscount/100)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Cost by Node -  query",
+                    "options": {
+                        "description": "Monthly Cost by Node -  query",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(node_gpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "name": "Monthly Cost by Node -  query",
+                    "options": {
+                        "description": "Monthly Cost by Node -  query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "# CPU  \navg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost or up * 0) by (node) * 730 * (1-$useDiscount/100) +# GPU\navg(node_gpu_hourly_cost) by (node) * 730 * (1-$useDiscount/100) +# Memory\navg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730 * (1-$useDiscount/100)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Cost by Resource - cpu query",
+                    "options": {
+                        "description": "Monthly Cost by Resource - cpu query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"cpu\", unit=\"core\"}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 +  avg(node_gpu_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Cost by Resource - memory query",
+                    "options": {
+                        "description": "Monthly Cost by Resource - memory query",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource=\"memory\", unit=\"byte\"}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity"
+                },
+                {
+                    "name": "Monthly Cost by Resource - storage query",
+                    "options": {
+                        "description": "Monthly Cost by Resource - storage query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(avg_over_time(pv_hourly_cost[$timeRange] offset 1m)) by (persistentvolume) * 730   * avg(avg_over_time(kube_persistentvolume_capacity_bytes[$timeRange] offset 1m)) by (persistentvolume) / 1024 / 1024 / 1024) +\nsum(avg(container_fs_limit_bytes{device!=\"tmpfs\", id=\"/\"}) by (instance) / 1024 / 1024 / 1024) * $localStorageGBCost&duration=1h&step=5m",
+                    "schema": "container_fs_limit_bytes"
+                },
+                {
+                    "name": "Monthly Cost by Resource - network query",
+                    "options": {
+                        "description": "Monthly Cost by Resource - network query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "SUM(rate(node_network_transmit_bytes_total{device=\"eth0\"}[60m]) / 1024 / 1024 / 1024 ) * (60 * 60 * 24 * 30) * $percentEgress * $egressCost &duration=1h&step=5m",
+                    "schema": "node_network_transmit_bytes_total"
+                },
+                {
+                    "name": "Hourly Cost by Container query",
+                    "options": {
+                        "description": "Hourly Cost by Container query",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(container_memory_allocation_bytes) by (container,namespace, instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (container,namespace, instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace, container)&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost"
+                },
+                {
+                    "name": "Hourly Cost by Namespace query",
+                    "options": {
+                        "description": "Hourly Cost by Namespace query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(container_memory_allocation_bytes) by (namespace,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (namespace,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace)&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost"
+                }
+            ],
+            "title": "data_explorer_15714_rev1",
+            "type": "metrics"
+        }
+    ]
+}

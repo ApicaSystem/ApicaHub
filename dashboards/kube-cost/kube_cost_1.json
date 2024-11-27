@@ -1,0 +1,592 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "11270_rev3",
+            "order": 1,
+            "queriesList": [
+                {
+                    "name": "Kubernetes EBS allocation price by day query",
+                    "options": {
+                        "description": "Kubernetes EBS allocation price by day query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(pv_hourly_cost) by (persistentvolume) * 24 * 100&duration=1h&step=5m",
+                    "schema": "pv_hourly_cost",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost * 24)&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "chart_type": "stat"
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg_over_time(sum(node_total_hourly_cost) [30d:1d])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (avg_over_time(sum(node_total_hourly_cost) [1d:1h])/avg_over_time(sum(node_total_hourly_cost) [7d:1h]))&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "name": "Cluster Hour Price (last 12h) query",
+                    "options": {
+                        "description": "Cluster Hour Price (last 12h) query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost)&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Estimative Cluster Cost (last 30 days based) query",
+                    "options": {
+                        "description": "Estimative Cluster Cost (last 30 days based) query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost * 720)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  )/  avg_over_time(    sum(node_total_hourly_cost) [7d:1h]  ))&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 1d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 1d ago (Hour Price) query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (  avg(sum(node_total_hourly_cost))/  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  ))&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Standard Variation of Cost by InstanceType (7d/1d) query",
+                    "options": {
+                        "description": "Standard Variation of Cost by InstanceType (7d/1d) query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "stdvar_over_time( sum(node_total_hourly_cost) by (instance_type) [7d:1d] ) \u003e 0&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Top 20 by Namespace query",
+                    "options": {
+                        "description": "Top 20 by Namespace query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "topk( 20,   sum(sum(container_memory_allocation_bytes) by (namespace,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024 * 730\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (namespace,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t) * 730) by (namespace))&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost"
+                },
+                {
+                    "name": "Estimated Top 20 by Container (30 days) query",
+                    "options": {
+                        "description": "Estimated Top 20 by Container (30 days) query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "topk( 20,   sum(sum(container_memory_allocation_bytes) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024 * 730\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost"
+                },
+                {
+                    "name": "Hour Cost query",
+                    "options": {
+                        "description": "Hour Cost query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(container_memory_allocation_bytes) by (namespace,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (namespace,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace)&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Hour Price by Container query",
+                    "options": {
+                        "description": "Hour Price by Container query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(container_memory_allocation_bytes) by (container,namespace, instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (container,namespace, instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace, container)&duration=1h&step=5m",
+                    "schema": "node_ram_hourly_cost",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Top 20 by Container query",
+                    "options": {
+                        "description": "Top 20 by Container query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "topk( 20,   sum(sum(container_memory_allocation_bytes{namespace=\"{{namespace}}\"}) by (container,instance, namespace) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=\"{{namespace}}\"}) by (container,instance, namespace) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "Live Month Price query",
+                    "options": {
+                        "description": "Live Month Price query",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) * 720&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "Month Estimative avg query",
+                    "options": {
+                        "description": "Month Estimative avg query",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) * 720&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Live Day Price query",
+                    "options": {
+                        "description": "Live Day Price query",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) * 24 * 7&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (\navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [1d:1h]            )                        /            \navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [7d:1h]            )            )&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 14d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 14d ago (Hour Price) query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (\navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [1d:1h]            )                        /            \navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [14d:1h]            )            )&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Live Hour Price query",
+                    "options": {
+                        "description": "Live Hour Price query",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "Namespace Hour Price query",
+                    "options": {
+                        "description": "Namespace Hour Price query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "topk( 20,   sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (namespace))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Hour Price by App query",
+                    "options": {
+                        "description": "Hour Price by App query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "topk( 30,   sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Live Hour Price query",
+                    "options": {
+                        "description": "Live Hour Price query",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "APP  Hour Price query",
+                    "options": {
+                        "description": "APP  Hour Price query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Live Hour Price query",
+                    "options": {
+                        "description": "Live Hour Price query",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  (sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t))) * 24&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "Relative price now vs 7d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs 7d ago (Hour Price) query",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (\navg_over_time(\nsum(sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container)) [1d:1h]\t\t\t\t\t)/\navg_over_time(\nsum(sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container)) [7d:1h]\t\t\t\t\t)\t\t\t\t\t)&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                },
+                {
+                    "name": "Live Hour Price query",
+                    "options": {
+                        "description": "Live Hour Price query",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "  (sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t))) * 24 * 30&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes"
+                },
+                {
+                    "name": "APP Pods Hour Price query",
+                    "options": {
+                        "description": "APP Pods Hour Price query",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(sum(container_memory_allocation_bytes{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~\"{{namespace}}\", container=~\"$app.*\"}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, \"instance_type\", \"$1\", \"label_node_kubernetes_io_instance_type\", \"(.*)\"\t\t  \t\t\t) * 0\t\t  \t)) by (container)&duration=1h&step=5m",
+                    "schema": "container_memory_allocation_bytes",
+                    "chart_type": "line"
+                }
+            ],
+            "title": "11270_rev3",
+            "type": "metrics"
+        }
+    ]
+}
