@@ -2,7 +2,6 @@
     "header": {
         "dateTimeRange": true,
         "dropdowns": [],
-        "data_source_type": "",
         "title": "Windows Monitoring"
     },
     "tabs": [
@@ -12,7 +11,7 @@
             "queriesList": [
                 {
                     "chart_type": "counter",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Uptime",
                     "options": {
                         "description": "Uptime",
@@ -35,7 +34,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "CPU Usage",
                     "options": {
                         "description": "CPU Usage",
@@ -57,7 +56,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Windows Memory utilization",
                     "options": {
                         "description": "Windows Memory utilization",
@@ -79,7 +78,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "CPU Load",
                     "options": {
                         "description": "CPU Load",
@@ -101,7 +100,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Hard disk usage",
                     "options": {
                         "description": "Hard disk usage",
@@ -123,7 +122,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Disk usage",
                     "options": {
                         "description": "Disk usage",
@@ -145,7 +144,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Windows CPU Time",
                     "options": {
                         "description": "Windows CPU Time",
@@ -168,7 +167,7 @@
                 
                 {
                     "chart_type": "line",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Memory details",
                     "options": {
                         "description": "Memory details",
@@ -190,7 +189,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Windows Memory Usage (1h)",
                     "options": {
                         "description": "Windows Memory Usage (1h)",
@@ -212,7 +211,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Rx bandwidth",
                     "options": {
                         "description": "Rx bandwidth",
@@ -234,7 +233,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Windows-exporter",
+                    "data_source_name": "Windows Exporter",
                     "name": "Tx bandwidth",
                     "options": {
                         "description": "Tx bandwidth",
