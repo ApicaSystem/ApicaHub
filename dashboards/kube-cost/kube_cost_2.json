@@ -27,7 +27,8 @@
                         "upperLimit": ""
                     },
                     "query": "SUM(kube_pod_container_resource_requests{resource='cpu', unit='core'}) / SUM(kube_node_status_allocatable{resource='cpu', unit='core'}) * 100&duration=1h&step=5m",
-                    "schema": "kube_pod_container_resource_requests"
+                    "schema": "kube_pod_container_resource_requests",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "RAM Requests query",
@@ -48,7 +49,8 @@
                         "upperLimit": ""
                     },
                     "query": "( sum(kube_pod_container_resource_requests{resource='memory', unit='byte', namespace!=''}) / sum(kube_node_status_allocatable{resource='memory', unit='byte'})) * 100&duration=1h&step=5m",
-                    "schema": "kube_pod_container_resource_requests"
+                    "schema": "kube_pod_container_resource_requests",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Compute Cost query",
@@ -69,7 +71,8 @@
                     },
                     "query": "sum(  avg(kube_node_status_capacity{resource='cpu', unit='core'}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 -(-  avg(node_gpu_hourly_cost) by (node) * 730))&duration=1h&step=5m",
                     "schema": "kube_node_status_capacity",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Memory Cost query",
@@ -90,7 +93,8 @@
                     },
                     "query": "sum(  avg(kube_node_status_capacity{resource='memory', unit='byte'}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
                     "schema": "kube_node_status_capacity",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Monthly Cost by Resource - cpu query",
@@ -111,7 +115,8 @@
                         "upperLimit": ""
                     },
                     "query": "sum(  avg(kube_node_status_capacity{resource='cpu', unit='core'}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 -(-  avg(node_gpu_hourly_cost) by (node)) * 730)&duration=1h&step=5m",
-                    "schema": "kube_node_status_capacity"
+                    "schema": "kube_node_status_capacity",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Monthly Cost by Resource - memory query",
@@ -132,7 +137,8 @@
                         "upperLimit": ""
                     },
                     "query": "sum(  avg(kube_node_status_capacity{resource='memory', unit='byte'}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
-                    "schema": "kube_node_status_capacity"
+                    "schema": "kube_node_status_capacity",
+                    "data_source_name": "Ascent Metrics"
                 }
             ],
             "title": "Kubernetes Cost Dashboard",

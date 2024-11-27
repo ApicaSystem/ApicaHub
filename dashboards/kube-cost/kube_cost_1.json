@@ -27,7 +27,8 @@
                     },
                     "query": "sum(pv_hourly_cost) by (persistentvolume) * 24 * 100&duration=1h&step=5m",
                     "schema": "pv_hourly_cost",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
@@ -48,7 +49,8 @@
                     },
                     "query": "sum(node_total_hourly_cost * 24)&duration=1h&step=5m",
                     "schema": "node_total_hourly_cost",
-                    "chart_type": "stat"
+                    "chart_type": "stat",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
@@ -69,7 +71,8 @@
                         "upperLimit": ""
                     },
                     "query": "avg_over_time(sum(node_total_hourly_cost) [30d:1d])&duration=1h&step=5m",
-                    "schema": "node_total_hourly_cost"
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
@@ -89,7 +92,8 @@
                         "upperLimit": ""
                     },
                     "query": "1 - (avg_over_time(sum(node_total_hourly_cost) [1d:1h])/avg_over_time(sum(node_total_hourly_cost) [7d:1h]))&duration=1h&step=5m",
-                    "schema": "node_total_hourly_cost"
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Cluster Hour Price (last 12h) query",
@@ -109,8 +113,9 @@
                         "upperLimit": ""
                     },
                     "query": "sum(node_total_hourly_cost)&duration=1h&step=5m",
-                    "schema": "",
-                    "chart_type": "line"
+                    "schema": "node_total_hourly_cost",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Estimative Cluster Cost (last 30 days based) query",
@@ -130,7 +135,8 @@
                         "upperLimit": ""
                     },
                     "query": "sum(node_total_hourly_cost * 720)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
@@ -151,7 +157,8 @@
                     },
                     "query": "1 - (  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  )/  avg_over_time(    sum(node_total_hourly_cost) [7d:1h]  ))&duration=1h&step=5m",
                     "schema": "",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 1d ago (Hour Price) query",
@@ -172,7 +179,8 @@
                     },
                     "query": "1 - (  avg(sum(node_total_hourly_cost))/  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  ))&duration=1h&step=5m",
                     "schema": "",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Standard Variation of Cost by InstanceType (7d/1d) query",
@@ -191,9 +199,10 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "stdvar_over_time( sum(node_total_hourly_cost) by (instance_type) [7d:1d] ) \u003e 0&duration=1h&step=5m",
+                    "query": "stdvar_over_time( sum(node_total_hourly_cost) by (instance_type) [7d:1d] ) > 0&duration=1h&step=5m",
                     "schema": "",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Top 20 by Namespace query",
@@ -213,7 +222,8 @@
                         "upperLimit": ""
                     },
                     "query": "topk( 20,   sum(sum(container_memory_allocation_bytes) by (namespace,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024 * 730\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (namespace,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t) * 730) by (namespace))&duration=1h&step=5m",
-                    "schema": "node_ram_hourly_cost"
+                    "schema": "node_ram_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Estimated Top 20 by Container (30 days) query",
@@ -233,7 +243,8 @@
                         "upperLimit": ""
                     },
                     "query": "topk( 20,   sum(sum(container_memory_allocation_bytes) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024 * 730\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
-                    "schema": "node_ram_hourly_cost"
+                    "schema": "node_ram_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Hour Cost query",
@@ -254,7 +265,8 @@
                     },
                     "query": "sum(sum(container_memory_allocation_bytes) by (namespace,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (namespace,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace)&duration=1h&step=5m",
                     "schema": "node_ram_hourly_cost",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Hour Price by Container query",
@@ -275,7 +287,8 @@
                     },
                     "query": "sum(sum(container_memory_allocation_bytes) by (container,namespace, instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation) by (container,namespace, instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace, container)&duration=1h&step=5m",
                     "schema": "node_ram_hourly_cost",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Top 20 by Container query",
@@ -295,7 +308,8 @@
                         "upperLimit": ""
                     },
                     "query": "topk( 20,   sum(sum(container_memory_allocation_bytes{namespace='{{namespace}}'}) by (container,instance, namespace) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace='{{namespace}}'}) by (container,instance, namespace) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Month Price query",
@@ -315,7 +329,8 @@
                         "upperLimit": ""
                     },
                     "query": "  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) * 720&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Month Estimative avg query",
@@ -336,7 +351,8 @@
                     },
                     "query": "  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) * 720&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Day Price query",
@@ -356,7 +372,8 @@
                         "upperLimit": ""
                     },
                     "query": "  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) * 24 * 7&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
@@ -377,7 +394,8 @@
                     },
                     "query": "1 - (\navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [1d:1h]            )                        /            \navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [7d:1h]            )            )&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Relative price now vs (7/14)d ago (Hour Price) - Relative price now vs 14d ago (Hour Price) query",
@@ -398,7 +416,8 @@
                     },
                     "query": "1 - (\navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [1d:1h]            )                        /            \navg_over_time(  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace) [14d:1h]            )            )&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Hour Price query",
@@ -418,7 +437,8 @@
                         "upperLimit": ""
                     },
                     "query": "  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t))&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Namespace Hour Price query",
@@ -439,7 +459,8 @@
                     },
                     "query": "topk( 20,   sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (namespace,container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (namespace))&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Hour Price by App query",
@@ -460,7 +481,8 @@
                     },
                     "query": "topk( 30,   sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Hour Price query",
@@ -480,7 +502,8 @@
                         "upperLimit": ""
                     },
                     "query": "  sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t))&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "APP  Hour Price query",
@@ -501,7 +524,8 @@
                     },
                     "query": "sum(sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container))&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Hour Price query",
@@ -521,7 +545,8 @@
                         "upperLimit": ""
                     },
                     "query": "  (sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t))) * 24&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Relative price now vs 7d ago (Hour Price) query",
@@ -542,7 +567,8 @@
                     },
                     "query": "1 - (\navg_over_time(\nsum(sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container)) [1d:1h]\t\t\t\t\t)/\navg_over_time(\nsum(sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container)) [7d:1h]\t\t\t\t\t)\t\t\t\t\t)&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "Live Hour Price query",
@@ -562,7 +588,8 @@
                         "upperLimit": ""
                     },
                     "query": "  (sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t)  +   sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (container,instance) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t))) * 24 * 30&duration=1h&step=5m",
-                    "schema": "container_memory_allocation_bytes"
+                    "schema": "container_memory_allocation_bytes",
+                    "data_source_name": "Ascent Metrics"
                 },
                 {
                     "name": "APP Pods Hour Price query",
@@ -583,7 +610,8 @@
                     },
                     "query": "sum(sum(container_memory_allocation_bytes{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t\t\t\tnode_ram_hourly_cost{} / 1024 / 1024 / 1024\t\t\t\t+ on(node,instance_type) group_left()\t\t\t\t\tlabel_replace\t\t\t\t\t(\t\t\t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t\t\t\t) * 0\t\t\t) + sum(container_cpu_allocation{namespace=~'{{namespace}}', container=~'$app.*'}) by (namespace,instance,container) * on(instance) group_left() (\t  \t\t\tnode_cpu_hourly_cost{} + on(node,instance_type) group_left()\t\t  \t\t\tlabel_replace\t\t  \t\t\t(\t\t  \t\t\t\tkube_node_labels{}, 'instance_type', '$1', 'label_node_kubernetes_io_instance_type', '(.*)'\t\t  \t\t\t) * 0\t\t  \t)) by (container)&duration=1h&step=5m",
                     "schema": "container_memory_allocation_bytes",
-                    "chart_type": "line"
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
                 }
             ],
             "title": "11270_rev3",
