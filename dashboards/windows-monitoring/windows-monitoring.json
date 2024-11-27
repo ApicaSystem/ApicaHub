@@ -11,11 +11,12 @@
             "order": "1",
             "queriesList": [
                 {
-                    "chart_type": "gauge",
+                    "chart_type": "counter",
                     "data_source_name": "Windows-exporter",
-                    "name": "CPU Usage",
+                    "name": "Uptime",
                     "options": {
-                        "description": "CPU Usage",
+                        "description": "Uptime",
+                        "label": "Days",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
@@ -29,7 +30,29 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(((count(count(windows_cpu_time_total{job=\"prometheus\"}) by (core))) - avg(sum by (mode)(rate(windows_cpu_time_total{mode='idle',job=\"prometheus\"}[1m])))) * 100) / count(count(windows_cpu_time_total{job=\"prometheus\"}) by (core))",
+                    "query": "round((windows_os_time-windows_system_system_up_time)/(24*3600),0.01)",
+                    "schema": "windows_system_system_up_time"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Windows-exporter",
+                    "name": "CPU Usage",
+                    "options": {
+                        "description": "CPU Usage",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(((count(count(windows_cpu_time_total{job='prometheus'}) by (core))) - avg(sum by (mode)(rate(windows_cpu_time_total{mode='idle',job='prometheus'}[1m])))) * 100) / count(count(windows_cpu_time_total{job='prometheus'}) by (core))",
                     "schema": "windows_cpu_time_total"
                 },
                 {
@@ -38,7 +61,7 @@
                     "name": "Windows Memory utilization",
                     "options": {
                         "description": "Windows Memory utilization",
-                        "order": 2,
+                        "order": 3,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -55,28 +78,6 @@
                     "schema": "windows_cs_physical_memory_bytes"
                 },
                 {
-                    "chart_type": "line",
-                    "data_source_name": "Windows-exporter",
-                    "name": "Tx bandwidth",
-                    "options": {
-                        "description": "Tx bandwidth",
-                        "order": 3,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "query=(rate(windows_net_bytes_sent_total[5m]) \u003e0)/1000&duration=1h&step=60s",
-                    "schema": "windows_net_bytes_sent_total"
-                },
-                {
                     "chart_type": "area",
                     "data_source_name": "Windows-exporter",
                     "name": "CPU Load",
@@ -85,7 +86,7 @@
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "mode",
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -108,12 +109,12 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "x": "volume",
+                            "xLabel": "Volume",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "%"
                         },
                         "upperLimit": ""
                     },
@@ -139,8 +140,53 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "round((windows_logical_disk_free_bytes{volume!~\"HarddiskVolume.*\"}/windows_logical_disk_size_bytes{volume!~\"HarddiskVolume.*\"})*100,1)",
+                    "query": "round((windows_logical_disk_free_bytes{volume!~'HarddiskVolume.*'}/windows_logical_disk_size_bytes{volume!~'HarddiskVolume.*'})*100,1)",
                     "schema": "windows_logical_disk_free_bytes"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Windows-exporter",
+                    "name": "Windows CPU Time",
+                    "options": {
+                        "description": "Windows CPU Time",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "mode",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(sum by (mode)(rate(windows_cpu_time_total{mode!~'idle'}[5m])) * 100)&duration=1h&step=1m",
+                    "schema": "windows_cpu_time_total"
+                },
+                
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Windows-exporter",
+                    "name": "Memory details",
+                    "options": {
+                        "description": "Memory details",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "__name__",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "{__name__=~'windows_os_virtual_memory_free_bytes|windows_os_physical_memory_free_bytes|windows_os_virtual_memory_bytes|windows_cs_physical_memory_bytes'}&duration=1h&step=60s",
+                    "schema": "windows_os_virtual_memory_free_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -148,7 +194,7 @@
                     "name": "Windows Memory Usage (1h)",
                     "options": {
                         "description": "Windows Memory Usage (1h)",
-                        "order": 7,
+                        "order": 9,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -165,56 +211,11 @@
                     "schema": "windows_cs_physical_memory_bytes"
                 },
                 {
-                    "chart_type": "counter",
-                    "data_source_name": "Windows-exporter",
-                    "name": "Uptime",
-                    "options": {
-                        "description": "Uptime",
-                        "label": "Days",
-                        "order": 8,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "round((windows_os_time-windows_system_system_up_time)/(24*3600),0.01)",
-                    "schema": "windows_system_system_up_time"
-                },
-                {
                     "chart_type": "line",
                     "data_source_name": "Windows-exporter",
-                    "name": "Memory details",
+                    "name": "Rx bandwidth",
                     "options": {
-                        "description": "Memory details",
-                        "order": 9,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "{__name__=~\"windows_os_virtual_memory_free_bytes|windows_os_physical_memory_free_bytes|windows_os_virtual_memory_bytes|windows_cs_physical_memory_bytes\"}&duration=1h&step=60s",
-                    "schema": ""
-                },
-                {
-                    "chart_type": "area",
-                    "data_source_name": "Windows-exporter",
-                    "name": "Windows CPU Time",
-                    "options": {
-                        "description": "Windows CPU Time",
+                        "description": "Rx bandwidth",
                         "order": 10,
                         "plot": {
                             "errorColumn": "",
@@ -228,15 +229,15 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(sum by (mode)(rate(windows_cpu_time_total{mode!~'idle'}[5m])) * 100)&duration=1h&step=1m",
-                    "schema": "windows_cpu_time_total"
+                    "query": "query=(rate(windows_net_bytes_received_total[5m])>0)/1000&duration=1h&step=60s",
+                    "schema": "windows_net_bytes_received_total"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Windows-exporter",
-                    "name": "Rx bandwidth",
+                    "name": "Tx bandwidth",
                     "options": {
-                        "description": "Rx bandwidth",
+                        "description": "Tx bandwidth",
                         "order": 11,
                         "plot": {
                             "errorColumn": "",
@@ -250,8 +251,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "query=(rate(windows_net_bytes_received_total[5m]) \u003e0)/1000&duration=1h&step=60s",
-                    "schema": "windows_net_bytes_received_total"
+                    "query": "query=(rate(windows_net_bytes_sent_total[5m]))/1000&duration=1h&step=60s",
+                    "schema": "windows_net_bytes_sent_total"
                 }
             ],
             "title": "Overview",
