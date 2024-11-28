@@ -1,0 +1,322 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Kubernetes Cost Dashboard",
+            "order": 1,
+            "queriesList": [
+                {
+                    "name": "CPU Requests query",
+                    "chart_type": "line",
+                    "options": {
+                        "description": "CPU Requests query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "SUM(kube_pod_container_resource_requests{resource='cpu', unit='core'}) / SUM(kube_node_status_allocatable{resource='cpu', unit='core'}) * 100&duration=1h&step=5m",
+                    "schema": "kube_pod_container_resource_requests",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "RAM Requests query",
+                    "chart_type": "line",
+                    "options": {
+                        "description": "RAM Requests query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "( sum(kube_pod_container_resource_requests{resource='memory', unit='byte', namespace!=''}) / sum(kube_node_status_allocatable{resource='memory', unit='byte'})) * 100&duration=1h&step=5m",
+                    "schema": "kube_pod_container_resource_requests",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Compute Cost query",
+                    "options": {
+                        "description": "Compute Cost query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource='cpu', unit='core'}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 -(-  avg(node_gpu_hourly_cost) by (node) * 730))&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Memory Cost query",
+                    "options": {
+                        "description": "Memory Cost query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource='memory', unit='byte'}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Monthly Cost by Resource - cpu query",
+                    "chart_type": "line",
+                    "options": {
+                        "description": "Monthly Cost by Resource - cpu query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource='cpu', unit='core'}) by (node) * avg(node_cpu_hourly_cost) by (node) * 730 -(-  avg(node_gpu_hourly_cost) by (node)) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Monthly Cost by Resource - memory query",
+                    "chart_type": "line",
+                    "options": {
+                        "description": "Monthly Cost by Resource - memory query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(  avg(kube_node_status_capacity{resource='memory', unit='byte'}) by (node) / 1024 / 1024 / 1024 * avg(node_ram_hourly_cost) by (node) * 730)&duration=1h&step=5m",
+                    "schema": "kube_node_status_capacity",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Kubernetes EBS allocation price by day query",
+                    "options": {
+                        "description": "Kubernetes EBS allocation price by day query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(pv_hourly_cost) by (persistentvolume) * 24 * 100&duration=1h&step=5m",
+                    "schema": "pv_hourly_cost",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost * 24)&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "chart_type": "stat",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "chart_type": "stat",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg_over_time(sum(node_total_hourly_cost) [30d:1d])&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                    "options": {
+                        "description": "AVG Cluster Cost (last 3 days) DAILY -  query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (avg_over_time(sum(node_total_hourly_cost) [1d:1h])/avg_over_time(sum(node_total_hourly_cost) [7d:1h]))&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Cluster Hour Price (last 12h) query",
+                    "options": {
+                        "description": "Cluster Hour Price (last 12h) query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost)&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Estimative Cluster Cost (last 30 days based) query",
+                    "options": {
+                        "description": "Estimative Cluster Cost (last 30 days based) query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(node_total_hourly_cost * 720)&duration=1h&step=5m",
+                    "schema": "node_total_hourly_cost",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 7d ago (Hour Price) query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  )/  avg_over_time(    sum(node_total_hourly_cost) [7d:1h]  ))&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                },
+                {
+                    "name": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 1d ago (Hour Price) query",
+                    "options": {
+                        "description": "Relative price now vs (7/1)d ago (Hour Price) - Relative price now vs 1d ago (Hour Price) query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "Timestamp"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "1 - (  avg(sum(node_total_hourly_cost))/  avg_over_time(    sum(node_total_hourly_cost) [1d:1h]  ))&duration=1h&step=5m",
+                    "schema": "",
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics"
+                }
+            ],
+            "title": "Kubernetes Cost Dashboard",
+            "type": "metrics"
+        }
+    ]
+}
