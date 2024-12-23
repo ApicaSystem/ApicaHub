@@ -1,0 +1,12 @@
+server:
+  telemetry:
+    prometheus_retention_time: "24h" 
+    disable_hostname: true  
+    extraArgs: "-log-level=debug -audit-file-path=/vault/logs/vault-logs.log -audit-file-log-level=debug"
+  volumes:
+    - name: audit-logs
+      persistentVolumeClaim:
+        claimName: vault-audit-pvc
+  volumeMounts:
+    - mountPath: /vault/logs
+      name: audit-logs        

@@ -1,0 +1,109 @@
+
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: opentelemetry-operator
+  name: apica-otel-collector
+  namespace: otel
+spec:
+  config:
+    exporters:
+      debug:
+        verbosity: detailed
+      otlphttp/apicametrics:
+        compression: gzip
+        disable_keep_alives: true
+        encoding: proto
+        metrics_endpoint: "${APICA_URL}/v1/metrics"
+        headers:
+          Authorization: "Bearer ${APICA_TOKEN}"
+        tls:
+          insecure: false
+          insecure_skip_verify: true
+      prometheus:
+        endpoint: 127.0.0.1:9464
+    processors:
+      attributes/apica_labels:
+        actions:
+        - action: insert
+          key: runtime
+          value: ${RUNTIME}
+        - action: insert
+          key: customer
+          value: ${CUSTOMER}
+      batch:
+        send_batch_size: 200
+        timeout: 30s
+      memory_limiter:
+        check_interval: 5s
+        limit_percentage: 80
+        spike_limit_percentage: 25
+      probabilistic_sampler/tracing:
+        sampling_percentage: 5
+      resourcedetection/system:
+        detectors:
+        - system
+        override: true
+        system:
+          hostname_sources:
+          - dns
+          - os
+          - cname
+          - lookup
+      transform/metrics:
+        error_mode: ignore
+        metric_statements:
+        - context: resource
+          statements:
+          - set(attributes["hostname"], attributes["host.name"])
+          - set(attributes["ostype"], attributes["os.type"])
+          - delete_key(attributes, "host.name")
+          - delete_key(attributes, "os.type")
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+          - job_name: vault-metrics-collector
+            metrics_path: /v1/sys/metrics
+            scrape_interval: 60s
+            static_configs:
+            - targets:
+              - vault.vault.svc.cluster.local:8200 #Verify the vault service endpoint
+    service:
+      pipelines:
+        metrics:
+          exporters:
+          - otlphttp/apicametrics
+          - debug
+          processors:
+          - memory_limiter
+          - batch
+          - resourcedetection/system
+          - transform/metrics
+          - attributes/apica_labels
+          receivers:
+          - prometheus
+  env:
+    - name: APICA_URL
+      valueFrom:
+        configMapKeyRef:
+          name: apica-otel-config
+          key: APICA_URL
+    - name: APICA_TOKEN
+      valueFrom:
+        configMapKeyRef:
+          name: apica-otel-config
+          key: APICA_TOKEN
+    - name: CUSTOMER
+      valueFrom:
+        configMapKeyRef:
+          name: apica-otel-config
+          key: CUSTOMER
+    - name: RUNTIME
+      valueFrom:
+        configMapKeyRef:
+          name: apica-otel-config
+          key: RUNTIME
+  mode: daemonset
+  hostNetwork: true

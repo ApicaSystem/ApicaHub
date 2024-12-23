@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apica-otel-config
+  namespace: otel
+data:
+  APICA_URL: "<TODO: REPLACE HOST>"
+  APICA_TOKEN: "<TODO: REPLACE INGEST TOKEN>"
+  RUNTIME: "<TODO: REPLACE RUNTIME>"
+  CUSTOMER: "<TODO: REPLACE CUSTOMER>"
