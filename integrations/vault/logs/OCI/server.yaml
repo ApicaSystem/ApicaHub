@@ -9,4 +9,7 @@ server:
         claimName: vault-audit-pvc
   volumeMounts:
     - mountPath: /vault/logs
-      name: audit-logs        
+      name: audit-logs    
+
+      
+          

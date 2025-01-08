@@ -120,3 +120,6 @@ Ensure logs show successful processing of Vault audit logs.
 2. Navigate to **Logs & Insights**.
 3. Locate the `vault-logs` namespace.
 4. Open the Vault app to view the ingested logs.
+
+
+

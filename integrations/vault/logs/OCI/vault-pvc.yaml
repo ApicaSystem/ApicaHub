@@ -11,3 +11,7 @@ spec:
       storage: 10Gi  # You can adjust the storage size based on your requirements
   storageClassName: oci-bv  # Use the default StorageClass in your cluster
   volumeMode: Filesystem
+
+
+
+  
