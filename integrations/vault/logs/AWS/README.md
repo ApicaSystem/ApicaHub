@@ -1,5 +1,47 @@
 # Configuring Vault for Dev Mode and Audit Log Ingestion into Apica Ascent
 
+# Prerequisites for Creating an EKS Cluster
+
+To create an EKS cluster with the required components and drivers, ensure the following prerequisites are met:
+
+## EKS Cluster
+You must have an EKS cluster with the necessary addons:
+- `efs_csi_driver`
+- `pod_identity`
+
+## Roles & Policies
+Ensure the appropriate IAM roles and policies are in place for your EKS cluster.
+
+---
+
+# Terraform Commands
+
+## Initialize Terraform
+Ensure Terraform is initialized in your directory using:
+```bash
+terraform init
+```
+
+## Plan Terraform Configuration
+Generate and save an execution plan using:
+```bash
+terraform plan -out=plan.tf
+```
+
+## Review Terraform Plan
+Review the generated plan carefully before applying it.
+
+## Apply Terraform Configuration
+Apply the planned changes by executing:
+```bash
+terraform apply plan.tf
+```
+
+For additional help with Terraform commands, refer to the [Terraform documentation](https://www.terraform.io/docs) or use:
+```bash
+terraform help
+```
+
 ## Step 1: Create a Namespace for Vault
 Create a namespace to isolate Vault resources.
 
