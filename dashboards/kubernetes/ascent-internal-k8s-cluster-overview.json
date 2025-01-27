@@ -1,13 +1,28 @@
 {
   "header": {
       "dateTimeRange": true,
-      "dropdowns": [],
+      "dropdowns": [
+        {
+          "customer": {
+            "query": "group by (customer) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+            "name": "Customer Selection",
+            "data_source_name": "Ascent Metrics"
+          }
+        },
+        {
+          "runtime": {
+            "query": "group by (runtime) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+            "name": "Cluster selection",
+            "data_source_name": "Ascent Metrics"
+          }
+        }
+      ],
       "data_source_type": "apica_ascent_prometheus",
       "title": "Kubernetes"
   },
   "tabs": [
       {
-          "key": "Ascent Iinternal K8S Overview",
+          "key": "Cluster Overview",
           "order": "1",
           "queriesList": [
               {
@@ -35,7 +50,7 @@
               }
              
           ],
-          "title": "Ascent Iinternal K8S Overview",
+          "title": "Ckuster Overview",
           "type": "metrics"
       }
   ]
