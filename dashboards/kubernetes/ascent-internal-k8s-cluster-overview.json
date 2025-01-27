@@ -1,65 +1,42 @@
 {
-    "header": {
-        "dateTimeRange": true,
-        "data_source_type": "apica_ascent_prometheus",
-        "dropdowns": [
-            {
-                "customer": {
-                  "query": "group by (customer) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
-                  "name": "Customer Selection",
-                  "data_source_name": "Ascent Metrics",
-                  "data_source_type": "apica_ascent_prometheus"
-
-                }
-              },
+  "header": {
+      "dateTimeRange": true,
+      "dropdowns": [],
+      "data_source_type": "apica_ascent_prometheus",
+      "title": "Kubernetes"
+  },
+  "tabs": [
+      {
+          "key": "Ascent Iinternal K8S Overview",
+          "order": "1",
+          "queriesList": [
               {
-                "hostname": {
-                  "query": "group by (hostname) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
-                  "name": "Host Selection",
+                  "chart_type": "counter",
                   "data_source_name": "Ascent Metrics",
-                  "data_source_type": "apica_ascent_prometheus"
-
-                }
-              },
-              {
-                "runtime": {
-                  "query": "group by (runtime) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
-                  "name": "Runtime selection",
-                  "data_source_name": "Ascent Metrics",
-                  "data_source_type": "apica_ascent_prometheus"
-                }
+                  "name": "Total Number of Clusters",
+                  "options": {
+                      "description": "This counts shows the number of clusters that are currently configured",
+                      "label": "",
+                      "order": 1,
+                      "plot": {
+                          "errorColumn": "",
+                          "groupBy": "",
+                          "x": "timestamp",
+                          "xLabel": "Timestamp",
+                          "y": [
+                              "value"
+                          ],
+                          "yLabel": "value"
+                      },
+                      "upperLimit": ""
+                  },
+                 "query": "count(sum by(runtime)(kube_node_info))",
+                  "schema": "kube_node_info"
               }
-        ]
-    },
-    "tabs" : [
-        {
-            "key": "Cluster Overview",
-            "order": 1,
-            "queriesList": [
-                {
-                    "chart_type": "counter",
-                    "data_source_name": "Ascent Metrics",
-                    "name": "Total number of cluster",
-                    "options": {
-                        "description": "This counts shows the number of clusters that are currently configured",
-                        "label": "",
-                        "order": 1,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "count(sum by(runtime)(kube_node_info))",
-                    "schema": "kube_node_info"
-                }
-            ]
-        }
-    ]
+             
+          ],
+          "title": "Ascent Iinternal K8S Overview",
+          "type": "metrics"
+      }
+  ]
 }
