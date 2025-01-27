@@ -1,26 +1,32 @@
 {
     "header": {
         "dateTimeRange": true,
+        "data_source_type": "apica_ascent_prometheus",
         "dropdowns": [
             {
                 "customer": {
                   "query": "group by (customer) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Customer Selection",
-                  "data_source_name": "Ascent Metrics"
+                  "data_source_name": "Ascent Metrics",
+                  "data_source_type": "apica_ascent_prometheus"
+
                 }
               },
               {
                 "hostname": {
                   "query": "group by (hostname) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Host Selection",
-                  "data_source_name": "Ascent Metrics"
+                  "data_source_name": "Ascent Metrics",
+                  "data_source_type": "apica_ascent_prometheus"
+
                 }
               },
               {
                 "runtime": {
                   "query": "group by (runtime) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Runtime selection",
-                  "data_source_name": "Ascent Metrics"
+                  "data_source_name": "Ascent Metrics",
+                  "data_source_type": "apica_ascent_prometheus"
                 }
               }
         ]
@@ -52,12 +58,8 @@
                     },
                     "query": "count(sum by(runtime)(kube_node_info))",
                     "schema": "kube_node_info"
-                },
-                {
-
                 }
             ]
         }
-
     ]
 }
