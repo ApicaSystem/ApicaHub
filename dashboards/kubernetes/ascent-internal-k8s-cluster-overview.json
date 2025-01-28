@@ -49,7 +49,7 @@
                   "schema": "kube_node_info"
               },
               {
-                "chart_type": "densestatus",
+                "chart_type": "table",
                 "data_source_name": "Ascent Metrics",
                 "name": "CPU Utilization %",
                 "options": {
