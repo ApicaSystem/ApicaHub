@@ -55,7 +55,17 @@
                 "options": {
                     "description": "CPU Cores - auto query",
                     "label": "CPU Utilization",
-                    "order": 2
+                    "order": 2,
+                    "plot": {
+                      "errorColumn": "",
+                      "groupBy": "runtime",
+                      "x": "timestamp",
+                      "xLabel": "Timestamp",
+                      "y": [
+                          "value"
+                      ],
+                      "yLabel": "value"
+                    }
                 },
                 "query": "sum by (runtime) (container_cpu_utilization_ratio)",
                 "schema": "container_cpu_utilization_ratio"
