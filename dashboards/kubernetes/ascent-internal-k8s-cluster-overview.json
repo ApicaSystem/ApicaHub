@@ -47,7 +47,19 @@
                   },
                  "query": "count(sum by(runtime)(kube_node_info))",
                   "schema": "kube_node_info"
-              }
+              },
+              {
+                "chart_type": "densestatus",
+                "data_source_name": "Ascent Metrics",
+                "name": "CPU Utilization %",
+                "options": {
+                    "description": "CPU Cores - auto query",
+                    "label": "CPU Utilization",
+                    "order": 2
+                },
+                "query": "sum by (runtime) (container_cpu_utilization_ratio)",
+                "schema": "container_cpu_utilization_ratio"
+            }
              
           ],
           "title": "Ckuster Overview",
