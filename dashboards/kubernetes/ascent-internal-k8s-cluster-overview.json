@@ -49,7 +49,7 @@
                   "schema": "kube_node_info"
               },
               {
-                "chart_type": "densestatus",
+                "chart_type": "gauge",
                 "data_source_name": "Ascent Metrics",
                 "name": "CPU Utilization %",
                 "options": {
@@ -71,7 +71,7 @@
                 "schema": "container_cpu_utilization_ratio"
             },
             {
-              "chart_type": "densestatus",
+              "chart_type": "gauge",
               "data_source_name": "Ascent Metrics",
               "name": "Memory Utilization %",
               "options": {
