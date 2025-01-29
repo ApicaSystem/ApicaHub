@@ -22,7 +22,7 @@
   },
   "tabs": [
       {
-          "key": "Cluster Overview",
+          "key": "Clusters Overview",
           "order": "1",
           "queriesList": [
               {
@@ -77,7 +77,7 @@
               "options": {
                   "description": "Memory utilization",
                   "label": "Memory Utilization",
-                  "order": 2,
+                  "order": 3,
                   "plot": {
                     "errorColumn": "",
                     "groupBy": "runtime",
@@ -91,12 +91,154 @@
               },
               "query": "(sum(container_memory_usage_bytes)/(sum(container_memory_usage_bytes)-(-sum(container_memory_available_bytes))) )*100 ",
               "schema": "container_memory_usage_bytes"
-          }
+            },
+            {
+              "chart_type": "counter",
+              "data_source_name": "Ascent Metrics",
+              "name": "Number of Namespaces",
+              "options": {
+                  "description": "Total Number of Namespaces",
+                  "label": "Number of Namespaces",
+                  "order": 4,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": ["namespace"],
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                  }
+              },
+              "query": "count(sum by (namespace) (kube_pod_info))",
+              "schema": "kube_pod_info"
+            },
+            {
+              "chart_type": "counter",
+              "data_source_name": "Ascent Metrics",
+              "name": "Number of Pods",
+              "options": {
+                  "description": "Total Number of Pods",
+                  "label": "Number of Pods",
+                  "order": 4,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": ["pod"],
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                  }
+              },
+              "query": "count(sum by (pod) (kube_pod_info))",
+              "schema": "kube_pod_info"
+            }
             
              
           ],
-          "title": "Ckuster Overview",
+          "title": "Ckusters Overview",
           "type": "metrics"
+      },
+      {
+        "key": "Cluster Summary",
+        "order": "2",
+        "queriesList": [
+          {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Total Namespaces",
+            "options": {
+                "description": "Total namespaces that are part of the cluster",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count(sum by (namespace) (kube_pod_info{runtime='integration-lab-one'}))",
+            "schema": "kube_pod_info"
+          },
+          {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Number of Nodes in cluster",
+            "options": {
+                "description": "Total namespaces that are part of the cluster",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count(sum by(node) (kube_node_info{runtime='integration-lab-one'})) ",
+            "schema": "kube_node_info"
+          },
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "CPU % usage per node ",
+            "options": {
+                "description": "CPU % usage per node ",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime='integration-lab-two'}))",
+            "schema": "k8s_node_cpu_utilization_ratio"
+          },
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "Memory % usage per node",
+            "options": {
+                "description": "Memory % usage per node",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime='logiq-test'}/(k8s_node_memory_usage_bytes{runtime='logiq-test'} - (- k8s_node_memory_available_bytes{runtime='logiq-test'}))) * 100)",
+            "schema": "k8s_node_memory_usage_bytes"
+          }
+        ]
       }
   ]
 }
