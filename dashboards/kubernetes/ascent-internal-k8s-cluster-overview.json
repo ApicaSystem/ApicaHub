@@ -55,18 +55,28 @@
                 "options": {
                     "description": "CPU Utilization",
                     "label": "CPU Utilization",
-                    "order": 2
+                    "order": 2,
+                    "plot": {
+                          "errorColumn": "",
+                          "groupBy": "",
+                          "x": "timestamp",
+                          "xLabel": "Timestamp",
+                          "y": [
+                              "value"
+                          ],
+                          "yLabel": "value"
+                        }
                 },
-                "query": "sum by (runtime) (container_cpu_utilization_ratio)",
+                "query": "sum(container_cpu_utilization_ratio)",
                 "schema": "container_cpu_utilization_ratio"
             },
             {
-              "chart_type": "table",
+              "chart_type": "densestatus",
               "data_source_name": "Ascent Metrics",
               "name": "Memory Utilization %",
               "options": {
                   "description": "Memory utilization",
-                  "label": "CPU Utilization",
+                  "label": "Memory Utilization",
                   "order": 2,
                   "plot": {
                     "errorColumn": "",
@@ -79,7 +89,7 @@
                     "yLabel": "value"
                   }
               },
-              "query": "(sum by (runtime)(container_memory_usage_bytes)/(sum by (runtime)(container_memory_usage_bytes)-(-sum by (runtime)(container_memory_available_bytes))) )*100 ",
+              "query": "(sum(container_memory_usage_bytes)/(sum(container_memory_usage_bytes)-(-sum(container_memory_available_bytes))) )*100 ",
               "schema": "container_memory_usage_bytes"
           }
             
