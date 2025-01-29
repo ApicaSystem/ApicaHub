@@ -238,7 +238,9 @@
            "query": "sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime='logiq-test'}/(k8s_node_memory_usage_bytes{runtime='logiq-test'} - (- k8s_node_memory_available_bytes{runtime='logiq-test'}))) * 100)",
             "schema": "k8s_node_memory_usage_bytes"
           }
-        ]
+        ],
+        "title": "Ckuster Summary",
+        "type": "metrics"
       }
   ]
 }
