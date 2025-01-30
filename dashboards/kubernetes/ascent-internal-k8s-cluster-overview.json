@@ -283,6 +283,52 @@
             },
            "query": "100 * (sum(kube_pod_container_resource_requests{resource='memory', runtime='sestoc-0fdalf-oke-p'})/sum(kube_node_status_capacity_memory_bytes{runtime='sestoc-0fdalf-oke-p'}))",
             "schema": "kube_pod_container_resource_requests"
+          },
+          {
+            "chart_type": "gauge",
+            "data_source_name": "Ascent Metrics",
+            "name": "CPU usage in %",
+            "options": {
+                "description": "CPU usage in %",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "sum(sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime='sestoc-0fdalf-oke-p'})))",
+            "schema": "k8s_node_cpu_utilization_ratio"
+          },
+          {
+            "chart_type": "gauge",
+            "data_source_name": "Ascent Metrics",
+            "name": "Memory usage in %",
+            "options": {
+                "description": "Memory usage in %",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "sum(sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'}/(k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'} - (- k8s_node_memory_available_bytes{runtime='sestoc-0fdalf-oke-p'}))) * 100))/count(sum by(node) (kube_node_info{runtime='sestoc-0fdalf-oke-p'})) ",
+            "schema": "k8s_node_memory_usage_bytes"
           }
         ],
         "title": "Cluster Summary",
