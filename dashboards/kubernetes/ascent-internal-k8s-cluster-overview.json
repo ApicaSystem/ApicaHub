@@ -121,7 +121,7 @@
               "options": {
                   "description": "Total Number of Pods",
                   "label": "Number of Pods",
-                  "order": 4,
+                  "order": 5,
                   "plot": {
                     "errorColumn": "",
                     "groupBy": ["pod"],
@@ -176,7 +176,7 @@
             "options": {
                 "description": "Total number of nodes that are part of the cluster",
                 "label": "",
-                "order": 1,
+                "order": 2,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -199,7 +199,7 @@
             "options": {
                 "description": "CPU % usage per node ",
                 "label": "",
-                "order": 1,
+                "order": 3,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -222,7 +222,7 @@
             "options": {
                 "description": "Memory % usage per node",
                 "label": "",
-                "order": 1,
+                "order": 4,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -245,7 +245,7 @@
             "options": {
                 "description": "CPU requested in %",
                 "label": "",
-                "order": 1,
+                "order": 5,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -268,7 +268,7 @@
             "options": {
                 "description": "Memory requested in %",
                 "label": "",
-                "order": 1,
+                "order": 6,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -291,7 +291,7 @@
             "options": {
                 "description": "CPU usage in %",
                 "label": "",
-                "order": 1,
+                "order": 7,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
@@ -314,7 +314,7 @@
             "options": {
                 "description": "Memory usage in %",
                 "label": "",
-                "order": 1,
+                "order": 8,
                 "plot": {
                     "errorColumn": "",
                     "groupBy": "",
