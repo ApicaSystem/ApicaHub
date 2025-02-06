@@ -365,8 +365,31 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by (pod)(kube_pod_info{runtime=~'sestoc-0fdalf-oke-p', namespace=~'secestat04'}))",
+           "query": "count(sum by (pod)(kube_pod_info{runtime=~'.*', namespace=~'.*'}))",
             "schema": "kube_pod_info"
+          },
+          {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Total number of containers",
+            "options": {
+                "description": "Total number of containers that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count(sum by (container)(kube_pod_container_info{runtime=~'.*', namespace=~'.*'}))",
+            "schema": "kube_pod_container_info"
           }
         ],
         "title": "Namespace Summary",
