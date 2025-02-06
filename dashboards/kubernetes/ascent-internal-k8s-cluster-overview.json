@@ -15,6 +15,13 @@
             "name": "Cluster selection",
             "data_source_name": "Ascent Metrics"
           }
+        },
+        {
+          "namespace": {
+            "query": "count(sum by (pod)(kube_pod_info{runtime=~'.*'}))",
+            "name": "Namespace selection",
+            "data_source_name": "Ascent Metrics"
+          }
         }
       ],
       "data_source_type": "apica_ascent_prometheus",
@@ -332,6 +339,37 @@
           }
         ],
         "title": "Cluster Summary",
+        "type": "metrics"
+      },
+      {
+        "key": "Namespace Summary",
+        "order": "3",
+        "queriesList": [
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "Total number of pods",
+            "options": {
+                "description": "Total number of pods that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count(sum by (pod)(kube_pod_info{runtime=~'sestoc-0fdalf-oke-p', namespace=~'secestat04'}))",
+            "schema": "kube_pod_info"
+          }
+        ],
+        "title": "Namespace Summary",
         "type": "metrics"
       }
   ]
