@@ -346,7 +346,7 @@
         "order": "3",
         "queriesList": [
           {
-            "chart_type": "table",
+            "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
             "name": "Total number of pods",
             "options": {
