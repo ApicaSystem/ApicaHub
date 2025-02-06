@@ -52,7 +52,7 @@
                       },
                       "upperLimit": ""
                   },
-                 "query": "count(sum by(runtime)(kube_node_info))",
+                 "query": "sum(sum by(runtime)(kube_node_info))",
                   "schema": "kube_node_info"
               },
               {
@@ -118,7 +118,7 @@
                     "yLabel": "value"
                   }
               },
-              "query": "count(sum by (namespace) (kube_pod_info))",
+              "query": "sum(sum by (namespace) (kube_pod_info))",
               "schema": "kube_pod_info"
             },
             {
@@ -140,7 +140,7 @@
                     "yLabel": "value"
                   }
               },
-              "query": "count(sum by (pod) (kube_pod_info))",
+              "query": "sum(sum by (pod) (kube_pod_info))",
               "schema": "kube_pod_info"
             }
             
@@ -173,7 +173,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by (namespace) (kube_pod_info{runtime=~'sestoc-0fdalf-oke-p'}))",
+           "query": "sum(sum by (namespace) (kube_pod_info{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "kube_pod_info"
           },
           {
@@ -196,7 +196,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by(node) (kube_node_info{runtime=~'sestoc-0fdalf-oke-p'}))",
+           "query": "sum(sum by(node) (kube_node_info{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "kube_node_info"
           },
           {
@@ -365,7 +365,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by (pod)(kube_pod_info{runtime=~'.*', namespace=~'.*'}))",
+           "query": "sum(sum by (pod)(kube_pod_info{runtime=~'.*', namespace=~'.*'}))",
             "schema": "kube_pod_info"
           },
           {
@@ -388,8 +388,123 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by (container)(kube_pod_container_info{runtime=~'.*', namespace=~'.*'}))",
+           "query": "sum(sum by (container)(kube_pod_container_info{runtime=~'.*', namespace=~'.*'}))",
             "schema": "kube_pod_container_info"
+          },
+          {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Total number of services",
+            "options": {
+                "description": "Total number of services that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "sum(sum by (service)(kube_service_info{runtime=~'.*', namespace=~'.*'}))",
+            "schema": "kube_service_info"
+          },
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "List of pods",
+            "options": {
+                "description": "List of pods that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count by (pod)(kube_pod_info{runtime=~'.*', namespace=~'.*'})",
+            "schema": "kube_pod_info"
+          },
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "List of containers",
+            "options": {
+                "description": "List of containers that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count by (container)(kube_pod_container_info{runtime=~'.*', namespace=~'.*'})",
+            "schema": "kube_pod_container_info"
+          },
+          {
+            "chart_type": "table",
+            "data_source_name": "Ascent Metrics",
+            "name": "List of services",
+            "options": {
+                "description": "List of services that are part of the namespace",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count by (service)(kube_service_info{runtime=~'.*', namespace=~'.*'})",
+            "schema": "kube_service_info"
+          },
+          {
+            "chart_type": "gauge",
+            "data_source_name": "Ascent Metrics",
+            "name": "Container CPU % utilization",
+            "options": {
+                "description": "Container CPU % utilization",
+                "label": "",
+                "order": 1,
+                "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                },
+                "upperLimit": ""
+            },
+           "query": "count by (service)(kube_service_info{runtime=~'.*', namespace=~'.*'})",
+            "schema": "kube_service_info"
           }
         ],
         "title": "Namespace Summary",
