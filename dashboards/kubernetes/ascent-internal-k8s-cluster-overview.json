@@ -166,7 +166,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by (namespace) (kube_pod_info{runtime='sestoc-0fdalf-oke-p'}))",
+           "query": "count(sum by (namespace) (kube_pod_info{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "kube_pod_info"
           },
           {
@@ -189,7 +189,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count(sum by(node) (kube_node_info{runtime='sestoc-0fdalf-oke-p'}))",
+           "query": "count(sum by(node) (kube_node_info{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "kube_node_info"
           },
           {
@@ -212,7 +212,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime='sestoc-0fdalf-oke-p'}))",
+           "query": "sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "k8s_node_cpu_utilization_ratio"
           },
           {
@@ -235,7 +235,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'}/(k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'} - (- k8s_node_memory_available_bytes{runtime='sestoc-0fdalf-oke-p'}))) * 100)",
+           "query": "sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime=~'sestoc-0fdalf-oke-p'}/(k8s_node_memory_usage_bytes{runtime=~'sestoc-0fdalf-oke-p'} - (- k8s_node_memory_available_bytes{runtime=~'sestoc-0fdalf-oke-p'}))) * 100)",
             "schema": "k8s_node_memory_usage_bytes"
           },
           {
@@ -258,7 +258,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "100 * (sum(kube_pod_container_resource_requests{resource='cpu', runtime='sestoc-0fdalf-oke-p'})/sum(kube_node_status_capacity_cpu_cores{runtime='sestoc-0fdalf-oke-p'})) ",
+           "query": "100 * (sum(kube_pod_container_resource_requests{resource='cpu', runtime=~'sestoc-0fdalf-oke-p'})/sum(kube_node_status_capacity_cpu_cores{runtime=~'sestoc-0fdalf-oke-p'})) ",
             "schema": "k8s_node_memory_usage_bytes"
           },
           {
@@ -281,7 +281,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "100 * (sum(kube_pod_container_resource_requests{resource='memory', runtime='sestoc-0fdalf-oke-p'})/sum(kube_node_status_capacity_memory_bytes{runtime='sestoc-0fdalf-oke-p'}))",
+           "query": "100 * (sum(kube_pod_container_resource_requests{resource='memory', runtime=~'sestoc-0fdalf-oke-p'})/sum(kube_node_status_capacity_memory_bytes{runtime=~'sestoc-0fdalf-oke-p'}))",
             "schema": "kube_pod_container_resource_requests"
           },
           {
@@ -304,7 +304,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "sum(sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime='sestoc-0fdalf-oke-p'})))",
+           "query": "sum(sum by (k8s_node_name)((k8s_node_cpu_utilization_ratio{runtime=~'sestoc-0fdalf-oke-p'})))",
             "schema": "k8s_node_cpu_utilization_ratio"
           },
           {
@@ -327,7 +327,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "sum(sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'}/(k8s_node_memory_usage_bytes{runtime='sestoc-0fdalf-oke-p'} - (- k8s_node_memory_available_bytes{runtime='sestoc-0fdalf-oke-p'}))) * 100))/count(sum by(node) (kube_node_info{runtime='sestoc-0fdalf-oke-p'})) ",
+           "query": "sum(sum by(k8s_node_name)((k8s_node_memory_usage_bytes{runtime=~'sestoc-0fdalf-oke-p'}/(k8s_node_memory_usage_bytes{runtime=~'sestoc-0fdalf-oke-p'} - (- k8s_node_memory_available_bytes{runtime=~'sestoc-0fdalf-oke-p'}))) * 100))/count(sum by(node) (kube_node_info{runtime=~'sestoc-0fdalf-oke-p'})) ",
             "schema": "k8s_node_memory_usage_bytes"
           }
         ],
