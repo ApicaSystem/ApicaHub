@@ -118,7 +118,7 @@
                     "yLabel": "value"
                   }
               },
-              "query": "sum(sum by (namespace) (kube_pod_info))",
+              "query": "count(sum by (namespace) (kube_pod_info))",
               "schema": "kube_pod_info"
             },
             {
