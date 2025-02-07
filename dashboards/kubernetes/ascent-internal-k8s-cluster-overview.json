@@ -142,6 +142,28 @@
               },
               "query": "count(sum by (pod) (kube_pod_info))",
               "schema": "kube_pod_info"
+            },
+            {
+              "chart_type": "table",
+              "data_source_name": "Ascent Metrics",
+              "name": "Pods Restarted In Last 1h",
+              "options": {
+                  "description": "Pods Restarted In Last 1h",
+                  "label": "Number of Pods",
+                  "order": 6,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": ["pod"],
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                        "value"
+                    ],
+                    "yLabel": "value"
+                  }
+              },
+              "query": "rate(kube_pod_container_status_restarts_total[1h]) > 0",
+              "schema": "kube_pod_container_status_restarts_total"
             }
             
              
