@@ -503,7 +503,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "count by (service)(kube_service_info{runtime=~'.*', namespace=~'.*'})",
+           "query": "sum(container_cpu_utilization_ratio{runtime=~'.*', namespace=~'.*'}) * 100 ",
             "schema": "kube_service_info"
           }
         ],
