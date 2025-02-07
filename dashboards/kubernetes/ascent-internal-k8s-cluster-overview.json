@@ -18,7 +18,7 @@
         },
         {
           "namespace": {
-            "query": "sum by (namespace)(kube_pod_info{runtime=~'.*'})",
+            "query": "group by (namespace)(kube_pod_info{runtime=~'.*'})",
             "name": "Namespace selection",
             "data_source_name": "Ascent Metrics"
           }
@@ -503,7 +503,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "sum(container_cpu_utilization_ratio{runtime=~'.*', namespace=~'.*'}) * 100",
+           "query": "(sum(container_cpu_utilization_ratio{runtime=~'.*', namespace=~'.*'})/(count by (namespace)(container_cpu_utilization_ratio{runtime=~'.*', namespace=~'.*'}))) * 100",
             "schema": "kube_service_info"
           }
         ],
