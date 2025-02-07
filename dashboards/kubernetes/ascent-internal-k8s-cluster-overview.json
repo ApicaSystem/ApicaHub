@@ -74,7 +74,7 @@
                           "yLabel": "value"
                         }
                 },
-                "query": "sum(container_cpu_utilization_ratio)",
+                "query": "sum(container_cpu_utilization_ratio)/count(sum by(runtime)(kube_node_info))",
                 "schema": "container_cpu_utilization_ratio"
             },
             {
@@ -265,7 +265,7 @@
                 },
                 "upperLimit": ""
             },
-           "query": "100 * (sum(kube_pod_container_resource_requests{resource='cpu', runtime=~'.*'})/sum(kube_node_status_capacity_cpu_cores{runtime=~'.*'})) ",
+           "query": "100 * (sum(kube_pod_container_resource_requests{resource='cpu', runtime=~'.*'})/sum(kube_node_status_capacity_cpu_cores{runtime=~'.*'}))",
             "schema": "k8s_node_memory_usage_bytes"
           },
           {
