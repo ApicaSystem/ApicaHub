@@ -1,0 +1,129 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "SolarWinds APM",
+            "order": "1",
+            "title": "SolarWinds APM",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "SolarWindsDbConnection",
+                    "name": "SolarWinds-APM_Threshold",
+                    "options": {
+                        "description": "Messages / sec",
+                        "label": "Threshold name",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "ThresholdName",
+                            "xLabel": "Threshold name",
+                            "y": [
+                                "Critical", "Warning"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select top 1000 * from dbo.APM_Threshold",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "SolarWindsDbConnection",
+                    "name": "SolarWinds-APM_ComponentStatus_CS_cur",
+                    "options": {
+                        "label": "",
+                        "description": "SolarWinds-APM_ComponentStatus_CS_cur",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "Availability",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "ComponentID"
+                            ],
+                            "yLabel": "Component ID"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select top 1000 * from dbo.APM_ComponentStatus_CS_cur",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "SolarWindsDbConnection",
+                    "name": "SolarWinds-CPUMultiLoad_CS_cur",
+                    "options": {
+                        "label": "",
+                        "description": "SolarWinds-CPUMultiLoad_CS_cur",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "CPUIndex",
+                            "x": "Load",
+                            "xLabel": "CPU Load",
+                            "y": [
+                                "NodeID"
+                            ],
+                            "yLabel": "Node ID"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select top 1000 * from dbo.CPUMultiLoad_CS_cur",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "table",
+                    "data_source_name": "SolarWindsDbConnection",
+                    "name": "SolarWinds-AIIM_AlertStackBasicMetricMetadata",
+                    "options": {
+                        "description": "SolarWinds-AIIM_AlertStackBasicMetricMetadata",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "",
+                            "xLabel": "",
+                            "y": [
+                                ""
+                            ],
+                            "yLabel": ""
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select * from dbo.AIIM_AlertStackBasicMetricMetadata",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "table",
+                    "data_source_name": "Ascent Logs",
+                    "name": "SolarWinds-SNMP-ProxyMetrics",
+                    "options": {
+                        "description": "SolarWinds-SNMP-ProxyMetrics",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "",
+                            "xLabel": "",
+                            "y": [
+                                ""
+                            ],
+                            "yLabel": ""
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "namespace: snmp-ingest\napplication: ProxyMetrics\nkeyword: fields\nduration: 7d",
+                    "schema": ""
+                }
+            ]
+        }
+    ]
+}
