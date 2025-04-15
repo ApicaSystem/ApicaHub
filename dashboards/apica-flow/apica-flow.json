@@ -1,0 +1,206 @@
+
+{
+    "header": {
+        "dateTimeRange": true,
+        "data_source_type": "apica_ascent_prometheus",
+        "dropdowns": [
+            {
+                "exported_namespace": {
+                  "query": "group by (exported_namespace) (logiq_namespace_app_incoming_message_count)",
+                  "name": "Namespace selection",
+                  "data_source_name": "Ascent Metrics"
+                }
+              },
+              {
+                "application": {
+                  "query": "group by (app )(logiq_namespace_app_incoming_message_count{exported_namespace=~'.*'})",
+                  "name": "Application selection ",
+                  "data_source_name": "Ascent Metrics"
+                }
+              }
+        ]
+    },
+    "tabs": [
+        {
+            "key": "KPI Stats",
+            "order": "1",
+            "title": "KPI Stats",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Active connections",
+                    "options": {
+                        "label": "Active connections",
+                        "description": "No. of live connections",
+                        "order": 1
+                    },
+                    "query": "count(logiq_client_connect_count{operation='connect'})", 
+                    "schema": "logiq_client_connect_count"
+                },
+                {
+                    "chart_type": "size",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Total Memory",
+                    "options": {
+                        "description": "Total Memory",
+                        "order": 3,
+                        "label": "Total Memory",
+                        "plot": {
+                            "datatype" : "bytes"
+                        }
+                    },
+                    "query": "node_memory_MemTotal_bytes",
+                    "schema": "node_memory_MemTotal_bytes"
+                }
+               
+            ]
+        },
+        {
+            "key": "Events In/Out",
+            "order": "2",
+            "title": "Events In/Out",
+            "type": "metrics",
+            "queriesList": [
+              {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Ingested Message Count",
+                "options": {
+                  "description": "Ingested Message Count",
+                  "order": 1,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "pod",
+                    "x": "timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                },
+                "query": "rate(logiq_message_count[2m])&duration=1h&step=10m",
+                "schema": "logiq_message_count"
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Ingest Fail Count",
+                "options": {
+                    "description": "Ingest Fail Count",
+                    "label": "Ingest Fail Count",
+                    "order": 2,
+                    "plot": {
+                        "errorColumn": "",
+                        "groupBy": "pod",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                            "value"
+                        ],
+                        "yLabel": "value"
+                    },
+                    "upperLimit": ""
+                },
+                "query": "rate(logiq_failed_message_count[2m])&duration=1h&step=10m",
+                "schema": "consul_raft_leader_lastContact_count"
+            },
+            {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Ingest Dropped Count",
+                "options": {
+                    "description": "Ingest Dropped Count",
+                    "label": "Ingest Dropped Count",
+                    "order": 3,
+                    "plot": {
+                        "errorColumn": "",
+                        "groupBy": "pod",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                            "value"
+                        ],
+                        "yLabel": "value"
+                    },
+                    "upperLimit": ""
+                },
+                "query": "rate(logiq_dropped_message_count[2m])&duration=1h&step=10m",
+                "schema": "logiq_dropped_message_count"
+            },
+            {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Data Received",
+                "options": {
+                    "description": "Data Received", 
+                    "label": "Data Received",   
+                    "order": 4,
+                    "plot": {
+                        "errorColumn": "",
+                        "groupBy": "pod",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                            "value"
+                        ],
+                        "yLabel": "value"
+                    },
+                    "upperLimit": ""
+                },
+                "query": "rate(logiq_data_received_bytes[2m])&duration=1h&step=10m",
+                "schema": "logiq_data_received_bytes"
+            },
+            {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Ns_App Received Bytes",
+                "options": {
+                    "description": "Ns_App Received Bytes",
+                    "label": "Ns_App Received Bytes",
+                    "order": 5,
+                    "plot": {
+                        "errorColumn": "",
+                        "groupBy": "pod",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                            "value"
+                        ],
+                        "yLabel": "value"
+                    },
+                    "upperLimit": ""
+                },
+                "query": "logiq_namespace_app_received_bytes{exported_namespace=~'.*',app=~'.*'}&duration=1h&step=5m",
+                "schema": "logiq_namespace_app_received_bytes"
+            },
+            {
+                "chart_type": "line",
+                "data_source_name": "Ascent Metrics",
+                "name": "Ns_App forward Bytes",
+                "options": {
+                    "description": "Ns_App forward Bytes",
+                    "label": "Ns_App forward Bytes",
+                    "order": 6,
+                    "plot": {
+                        "errorColumn": "",
+                        "groupBy": "pod",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                            "value"
+                        ],
+                        "yLabel": "value"
+                    },
+                    "upperLimit": ""
+                },
+                "query": "logiq_logflow_namespace_app_forward_bytes{exported_namespace=~'.*',app=~'.*'}&duration=1h&step=5m",
+                "schema": "logiq_logflow_namespace_app_forward_bytes"
+            }            
+        ]
+    }
+    ]
+}
