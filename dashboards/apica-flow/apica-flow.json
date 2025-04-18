@@ -101,7 +101,7 @@
                     "schema": "logiq_event_processing_timing_sec"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "counter",
                     "data_source_name": "Ascent Metrics",
                     "name": "Active Pipelines",
                     "options": {
@@ -109,19 +109,7 @@
                         "description": "No. of active pipelines",
                         "order": 4
                     },
-                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}))", 
-                    "schema": "apica_ingest_pipeline_bytes_in"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Ascent Metrics",
-                    "name": "Active Pipelines",
-                    "options": {
-                        "label": "Active Pipelines",
-                        "description": "No. of active pipelines",
-                        "order": 5
-                    },
-                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}))", 
+                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in))", 
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -133,7 +121,7 @@
                         "order": 6,
                         "label": "Ingested Pipeline events Ingested"
                     },
-                    "query": "sum(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_events_in)",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -145,7 +133,7 @@
                         "order": 7,
                         "label": "Ingested Pipeline events Output"
                     },
-                    "query": "sum(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_events_out)",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -157,7 +145,7 @@
                         "order": 8,
                         "label": "Filtered Pipeline events"
                     },
-                    "query": "sum(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_dropped_logs_counter)",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -169,7 +157,7 @@
                         "order": 9,
                         "label": "Total Savings from Filtered Events"
                     },
-                    "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_savings_bytes)",
                     "schema": "apica_pipeline_savings_bytes"
                 },
                 {
@@ -181,7 +169,7 @@
                         "order": 10,
                         "label": "Total New Streams"
                     },
-                    "query": "sum(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_new_stream_count)",
                     "schema": "apica_pipeline_new_stream_count"
                 },
                 {
@@ -193,7 +181,7 @@
                         "order": 11,
                         "label": "Total Streams Output Events"
                     },
-                    "query": "sum(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
+                    "query": "sum(apica_pipeline_stream_exit_count)",
                     "schema": "apica_pipeline_stream_exit_count"
                 }
             ]
