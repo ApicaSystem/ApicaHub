@@ -53,7 +53,7 @@
                       },
                       "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_savings_bytes[1h]{pipelineName=~{{pipelineName}}, exported_namespace=~{{exported_namespace}}, app=~{{app}}}))&duration=1h&step=1m", 
+                    "query": "sum(rate(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h]))&duration=1h&step=1m", 
                     "schema": "apica_pipeline_savings_bytes"
                 },
                 {
@@ -75,7 +75,7 @@
                       },
                       "upperLimit": ""
                     },
-                    "query": "avg_over_time(logiq_event_processing_timing_sec[1h]{})&duration=1h&step=1m",
+                    "query": "avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])&duration=1h&step=1m",
                     "schema": "logiq_event_processing_timing_sec"
                 },
                 {
@@ -97,7 +97,7 @@
                       },
                       "upperLimit": ""
                     },
-                    "query": "avg_over_time(logiq_event_processing_timing_sec[1h]{})&duration=1h&step=1m",
+                    "query": "avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])&duration=1h&step=1m",
                     "schema": "logiq_event_processing_timing_sec"
                 },
                 {
@@ -109,7 +109,7 @@
                         "description": "No. of active pipelines",
                         "order": 4
                     },
-                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~{{pipelineName}}}))", 
+                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}))", 
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -121,7 +121,7 @@
                         "description": "No. of active pipelines",
                         "order": 5
                     },
-                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~{{pipelineName}}}))", 
+                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}))", 
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -133,7 +133,7 @@
                         "order": 6,
                         "label": "Ingested Pipeline events Ingested"
                     },
-                    "query": "sum(apica_pipeline_events_in{})",
+                    "query": "sum(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -145,7 +145,7 @@
                         "order": 7,
                         "label": "Ingested Pipeline events Output"
                     },
-                    "query": "sum(apica_pipeline_events_out{})",
+                    "query": "sum(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -157,7 +157,7 @@
                         "order": 8,
                         "label": "Filtered Pipeline events"
                     },
-                    "query": "sum(apica_pipeline_dropped_logs_counter{})",
+                    "query": "sum(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -169,7 +169,7 @@
                         "order": 9,
                         "label": "Total Savings from Filtered Events"
                     },
-                    "query": "sum(apica_pipeline_savings_bytes{})",
+                    "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_savings_bytes"
                 },
                 {
@@ -181,7 +181,7 @@
                         "order": 10,
                         "label": "Total New Streams"
                     },
-                    "query": "sum(apica_pipeline_new_stream_count{})",
+                    "query": "sum(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_new_stream_count"
                 },
                 {
@@ -193,7 +193,7 @@
                         "order": 11,
                         "label": "Total Streams Output Events"
                     },
-                    "query": "sum(apica_pipeline_stream_exit_count{})",
+                    "query": "sum(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'})",
                     "schema": "apica_pipeline_stream_exit_count"
                 }
             ]
@@ -223,7 +223,7 @@
                     },
                     "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_ingest_pipeline_bytes_in[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -246,7 +246,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_ingest_pipeline_bytes_out[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
                     "schema": "apica_ingest_pipeline_bytes_out"
                 },
                 {
@@ -269,7 +269,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_events_in[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -292,7 +292,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_events_out[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_events_out"
                 }
                 ]
@@ -322,7 +322,7 @@
                     },
                     "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_dropped_logs_counter[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -345,7 +345,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_dropped_logs_counter[1h]{})) by (ruleName, pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (ruleName, pipelineName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -368,7 +368,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_stream_ingest_count[1h]{})) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_stream_ingest_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName, ruleName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_stream_ingest_count"
                 },
                 {
@@ -391,7 +391,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_stream_ingest_bytes[1h]{})) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_stream_ingest_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName, ruleName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_stream_ingest_bytes"
                 },
                 {
@@ -414,7 +414,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(apica_pipeline_code_rule_bytes_input{}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "avg(apica_pipeline_code_rule_bytes_input{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}) by (pipelineName, ruleName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_code_rule_bytes_input"
                 },
                 {
@@ -437,7 +437,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(apica_pipeline_code_rule_bytes_output{}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "avg(apica_pipeline_code_rule_bytes_output{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}) by (pipelineName, ruleName)&duration=1h&step=1m",
                     "schema": "apica_pipeline_code_rule_bytes_output"
                 }
             ]
