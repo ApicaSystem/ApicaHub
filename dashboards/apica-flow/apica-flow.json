@@ -4,17 +4,24 @@
         "dateTimeRange": true,
         "data_source_type": "apica_ascent_prometheus",
         "dropdowns": [
-            {
+              {
+                "pipelineName": {
+                  "query": "group by (pipelineName) (apica_ingest_pipeline_bytes_in)",
+                  "name": "Pipeline selection",
+                  "data_source_name": "Ascent Metrics"
+                }
+              },
+              {
                 "exported_namespace": {
-                  "query": "group by (exported_namespace) (logiq_namespace_app_incoming_message_count)",
+                  "query": "group by (exported_namespace) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*'})",
                   "name": "Namespace selection",
                   "data_source_name": "Ascent Metrics"
                 }
               },
               {
                 "application": {
-                  "query": "group by (app )(logiq_namespace_app_incoming_message_count{exported_namespace=~'.*'})",
-                  "name": "Application selection ",
+                  "query": "group by (app) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*'})",
+                  "name": "App selection",
                   "data_source_name": "Ascent Metrics"
                 }
               }
@@ -22,185 +29,418 @@
     },
     "tabs": [
         {
-            "key": "KPI Stats",
+            "key": "Overview",
             "order": "1",
-            "title": "KPI Stats",
+            "title": "Overview",
             "type": "metrics",
             "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Bytes Saved",
+                    "options": {
+                      "description": "Ingested Message Count",
+                      "order": 1,
+                      "plot": {
+                        "errorColumn": "",
+                        "groupBy": ["pipelineName", "quantile"],
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                          "value"
+                        ],
+                        "yLabel": "seconds"
+                      },
+                      "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_pipeline_savings_bytes[1h]{pipelineName=~{{pipelineName}}, exported_namespace=~{{exported_namespace}}, app=~{{app}}}))&duration=1h&step=1m", 
+                    "schema": "apica_pipeline_savings_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Execution Time (p99)",
+                    "options": {
+                      "description": "Ingested Message Count",
+                      "order": 2,
+                      "plot": {
+                        "errorColumn": "",
+                        "groupBy": ["pipelineName", "quantile"],
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                          "value"
+                        ],
+                        "yLabel": "seconds"
+                      },
+                      "upperLimit": ""
+                    },
+                    "query": "avg_over_time(logiq_event_processing_timing_sec[1h]{})&duration=1h&step=1m",
+                    "schema": "logiq_event_processing_timing_sec"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Execution Time (avg)",
+                    "options": {
+                      "description": "Pipeline Execution Time (avg)",
+                      "order": 3,
+                      "plot": {
+                        "errorColumn": "",
+                        "groupBy": "",
+                        "x": "timestamp",
+                        "xLabel": "Timestamp",
+                        "y": [
+                          "value"
+                        ],
+                        "yLabel": "seconds"
+                      },
+                      "upperLimit": ""
+                    },
+                    "query": "avg_over_time(logiq_event_processing_timing_sec[1h]{})&duration=1h&step=1m",
+                    "schema": "logiq_event_processing_timing_sec"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Active Pipelines",
+                    "options": {
+                        "label": "Active Pipelines",
+                        "description": "No. of active pipelines",
+                        "order": 4
+                    },
+                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~{{pipelineName}}}))", 
+                    "schema": "apica_ingest_pipeline_bytes_in"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Active Pipelines",
+                    "options": {
+                        "label": "Active Pipelines",
+                        "description": "No. of active pipelines",
+                        "order": 5
+                    },
+                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in{pipelineName=~{{pipelineName}}}))", 
+                    "schema": "apica_ingest_pipeline_bytes_in"
+                },
                 {
                     "chart_type": "counter",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Active connections",
+                    "name": "Total Events Count Ingested",
                     "options": {
-                        "label": "Active connections",
-                        "description": "No. of live connections",
-                        "order": 1
+                        "description": "Ingested Pipeline events Ingested",
+                        "order": 6,
+                        "label": "Ingested Pipeline events Ingested"
                     },
-                    "query": "count(logiq_client_connect_count{operation='connect'})", 
-                    "schema": "logiq_client_connect_count"
+                    "query": "sum(apica_pipeline_events_in{})",
+                    "schema": "apica_pipeline_events_in"
                 },
                 {
-                    "chart_type": "size",
+                    "chart_type": "counter",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Total Memory",
+                    "name": "Total Events Count Output",
                     "options": {
-                        "description": "Total Memory",
-                        "order": 3,
-                        "label": "Total Memory",
-                        "plot": {
-                            "datatype" : "bytes"
-                        }
+                        "description": "Ingested Pipeline events Output",
+                        "order": 7,
+                        "label": "Ingested Pipeline events Output"
                     },
-                    "query": "node_memory_MemTotal_bytes",
-                    "schema": "node_memory_MemTotal_bytes"
+                    "query": "sum(apica_pipeline_events_out{})",
+                    "schema": "apica_pipeline_events_in"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Total Filtered Events",
+                    "options": {
+                        "description": "Events Dropped",
+                        "order": 8,
+                        "label": "Filtered Pipeline events"
+                    },
+                    "query": "sum(apica_pipeline_dropped_logs_counter{})",
+                    "schema": "apica_pipeline_dropped_logs_counter"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Total Savings",
+                    "options": {
+                        "description": "Total Savings from Filtered Events",
+                        "order": 9,
+                        "label": "Total Savings from Filtered Events"
+                    },
+                    "query": "sum(apica_pipeline_savings_bytes{})",
+                    "schema": "apica_pipeline_savings_bytes"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Total New Streams",
+                    "options": {
+                        "description": "Total New Streams",
+                        "order": 10,
+                        "label": "Total New Streams"
+                    },
+                    "query": "sum(apica_pipeline_new_stream_count{})",
+                    "schema": "apica_pipeline_new_stream_count"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Total Streams Output Events",
+                    "options": {
+                        "description": "Total Streams Output Events",
+                        "order": 11,
+                        "label": "Total Streams Output Events"
+                    },
+                    "query": "sum(apica_pipeline_stream_exit_count{})",
+                    "schema": "apica_pipeline_stream_exit_count"
                 }
-               
             ]
         },
         {
-            "key": "Events In/Out",
+            "key": "Pipeline InOut",
             "order": "2",
-            "title": "Events In/Out",
+            "title": "Pipeline In/Out",
             "type": "metrics",
             "queriesList": [
-              {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Ingested Message Count",
-                "options": {
-                  "description": "Ingested Message Count",
-                  "order": 1,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "pod",
-                    "x": "timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                },
-                "query": "rate(logiq_message_count[2m])&duration=1h&step=10m",
-                "schema": "logiq_message_count"
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Ingest Fail Count",
-                "options": {
-                    "description": "Ingest Fail Count",
-                    "label": "Ingest Fail Count",
-                    "order": 2,
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Bytes In",
+                    "options": {
+                    "description": "Pipeline Bytes In",
+                    "order": 1,
                     "plot": {
                         "errorColumn": "",
-                        "groupBy": "pod",
+                        "groupBy": "",
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
-                            "value"
+                        "value"
                         ],
-                        "yLabel": "value"
+                        "yLabel": "Logs Dropped"
                     },
                     "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_in[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_ingest_pipeline_bytes_in"
                 },
-                "query": "rate(logiq_failed_message_count[2m])&duration=1h&step=10m",
-                "schema": "consul_raft_leader_lastContact_count"
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Bytes Out",
+                    "options": {
+                        "description": "Pipeline Bytes Out",
+                        "label": "Pipeline Bytes Out",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_out[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_ingest_pipeline_bytes_out"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Events In",
+                    "options": {
+                        "description": "Pipeline Events In",
+                        "label": "Pipeline Events In",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_pipeline_events_in[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_events_in"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Pipeline Events Out",
+                    "options": {
+                        "description": "Pipeline Events Out", 
+                        "label": "Pipeline Events Out",   
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_pipeline_events_out[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_events_out"
+                }
+                ]
             },
             {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Ingest Dropped Count",
-                "options": {
-                    "description": "Ingest Dropped Count",
-                    "label": "Ingest Dropped Count",
-                    "order": 3,
+                "key": "Rules Insights",
+                "order": "3",
+                "title": "Rules Insights",
+                "type": "metrics",
+                "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Dropped Logs per Pipeline",
+                    "options": {
+                    "description": "Dropped Logs per Pipeline",
+                    "order": 1,
                     "plot": {
                         "errorColumn": "",
-                        "groupBy": "pod",
+                        "groupBy": "",
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
-                            "value"
+                        "value"
                         ],
-                        "yLabel": "value"
+                        "yLabel": "Logs Dropped"
                     },
                     "upperLimit": ""
-                },
-                "query": "rate(logiq_dropped_message_count[2m])&duration=1h&step=10m",
-                "schema": "logiq_dropped_message_count"
-            },
-            {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Data Received",
-                "options": {
-                    "description": "Data Received", 
-                    "label": "Data Received",   
-                    "order": 4,
-                    "plot": {
-                        "errorColumn": "",
-                        "groupBy": "pod",
-                        "x": "timestamp",
-                        "xLabel": "Timestamp",
-                        "y": [
-                            "value"
-                        ],
-                        "yLabel": "value"
                     },
-                    "upperLimit": ""
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter[1h]{})) by (pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_dropped_logs_counter"
                 },
-                "query": "rate(logiq_data_received_bytes[2m])&duration=1h&step=10m",
-                "schema": "logiq_data_received_bytes"
-            },
-            {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Ns_App Received Bytes",
-                "options": {
-                    "description": "Ns_App Received Bytes",
-                    "label": "Ns_App Received Bytes",
-                    "order": 5,
-                    "plot": {
-                        "errorColumn": "",
-                        "groupBy": "pod",
-                        "x": "timestamp",
-                        "xLabel": "Timestamp",
-                        "y": [
-                            "value"
-                        ],
-                        "yLabel": "value"
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Dropped Logs per Rule",
+                    "options": {
+                        "description": "Dropped Logs per Rule",
+                        "label": "Dropped Logs per Rule",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
                     },
-                    "upperLimit": ""
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter[1h]{})) by (ruleName, pipelineName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_dropped_logs_counter"
                 },
-                "query": "logiq_namespace_app_received_bytes{exported_namespace=~'.*',app=~'.*'}&duration=1h&step=5m",
-                "schema": "logiq_namespace_app_received_bytes"
-            },
-            {
-                "chart_type": "line",
-                "data_source_name": "Ascent Metrics",
-                "name": "Ns_App forward Bytes",
-                "options": {
-                    "description": "Ns_App forward Bytes",
-                    "label": "Ns_App forward Bytes",
-                    "order": 6,
-                    "plot": {
-                        "errorColumn": "",
-                        "groupBy": "pod",
-                        "x": "timestamp",
-                        "xLabel": "Timestamp",
-                        "y": [
-                            "value"
-                        ],
-                        "yLabel": "value"
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Stream Rule Input Events",
+                    "options": {
+                        "description": "Stream Rule Input Events",
+                        "label": "Stream Rule Input Events",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
                     },
-                    "upperLimit": ""
+                    "query": "sum(rate(apica_pipeline_stream_ingest_count[1h]{})) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_stream_ingest_count"
                 },
-                "query": "logiq_logflow_namespace_app_forward_bytes{exported_namespace=~'.*',app=~'.*'}&duration=1h&step=5m",
-                "schema": "logiq_logflow_namespace_app_forward_bytes"
-            }            
-        ]
-    }
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Stream Rule Input Bytes",
+                    "options": {
+                        "description": "Stream Rule Input Bytes",
+                        "label": "Stream Rule Input Bytes",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(apica_pipeline_stream_ingest_bytes[1h]{})) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_stream_ingest_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Code Rule Input Size",
+                    "options": {
+                        "description": "Code Rule Input Size",
+                        "label": "Code Rule Input Size",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(apica_pipeline_code_rule_bytes_input{}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_code_rule_bytes_input"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Code Rule Output Size",
+                    "options": {
+                        "description": "Code Rule Output Size", 
+                        "label": "Code Rule Output Size",   
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(apica_pipeline_code_rule_bytes_output{}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "schema": "apica_pipeline_code_rule_bytes_output"
+                }
+            ]
+        }
     ]
 }
