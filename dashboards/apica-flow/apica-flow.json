@@ -19,7 +19,7 @@
                 }
               },
               {
-                "application": {
+                "app": {
                   "query": "group by (app) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*'})",
                   "name": "App selection",
                   "data_source_name": "Ascent Metrics"
