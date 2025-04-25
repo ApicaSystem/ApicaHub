@@ -39,21 +39,21 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "Pipeline Bytes Saved",
                     "options": {
-                      "description": "Ingested Message Count",
+                      "description": "Cumulative size of logs(or fields) dropped.",
                       "order": 1,
                       "plot": {
                         "errorColumn": "",
-                        "groupBy": ["pipelineName", "quantile"],
+                        "groupBy": ["pipelineName", "ruleName"],
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
                           "value"
                         ],
-                        "yLabel": "seconds"
+                        "yLabel": "MegaBytes"
                       },
                       "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h]))&duration=1h&step=1m", 
+                    "query": "sum by(pipelineName,ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h]))/1048576&duration=1.000h&step=5m", 
                     "schema": "apica_pipeline_savings_bytes"
                 },
                 {
@@ -65,7 +65,7 @@
                       "order": 2,
                       "plot": {
                         "errorColumn": "",
-                        "groupBy": ["pipelineName", "quantile"],
+                        "groupBy": ["pipelineName"],
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
@@ -75,7 +75,7 @@
                       },
                       "upperLimit": ""
                     },
-                    "query": "avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])&duration=1h&step=1m",
+                    "query": "avg by (pipelineName) (avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*', quantile=~'0.99'}[1h]))&duration=1.000h&step=5m",
                     "schema": "logiq_event_processing_timing_sec"
                 },
                 {
@@ -87,7 +87,7 @@
                       "order": 3,
                       "plot": {
                         "errorColumn": "",
-                        "groupBy": "",
+                        "groupBy": ["pipelineName", "quantile"],
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
@@ -97,7 +97,7 @@
                       },
                       "upperLimit": ""
                     },
-                    "query": "avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])&duration=1h&step=1m",
+                    "query": "avg by (pipelineName, quantile) (avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*',exported_namespace=~'.*', app=~'.*'}[1h]))&duration=1.000h&step=5m",
                     "schema": "logiq_event_processing_timing_sec"
                 },
                 {
@@ -109,7 +109,7 @@
                         "description": "No. of active pipelines",
                         "order": 4
                     },
-                    "query": "sum(group by (pipelineName) (apica_ingest_pipeline_bytes_in))", 
+                    "query": "sum (group by(pipelineName) (apica_ingest_pipeline_bytes_in{exported_namespace=~'.*'}))", 
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -121,7 +121,7 @@
                         "order": 6,
                         "label": "Ingested Pipeline events Ingested"
                     },
-                    "query": "sum(apica_pipeline_events_in)",
+                    "query": "sum(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -133,7 +133,7 @@
                         "order": 7,
                         "label": "Ingested Pipeline events Output"
                     },
-                    "query": "sum(apica_pipeline_events_out)",
+                    "query": "sum(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -145,7 +145,7 @@
                         "order": 8,
                         "label": "Filtered Pipeline events"
                     },
-                    "query": "sum(apica_pipeline_dropped_logs_counter)",
+                    "query": "sum(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -153,11 +153,11 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "Total Savings",
                     "options": {
-                        "description": "Total Savings from Filtered Events",
+                        "description": "Total Savings from Filtered Events(in MegaBytes)",
                         "order": 9,
                         "label": "Total Savings from Filtered Events"
                     },
-                    "query": "sum(apica_pipeline_savings_bytes)",
+                    "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'})/1048576 or vector(0)",
                     "schema": "apica_pipeline_savings_bytes"
                 },
                 {
@@ -169,7 +169,7 @@
                         "order": 10,
                         "label": "Total New Streams"
                     },
-                    "query": "sum(apica_pipeline_new_stream_count)",
+                    "query": "sum(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
                     "schema": "apica_pipeline_new_stream_count"
                 },
                 {
@@ -181,7 +181,7 @@
                         "order": 11,
                         "label": "Total Streams Output Events"
                     },
-                    "query": "sum(apica_pipeline_stream_exit_count)",
+                    "query": "sum(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
                     "schema": "apica_pipeline_stream_exit_count"
                 }
             ]
@@ -201,7 +201,7 @@
                     "order": 1,
                     "plot": {
                         "errorColumn": "",
-                        "groupBy": "",
+                        "groupBy": ["pipelineName"],
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
@@ -211,7 +211,7 @@
                     },
                     "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (pipelineName)&duration=1h&step=5m",
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -224,7 +224,7 @@
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["pipelineName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -234,7 +234,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*',service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
                     "schema": "apica_ingest_pipeline_bytes_out"
                 },
                 {
@@ -247,7 +247,7 @@
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["pipelineName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -257,7 +257,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*',service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_events_in"
                 },
                 {
@@ -270,7 +270,7 @@
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["pipelineName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -280,7 +280,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_events_out"
                 }
                 ]
@@ -310,7 +310,7 @@
                     },
                     "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -333,7 +333,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (ruleName, pipelineName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (ruleName, pipelineName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_dropped_logs_counter"
                 },
                 {
@@ -346,7 +346,7 @@
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["pipelineName", "ruleName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -356,7 +356,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_stream_ingest_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_stream_ingest_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (pipelineName, ruleName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_stream_ingest_count"
                 },
                 {
@@ -369,7 +369,7 @@
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["pipelineName","ruleName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -379,7 +379,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(apica_pipeline_stream_ingest_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}[1h])) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "sum(rate(apica_pipeline_stream_ingest_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[1h])) by (pipelineName, ruleName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_stream_ingest_bytes"
                 },
                 {
@@ -392,7 +392,7 @@
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["ruleName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -402,7 +402,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(apica_pipeline_code_rule_bytes_input{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "avg(apica_pipeline_code_rule_bytes_input{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) by (pipelineName, ruleName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_code_rule_bytes_input"
                 },
                 {
@@ -415,7 +415,7 @@
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": ["ruleName"],
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -425,7 +425,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(apica_pipeline_code_rule_bytes_output{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*'}) by (pipelineName, ruleName)&duration=1h&step=1m",
+                    "query": "avg(apica_pipeline_code_rule_bytes_output{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) by (pipelineName, ruleName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_code_rule_bytes_output"
                 }
             ]
