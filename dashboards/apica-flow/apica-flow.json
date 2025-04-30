@@ -8,6 +8,7 @@
                 "pipelineName": {
                   "query": "group by (pipelineName) (apica_ingest_pipeline_bytes_in)",
                   "name": "Pipeline selection",
+                  "placeholder": "Select pipeline",
                   "data_source_name": "Ascent Metrics"
                 }
               },
@@ -15,6 +16,7 @@
                 "exported_namespace": {
                   "query": "group by (exported_namespace) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*'})",
                   "name": "Namespace selection",
+                  "placeholder": "Select Namespace",
                   "data_source_name": "Ascent Metrics"
                 }
               },
@@ -22,6 +24,7 @@
                 "app": {
                   "query": "group by (app) (apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*'})",
                   "name": "App selection",
+                  "placeholder": "Select App",
                   "data_source_name": "Ascent Metrics"
                 }
               }
