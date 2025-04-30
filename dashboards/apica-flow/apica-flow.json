@@ -187,9 +187,9 @@
             ]
         },
         {
-            "key": "Pipeline InOut",
+            "key": "Pipeline Traffic",
             "order": "2",
-            "title": "Pipeline In/Out",
+            "title": "Pipeline Traffic",
             "type": "metrics",
             "queriesList": [
                 {
