@@ -40,9 +40,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Pipeline Bytes Saved",
+                    "name": "Pipeline Savings (MB)",
                     "options": {
-                      "description": "Cumulative size of logs(or fields) dropped.",
+                      "description": "Total log volume saved after rule-based filtering, grouped by pipeline and rule.",
                       "order": 1,
                       "plot": {
                         "errorColumn": "",
@@ -52,7 +52,7 @@
                         "y": [
                           "value"
                         ],
-                        "yLabel": "MegaBytes"
+                        "yLabel": "MB"
                       },
                       "upperLimit": ""
                     },
@@ -112,7 +112,24 @@
                         "description": "No. of active pipelines",
                         "order": 4
                     },
-                    "query": "sum (group by(pipelineName) (apica_ingest_pipeline_bytes_in{exported_namespace=~'.*'}))", 
+                    "query": "sum (group by(pipelineName) (apica_ingest_pipeline_bytes_in{exported_namespace=~'.*'}))",
+                    "alert": {
+                        "active": "True",
+                        "name": "Number of active pipelines",
+                        "options": {
+                            "alertType": "simple alert",
+                            "anomalySwitch": false,
+                            "column": "value",
+                            "op": ">",
+                            "selectionCondition": "all",
+                            "timeColumn": "",
+                            "muted": false,
+                            "trackDuration": 15,
+                            "value": 20,
+                            "severityType": "warning"
+                        },
+                        "rearm": 300
+                    },
                     "schema": "apica_ingest_pipeline_bytes_in"
                 },
                 {
@@ -137,7 +154,7 @@
                         "label": "Ingested Pipeline events Output"
                     },
                     "query": "sum(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
-                    "schema": "apica_pipeline_events_in"
+                    "schema": "apica_pipeline_events_out"
                 },
                 {
                     "chart_type": "counter",
@@ -208,9 +225,9 @@
                         "x": "timestamp",
                         "xLabel": "Timestamp",
                         "y": [
-                        "value"
+                            "value"
                         ],
-                        "yLabel": "Logs Dropped"
+                        "yLabel": "KB"
                     },
                     "upperLimit": ""
                     },
@@ -261,6 +278,23 @@
                         "upperLimit": ""
                     },
                     "query": "sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*',service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
+                    "alert": {
+                        "active": "True",
+                        "name": "Pipeline EPS Anomaly Alert",
+                        "options": {
+                            "alertType": "anomaly alert",
+                            "anomalySwitch": false,
+                            "column": "Anomaly",
+                            "op": "==",
+                            "value": 1,
+                            "selectionCondition": "any",
+                            "timeColumn": "",
+                            "muted": false,
+                            "trackDuration": "60",
+                            "severityType": "warning"
+                        },  
+                        "rearm": 300
+                    },
                     "schema": "apica_pipeline_events_in"
                 },
                 {
