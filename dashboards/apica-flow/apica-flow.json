@@ -464,6 +464,12 @@
                     },
                     "query": "avg(apica_pipeline_code_rule_bytes_output{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) by (pipelineName, ruleName)&duration=1.000h&step=5m",
                     "schema": "apica_pipeline_code_rule_bytes_output"
+                },
+                {
+                    "key": "alerts",
+                    "title": "Alerts",
+                    "order": "4",
+                    "type": "alerts"
                 }
             ]
         }
