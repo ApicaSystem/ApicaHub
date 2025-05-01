@@ -468,7 +468,7 @@
             ]
             },
             {
-                "key": "alerts",
+                "key": "Alerts",
                 "title": "Alerts",
                 "order": "4",
                 "type": "alerts"
