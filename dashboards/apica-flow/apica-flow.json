@@ -70,9 +70,9 @@
             "data_source_name": "Ascent Metrics",
             "name": "Total Savings",
             "options": {
-              "description": "Total Savings from Filtered Events(in MegaBytes)",
+              "description": "Total Savings from Filtered Events",
               "order": 2,
-              "label": "Total Savings from Filtered Events"
+              "label": "MB"
             },
             "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'})/1048576 or vector(0)",
             "schema": "apica_pipeline_savings_bytes"
@@ -520,7 +520,7 @@
                 "y": [
                   "value"
                 ],
-                "yLabel": "value"
+                "yLabel": "bytes"
               },
               "upperLimit": ""
             },
@@ -545,7 +545,7 @@
                 "y": [
                   "value"
                 ],
-                "yLabel": "value"
+                "yLabel": "bytes"
               },
               "upperLimit": ""
             },
@@ -570,7 +570,7 @@
                 "y": [
                   "value"
                 ],
-                "yLabel": "value"
+                "yLabel": "bytes"
               },
               "upperLimit": ""
             },
