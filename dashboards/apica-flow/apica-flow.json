@@ -37,12 +37,53 @@
         "type": "metrics",
         "queriesList": [
           {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Active Pipelines",
+            "options": {
+              "label": "Active Pipelines",
+              "description": "No. of active pipelines",
+              "order": 1
+            },
+            "query": "sum(group by(pipelineName, pipelineId)(apica_ingest_pipeline_status{exported_namespace=~'.*'}>0))",
+            "alert": {
+              "active": "True",
+              "name": "Number of active pipelines",
+              "options": {
+                "alertType": "simple alert",
+                "anomalySwitch": false,
+                "column": "value",
+                "op": ">",
+                "selectionCondition": "all",
+                "timeColumn": "",
+                "muted": false,
+                "trackDuration": 15,
+                "value": 20,
+                "severityType": "warning"
+              },
+              "rearm": 300
+            },
+            "schema": "apica_ingest_pipeline_bytes_in"
+          },
+          {
+            "chart_type": "counter",
+            "data_source_name": "Ascent Metrics",
+            "name": "Total Savings",
+            "options": {
+              "description": "Total Savings from Filtered Events(in MegaBytes)",
+              "order": 2,
+              "label": "Total Savings from Filtered Events"
+            },
+            "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'})/1048576 or vector(0)",
+            "schema": "apica_pipeline_savings_bytes"
+          },
+          {
             "chart_type": "line",
             "data_source_name": "Ascent Metrics",
             "name": "Pipeline Savings (MB)",
             "options": {
               "description": "Total log volume saved after rule-based filtering, grouped by pipeline and rule.",
-              "order": 1,
+              "order": 3,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -67,7 +108,7 @@
             "name": "Pipeline Execution Time (p99)",
             "options": {
               "description": "Ingested Message Count",
-              "order": 2,
+              "order": 4,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -91,7 +132,7 @@
             "name": "Pipeline Execution Time (avg)",
             "options": {
               "description": "Pipeline Execution Time (avg)",
-              "order": 3,
+              "order": 5,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -109,35 +150,6 @@
             },
             "query": "avg by (pipelineName, quantile) (avg_over_time(logiq_event_processing_timing_sec{pipelineName=~'.*',exported_namespace=~'.*', app=~'.*'}[1h]))&duration=1.000h&step=5m",
             "schema": "logiq_event_processing_timing_sec"
-          },
-          {
-            "chart_type": "counter",
-            "data_source_name": "Ascent Metrics",
-            "name": "Active Pipelines",
-            "options": {
-              "label": "Active Pipelines",
-              "description": "No. of active pipelines",
-              "order": 4
-            },
-            "query": "sum (group by(pipelineName) (apica_ingest_pipeline_bytes_in{exported_namespace=~'.*'}))",
-            "alert": {
-              "active": "True",
-              "name": "Number of active pipelines",
-              "options": {
-                "alertType": "simple alert",
-                "anomalySwitch": false,
-                "column": "value",
-                "op": ">",
-                "selectionCondition": "all",
-                "timeColumn": "",
-                "muted": false,
-                "trackDuration": 15,
-                "value": 20,
-                "severityType": "warning"
-              },
-              "rearm": 300
-            },
-            "schema": "apica_ingest_pipeline_bytes_in"
           },
           {
             "chart_type": "counter",
@@ -175,25 +187,14 @@
             "query": "sum(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
             "schema": "apica_pipeline_dropped_logs_counter"
           },
-          {
-            "chart_type": "counter",
-            "data_source_name": "Ascent Metrics",
-            "name": "Total Savings",
-            "options": {
-              "description": "Total Savings from Filtered Events(in MegaBytes)",
-              "order": 9,
-              "label": "Total Savings from Filtered Events"
-            },
-            "query": "sum(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'})/1048576 or vector(0)",
-            "schema": "apica_pipeline_savings_bytes"
-          },
+          
           {
             "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
             "name": "Total New Streams",
             "options": {
               "description": "Total New Streams",
-              "order": 10,
+              "order": 9,
               "label": "Total New Streams"
             },
             "query": "sum(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
@@ -205,7 +206,7 @@
             "name": "Total Streams Output Events",
             "options": {
               "description": "Total Streams Output Events",
-              "order": 11,
+              "order": 10,
               "label": "Total Streams Output Events"
             },
             "query": "sum(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
@@ -291,6 +292,25 @@
               "upperLimit": ""
             },
             "query": "sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*',service='logiq-flash'}[1h])) by (pipelineName)&duration=1.000h&step=5m",
+            "baseliningOptions": {
+              "timeColumn": "timestamp",
+              "valueColumn": "value",
+              "operations": [
+                  "anomaly_detection"
+              ],
+              "windowSize": 12,
+              "stdFraction": 1,
+              "errorPercentage": 50,
+              "mawindow": 384,
+              "forecastDays": 1,
+              "forecastHours": 5,
+              "weekComparision": false,
+              "weekComparisionTime": 24,
+              "weekComparisionPercentage": 20,
+              "anomalyGroupBy": [
+                  "pipelineName"
+              ]
+            },
             "alert": {
               "active": "True",
               "name": "Pipeline EPS Anomaly Alert",
@@ -416,10 +436,10 @@
             "name": "Dropped Logs per Pipeline",
             "options": {
               "description": "Dropped Logs per Pipeline",
-              "order": 1,
+              "order": 3,
               "plot": {
                 "errorColumn": "",
-                "groupBy": "",
+                "groupBy": ["pipelineName"],
                 "x": "timestamp",
                 "xLabel": "Timestamp",
                 "y": [
@@ -439,10 +459,10 @@
             "options": {
               "description": "Dropped Logs per Rule",
               "label": "Dropped Logs per Rule",
-              "order": 2,
+              "order": 4,
               "plot": {
                 "errorColumn": "",
-                "groupBy": "",
+                "groupBy": ["pipelineName"],
                 "x": "timestamp",
                 "xLabel": "Timestamp",
                 "y": [
@@ -462,7 +482,7 @@
             "options": {
               "description": "Stream Rule Input Events",
               "label": "Stream Rule Input Events",
-              "order": 3,
+              "order": 5,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -488,7 +508,7 @@
             "options": {
               "description": "Stream Rule Input Bytes",
               "label": "Stream Rule Input Bytes",
-              "order": 4,
+              "order": 6,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -514,7 +534,7 @@
             "options": {
               "description": "Code Rule Input Size",
               "label": "Code Rule Input Size",
-              "order": 3,
+              "order": 7,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
@@ -539,7 +559,7 @@
             "options": {
               "description": "Code Rule Output Size",
               "label": "Code Rule Output Size",
-              "order": 4,
+              "order": 8,
               "plot": {
                 "errorColumn": "",
                 "groupBy": [
