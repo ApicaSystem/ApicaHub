@@ -39,16 +39,16 @@
           {
             "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
-            "name": "Active Pipelines",
+            "name": "Current Active Pipelines",
             "options": {
-              "label": "Active Pipelines",
-              "description": "No. of active pipelines",
+              "label": "Current Active Pipelines",
+              "description": "Number of current active pipelines",
               "order": 1
             },
             "query": "sum(group by(pipelineName, pipelineId)(apica_ingest_pipeline_status{exported_namespace=~'.*'}>0))",
             "alert": {
               "active": "True",
-              "name": "Number of active pipelines",
+              "name": "Number of current active pipelines",
               "options": {
                 "alertType": "simple alert",
                 "anomalySwitch": false,
@@ -193,9 +193,9 @@
             "data_source_name": "Ascent Metrics",
             "name": "Total New Streams",
             "options": {
-              "description": "Total New Streams",
+              "description": "Total New Streams Events",
               "order": 9,
-              "label": "Total New Streams"
+              "label": "Total New Streams Events"
             },
             "query": "sum(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
             "schema": "apica_pipeline_new_stream_count"
