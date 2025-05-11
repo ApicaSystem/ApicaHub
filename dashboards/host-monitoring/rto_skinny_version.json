@@ -24,7 +24,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(avg(sum by (hostname) (round(100 - system_cpu_utilization_ratio{ostype=~'linux|windows',state=~'idle',hostname=~'.*'}*100, 0.1))), 0.01)",
@@ -49,7 +49,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(avg(sum by (hostname) (round(system_memory_utilization_ratio{ostype=~'linux|windows',state=~'used',hostname=~'.*'}*100, 0.1))), 0.01)",
@@ -72,7 +72,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(avg by (hostname) (system_cpu_load_average_5m{ostype=~'linux|windows',hostname=~'.*'}), 0.01)*100",
@@ -91,7 +91,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "avg(sum by (hostname) (round(jvm_uptime{ostype=~'linux|windows',hostname=~'.*'}/360000)))",
@@ -112,7 +112,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100 * (sum by (device) (system_filesystem_usage_bytes{ostype=~'linux|windows',hostname=~'.*', job='prom-metrics-collector', state='used',type='ext4',hostname=~'.*'}) /sum by (device) (system_filesystem_usage_bytes{ostype=~'linux|windows',hostname=~'.*', job='prom-metrics-collector', state=~'free|used',type='ext4'}))",
@@ -131,7 +131,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "(sum by (hostname) (avg_over_time(system_filesystem_inodes_usage{ostype=~'linux|windows',device=~'.*',hostname=~'.*'}[5m])))&duration=1h&step=5m",
@@ -150,7 +150,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "(sum by (hostname) (system_filesystem_inodes_usage{ostype=~'linux|windows',mountpoint='/',hostname=~'.*'}))",
@@ -169,7 +169,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum(system_filesystem_usage_bytes{ostype=~'linux|windows',type='ext4'})/(1024*1024),0.01)",
@@ -190,7 +190,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(avg(sum by (hostname) (open_fd_count{ostype=~'linux|windows'})),1)",
@@ -210,7 +210,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -237,7 +237,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round((1-(avg_over_time(system_cpu_utilization_ratio{ostype=~'linux|windows',state=~'idle',hostname=~'.*'}[5m])))*100,0.01)&duration=1h&step=5m",
@@ -256,7 +256,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(max_over_time(system_cpu_load_average_5m{ostype=~'linux|windows',hostname=~'.*'}[5m])*100,0.01)&duration=1h&step=5m",
@@ -275,7 +275,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(avg_over_time(system_cpu_load_average_5m{ostype=~'linux|windows',hostname=~'.*'}[5m])*100,0.01)&duration=1h&step=5m",
@@ -294,7 +294,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100*sum by (hostname) (1-system_memory_utilization_ratio{ostype=~'linux|windows', hostname=~'.*',state='free'})&duration=1h&step=5m",
@@ -313,7 +313,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round((avg by (hostname) (irate(system_cpu_time_seconds_total{ostype=~'linux|windows',hostname=~'.*',state='wait'}[5m]))) * 100,0.01)&duration=1h&step=5m",
@@ -332,7 +332,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
 },
@@ -359,7 +359,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "(sum by (hostname) (rate(system_disk_io_bytes_total{ostype=~'linux|windows',device=~'.*',hostname=~'.*',direction='read'}[5m])))&duration=1h&step=5m",
@@ -378,7 +378,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100 * (sum by (hostname) (system_filesystem_usage_bytes{ostype=~'linux',hostname=~'.*', job='prom-metrics-collector', state='used',type='ext4',hostname=~'.*'}) /sum by (hostname) (system_filesystem_usage_bytes{ostype=~'linux',hostname=~'.*', job='prom-metrics-collector', state=~'.*',type='ext4'}))&duration=1h&step=5m",
@@ -397,7 +397,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100 * (sum by (hostname) (avg_over_time(system_filesystem_inodes_usage{ostype=~'linux|windows',device=~'.*',hostname=~'.*'}[5m])))&duration=1h&step=5m",
@@ -416,7 +416,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum(system_filesystem_usage_bytes{ostype=~'linux|windows',type='ext4'})/(1024*1024),0.01)",
@@ -437,7 +437,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -464,7 +464,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round((sum by (hostname) (system_linux_memory_available_bytes{ostype='linux', hostname=~'.*'}))/(1024*1024*1024),0.01)",
@@ -483,7 +483,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100*sum by (hostname) (1-system_memory_utilization_ratio{ostype='linux', hostname=~'.*',state='free'})&duration=1h&step=5m",
@@ -502,7 +502,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (process_runtime_jvm_memory_usage_bytes{type='heap',ostype=~'linux',hostname=~'.*'})&duration=1h&step=5m",
@@ -521,7 +521,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (process_runtime_jvm_memory_usage_bytes{type='non_heap', ostype=~'linux', hostname=~'.*'})&duration=1h&step=5m",
@@ -540,7 +540,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (memory_pool_used_g1_old_gen_heap{ostype=~'linux',hostname=~'.*'})&duration=1h&step=5m",
@@ -559,7 +559,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (memory_pool_used_g1_eden_space_heap{ostype=~'linux',hostname=~'.*'})&duration=1h&step=5m",
@@ -578,7 +578,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (memory_pool_used_g1_survivor_space_heap{ostype=~'linux',hostname=~'.*'})&duration=1h&step=5m",
@@ -597,7 +597,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -624,7 +624,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_io_bytes_total{ostype=~'linux',hostname=~'.*',direction='receive'}[5m])),0.01)&duration=1h&step=5m",
@@ -643,7 +643,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_connections{ostype=~'linux',hostname=~'.*',state='ESTABLISHED'}[15m])),0.01)&duration=1h&step=5m",
@@ -662,7 +662,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_dropped_total{ostype=~'linux',hostname=~'.*'}[15m])),0.01)&duration=1h&step=5m",
@@ -681,7 +681,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_packets_total{ostype=~'linux',hostname=~'.*'}[15m])),0.01)&duration=1h&step=5m",
@@ -700,7 +700,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_errors_total{ostype=~'linux',hostname=~'.*',direction='receive'}[5m])),0.01)&duration=1h&step=5m",
@@ -719,7 +719,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(sum by (hostname) (rate(system_network_errors_total{ostype=~'linux',hostname=~'.*',direction='transmit'}[5m])),0.01)&duration=1h&step=5m",
@@ -738,7 +738,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -764,7 +764,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (thread_count{hostname=~'.*',ostype=~'linux|windows'})&duration=1h&step=5m",
@@ -784,7 +784,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (process_runtime_jvm_threads_count{daemon='true',hostname=~'.*'})&duration=1h&step=5m",
@@ -804,7 +804,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (process_runtime_jvm_classes_current_loaded{hostname=~'.*',ostype=~'linux|windows'})&duration=1h&step=5m",
@@ -823,7 +823,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (open_fd_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -843,7 +843,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "100 * (heap_memory_usage_used{hostname=~'.*',ostype=~'linux|windows'})/(heap_memory_usage_max{hostname=~'.*',ostype=~'linux|windows'})&duration=1h&step=5m",
@@ -862,7 +862,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "round(100*increase(process_runtime_jvm_gc_duration_seconds_sum{ostype=~'linux',hostname=~'.*'} [5m])/300,0.01)&duration=1h&step=5m",
@@ -881,7 +881,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname,action) (process_runtime_jvm_gc_duration_seconds_count{hostname=~'.*'})",
@@ -900,7 +900,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname,action) (process_runtime_jvm_gc_duration_seconds_sum{hostname=~'.*'})",
@@ -919,7 +919,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -945,7 +945,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (memory_percent_usage{hostname=~'.*'})&duration=1h&step=5m",
@@ -964,7 +964,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (store_percent_usage{hostname=~'.*'})&duration=1h&step=5m",
@@ -983,7 +983,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (temp_percent_usage{hostname=~'.*'})&duration=1h&step=5m",
@@ -1002,7 +1002,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (average_execution_time{hostname=~'.*'})&duration=1h&step=5m",
@@ -1021,7 +1021,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (average_execution_queue_time{hostname=~'.*'})&duration=1h&step=5m",
@@ -1040,7 +1040,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "(queued_execution_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1059,7 +1059,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "(running_execution_Count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1078,7 +1078,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (pending_async_message_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1097,7 +1097,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (pending_sync_message_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1116,7 +1116,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (connect_failure_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1135,7 +1135,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (delivered_message_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1154,7 +1154,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (running_browsers_count{hostname=~'.*'})&duration=1h&step=5m",
@@ -1173,7 +1173,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (threads{ostype=~'.*'})&duration=1h&step=5m",
@@ -1192,7 +1192,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         },
         {
           "query": "sum by (hostname) (queue_size{hostname=~'.*'})&duration=1h&step=5m",
@@ -1211,7 +1211,7 @@
               "errorColumn": ""
             }
           },
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       ]
     },
@@ -1237,7 +1237,7 @@
         "hostname": {
           "query": "sum by (hostname) (sum by (hostname) (target_info{ostype=~'linux|windows'}))",
           "name": "hostname",
-          "data_source_name": "Apica Monitoring"
+          "data_source_name": "Ascent Metrics"
         }
       }
     ]

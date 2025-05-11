@@ -74,7 +74,7 @@ func convertToDataExplorer(inputFile string, outputFile string, dashboardTitle s
 				if panel.(map[string]interface{})["lines"] != nil && panel.(map[string]interface{})["lines"].(bool) {
 					query["chart_type"] = "line"
 				}
-				query["data_source_name"] = "Apica Monitoring" //
+				query["data_source_name"] = "Ascent Metrics" //
 
 				options := make(map[string]interface{})
 				query["options"] = options
