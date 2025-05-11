@@ -986,6 +986,7 @@
   ],
   "header": {
     "dateTimeRange": true,
+    "data_source_type": "apica_ascent_prometheus",
     "dropdowns": [
       {
         "host_name": {

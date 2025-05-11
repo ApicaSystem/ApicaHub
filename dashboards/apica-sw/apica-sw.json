@@ -1,6 +1,7 @@
 {
     "header": {
         "dateTimeRange": true,
+        "data_source_type": "pg",
         "dropdowns": []
     },
     "tabs": [

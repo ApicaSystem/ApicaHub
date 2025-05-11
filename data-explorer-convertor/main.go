@@ -44,6 +44,7 @@ func convertToDataExplorer(inputFile string, outputFile string, dashboardTitle s
 	header := make(map[string]interface{})
 	outputJson["header"] = header
 	header["dateTimeRange"] = true
+	header["data_source_type"] = "apica_ascent_prometheus"
 	header["dropdowns"] = []interface{}{}
 
 	tabs := []interface{}{}

@@ -2,6 +2,7 @@
     "header": {
         "dateTimeRange": true,
         "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
         "title": "Windows Monitoring"
     },
     "tabs": [
