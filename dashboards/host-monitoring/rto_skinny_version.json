@@ -1,4 +1,17 @@
 {
+  "header": {
+    "dateTimeRange": true,
+    "data_source_type": "apica_ascent_prometheus",
+    "dropdowns": [
+      {
+        "hostname": {
+          "query": "sum by (hostname) (sum by (hostname) (target_info{ostype=~'linux|windows'}))",
+          "name": "hostname",
+          "data_source_name": "Ascent Metrics"
+        }
+      }
+    ]
+  },
   "tabs": [
     {
       "key": "Overview",
@@ -1229,17 +1242,5 @@
       "namespace": "otlplogs",
       "app_name": "boomi"
     }
-  ],
-  "header": {
-    "dateTimeRange": true,
-    "dropdowns": [
-      {
-        "hostname": {
-          "query": "sum by (hostname) (sum by (hostname) (target_info{ostype=~'linux|windows'}))",
-          "name": "hostname",
-          "data_source_name": "Ascent Metrics"
-        }
-      }
-    ]
-  }
+  ]
 }
