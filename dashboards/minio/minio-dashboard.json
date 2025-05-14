@@ -1,0 +1,461 @@
+{
+  "header": {
+    "dateTimeRange": true,
+    "data_source_type": "apica_ascent_prometheus",
+    "dropdowns": []
+  },
+  "tabs": [
+    {
+      "key": "MinIO Overview",
+      "order": "1",
+      "title": "MinIO Overview",
+      "type": "metrics",
+      "queriesList": [
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Uptime",
+          "options": {
+            "description": "",
+            "order": 1,
+            "label": "Uptime"
+          },
+          "query": "time() - max(minio_node_process_starttime_seconds{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Total S3 Ingress",
+          "options": {
+            "description": "",
+            "order": 65,
+            "label": "Total S3 Ingress"
+          },
+          "query": "sum by (instance) (minio_s3_traffic_received_bytes{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Capacity",
+          "options": {
+            "description": "",
+            "order": 50,
+            "label": "Capacity"
+          },
+          "query": "topk(1, sum(minio_cluster_capacity_usable_total_bytes{job=~\"$scrape_jobs\"}) by (instance)) - topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=~\"$scrape_jobs\"}) by (instance))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Data Usage Growth",
+          "options": {
+            "description": "Data Usage Growth",
+            "order": 68,
+            "label": "Data Usage Growth"
+          },
+          "query": "max(minio_cluster_usage_total_bytes{job=~\"$scrape_jobs\"})",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Object Size Distribution",
+          "options": {
+            "description": "Object Size Distribution",
+            "order": 52,
+            "label": "Object Size Distribution"
+          },
+          "query": "minio_cluster_objects_size_distribution{job=~\"$scrape_jobs\"}",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Open FDs ",
+          "options": {
+            "description": "",
+            "order": 61,
+            "label": "Open FDs "
+          },
+          "query": "minio_node_file_descriptor_open_total{job=~\"$scrape_jobs\"}",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Total S3 Egress",
+          "options": {
+            "description": "",
+            "order": 64,
+            "label": "Total S3 Egress"
+          },
+          "query": "sum by (instance) (minio_s3_traffic_sent_bytes{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Goroutines",
+          "options": {
+            "description": "",
+            "order": 62,
+            "label": "Goroutines"
+          },
+          "query": "minio_node_go_routine_total{job=~\"$scrape_jobs\"}",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Cluster Health Status",
+          "options": {
+            "description": "Cluster Health Status",
+            "order": 94,
+            "label": "Cluster Health Status"
+          },
+          "query": "minio_cluster_health_status{job=~\"$scrape_jobs\"}",
+          "schema": ""
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Total Online/Offline Drives",
+          "options": {
+            "description": "",
+            "order": 78,
+            "label": "Total Online/Offline Drives"
+          },
+          "query": "max(minio_cluster_drive_online_total{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Number of Buckets",
+          "options": {
+            "description": "Number of Buckets",
+            "order": 66,
+            "label": "Number of Buckets"
+          },
+          "query": "max(minio_cluster_bucket_total{job=~\"$scrape_jobs\"})",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "S3 API Ingress Rate ",
+          "options": {
+            "description": "S3 API Ingress Rate ",
+            "order": 63,
+            "label": "S3 API Ingress Rate "
+          },
+          "query": "sum by (server) (rate(minio_s3_traffic_received_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "S3 API Egress Rate ",
+          "options": {
+            "description": "S3 API Egress Rate ",
+            "order": 70,
+            "label": "S3 API Egress Rate "
+          },
+          "query": "sum by (server) (rate(minio_s3_traffic_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Total Online Servers",
+          "options": {
+            "description": "",
+            "order": 53,
+            "label": "Total Online Servers"
+          },
+          "query": "max(minio_cluster_nodes_online_total{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Number of Objects",
+          "options": {
+            "description": "Number of Objects",
+            "order": 44,
+            "label": "Number of Objects"
+          },
+          "query": "max(minio_cluster_usage_object_total{job=~\"$scrape_jobs\"})",
+          "schema": ""
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Time Since Last Heal",
+          "options": {
+            "description": "",
+            "order": 80,
+            "label": "Time Since Last Heal"
+          },
+          "query": "max(minio_heal_time_last_activity_nano_seconds{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "Time Since Last Scan",
+          "options": {
+            "description": "",
+            "order": 81,
+            "label": "Time Since Last Scan"
+          },
+          "query": "max(minio_usage_last_activity_nano_seconds{job=~\"$scrape_jobs\"})",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "S3 API Request Rate",
+          "options": {
+            "description": "S3 API Request Rate",
+            "order": 60,
+            "label": "S3 API Request Rate"
+          },
+          "query": "sum by (server,api) (increase(minio_s3_requests_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "S3 API Request Error Rate (4xx)",
+          "options": {
+            "description": "S3 API Request Error Rate (4xx)",
+            "order": 88,
+            "label": "S3 API Request Error Rate (4xx)"
+          },
+          "query": "sum by (server,api) (increase(minio_s3_requests_4xx_errors_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "S3 API Request Error Rate (5xx)",
+          "options": {
+            "description": "S3 API Request Error Rate (5xx)",
+            "order": 86,
+            "label": "S3 API Request Error Rate (5xx)"
+          },
+          "query": "sum by (server,api) (increase(minio_s3_requests_5xx_errors_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Health Breakdown",
+          "options": {
+            "description": "Health Breakdown",
+            "order": 99,
+            "label": "Health Breakdown"
+          },
+          "query": "minio_cluster_health_erasure_set_online_drives{job=~\"$scrape_jobs\"}",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Memory Usage ",
+          "options": {
+            "description": "Memory Usage ",
+            "order": 76,
+            "label": "Memory Usage "
+          },
+          "query": "minio_node_process_resident_memory_bytes{job=~\"$scrape_jobs\"}",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Read, Write I/O",
+          "options": {
+            "description": "Read, Write I/O",
+            "order": 73,
+            "label": "Read, Write I/O"
+          },
+          "query": "rate(minio_node_io_rchar_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "CPU Usage",
+          "options": {
+            "description": "CPU Usage",
+            "order": 77,
+            "label": "CPU Usage"
+          },
+          "query": "rate(minio_node_process_cpu_total_seconds{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Internode Traffic",
+          "options": {
+            "description": "Total number of bytes received and sent on MinIO cluster",
+            "order": 17,
+            "label": "Internode Traffic"
+          },
+          "query": "rate(minio_inter_node_traffic_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": "minio_http_requests_duration_seconds_count"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "File Descriptors",
+          "options": {
+            "description": "",
+            "order": 8,
+            "label": "File Descriptors"
+          },
+          "query": "minio_node_file_descriptor_open_total{job=~\"$scrape_jobs\"}",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Syscalls",
+          "options": {
+            "description": "Number of online drives per MinIO Server",
+            "order": 11,
+            "label": "Syscalls"
+          },
+          "query": "rate(minio_node_syscall_read_total{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": "process_start_time_seconds"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Scanned Objects",
+          "options": {
+            "description": "Scanned Objects",
+            "order": 95,
+            "label": "Scanned Objects"
+          },
+          "query": "rate(minio_node_scanner_objects_scanned{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Scanned Versions",
+          "options": {
+            "description": "Scanned Versions",
+            "order": 75,
+            "label": "Scanned Versions"
+          },
+          "query": "rate(minio_node_scanner_versions_scanned{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Scanned Directories",
+          "options": {
+            "description": "Scanned Directories",
+            "order": 96,
+            "label": "Scanned Directories"
+          },
+          "query": "rate(minio_node_scanner_directories_scanned{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "name": "KMS Uptime",
+          "options": {
+            "description": "",
+            "order": 89,
+            "label": "KMS Uptime"
+          },
+          "query": "minio_cluster_kms_uptime{job=~\"$scrape_jobs\"}",
+          "schema": "minio_cluster_kms_uptime"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "KMS Request 4xx Error Rate",
+          "options": {
+            "description": "KMS Request 4xx Error Rate",
+            "order": 91,
+            "label": "KMS Request 4xx Error Rate"
+          },
+          "query": "sum by (server) (increase(minio_cluster_kms_request_error{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "KMS Online(1)/Offline(0)",
+          "options": {
+            "description": "KMS Online(1)/Offline(0)",
+            "order": 90,
+            "label": "KMS Online(1)/Offline(0)"
+          },
+          "query": "sum by (server) (minio_cluster_kms_online{job=~\"$scrape_jobs\"})",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Bucket Scans Finished",
+          "options": {
+            "description": "Bucket Scans Finished",
+            "order": 98,
+            "label": "Bucket Scans Finished"
+          },
+          "query": "rate(minio_node_scanner_bucket_scans_finished{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "KMS Request 5xx Error Rate",
+          "options": {
+            "description": "KMS Request 5xx Error Rate",
+            "order": 92,
+            "label": "KMS Request 5xx Error Rate"
+          },
+          "query": "sum by (server) (increase(minio_cluster_kms_request_failure{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "KMS Request Success Rate ",
+          "options": {
+            "description": "KMS Request Success Rate ",
+            "order": 93,
+            "label": "KMS Request Success Rate "
+          },
+          "query": "sum by (server) (rate(minio_cluster_kms_request_success{job=~\"$scrape_jobs\"}[$__rate_interval]))",
+          "schema": ""
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Bucket Scans Started",
+          "options": {
+            "description": "Bucket Scans Started",
+            "order": 97,
+            "label": "Bucket Scans Started"
+          },
+          "query": "rate(minio_node_scanner_bucket_scans_started{job=~\"$scrape_jobs\"}[$__rate_interval])",
+          "schema": ""
+        }
+      ]
+    }
+  ]
+}
