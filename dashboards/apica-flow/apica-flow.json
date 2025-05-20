@@ -154,11 +154,11 @@
           {
             "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
-            "name": "Total Events Count Ingested",
+            "name": "Total Event Ingested",
             "options": {
-              "description": "Ingested Pipeline events Ingested",
+              "description": "Ingested Pipeline events",
               "order": 6,
-              "label": "Ingested Pipeline events Ingested"
+              "label": "Events"
             },
             "query": "sum(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
             "schema": "apica_pipeline_events_in"
@@ -166,11 +166,11 @@
           {
             "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
-            "name": "Total Events Count Output",
+            "name": "Total Events Output",
             "options": {
               "description": "Ingested Pipeline events Output",
               "order": 7,
-              "label": "Ingested Pipeline events Output"
+              "label": "Events"
             },
             "query": "sum(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) or vector(0)",
             "schema": "apica_pipeline_events_out"
