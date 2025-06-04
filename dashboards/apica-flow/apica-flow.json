@@ -39,13 +39,13 @@
           {
             "chart_type": "counter",
             "data_source_name": "Ascent Metrics",
-            "name": "Current Active Pipelines",
+            "name": "Global Active Pipelines",
             "options": {
-              "label": "Current Active Pipelines",
+              "label": "Global Active Pipelines",
               "description": "Number of current active pipelines",
               "order": 1
             },
-            "query": "sum(group by(pipelineName, pipelineId)(apica_ingest_pipeline_status{exported_namespace=~'.*'}>0))",
+            "query": "sum(group by(pipelineName, pipelineId)(apica_ingest_pipeline_status>0))",
             "alert": {
               "active": "True",
               "name": "Number of current active pipelines",
