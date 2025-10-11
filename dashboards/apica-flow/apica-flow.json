@@ -42,13 +42,13 @@
             "name": "Global Active Pipelines",
             "options": {
               "label": "Global Active Pipelines",
-              "description": "Number of current active pipelines",
+              "description": "Number of global active pipelines",
               "order": 1
             },
             "query": "sum(group by(pipelineName, pipelineId)(apica_ingest_pipeline_status>0))",
             "alert": {
               "active": "True",
-              "name": "Number of current active pipelines",
+              "name": "Number of global active pipelines",
               "options": {
                 "alertType": "simple alert",
                 "anomalySwitch": false,
