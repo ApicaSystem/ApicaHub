@@ -1,30 +1,28 @@
 {
   "header": {
     "dateTimeRange": true,
-    "data_source_type": "",
+    "data_source_type": "apica_ascent_prometheus",
     "dropdowns": []
   },
   "tabs": [
     {
-      "key": "Token Usage",
+      "key": "Token Usage [1h]",
       "type": "metrics",
       "queriesList": [
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_completion_tokens_total)&duration=1.000h",
-          "schema": "",
+          "query": "round(sum(increase(llm_completion_tokens_total[1h])))",
+          "schema": "llm_completion_tokens_total",
           "options": {
             "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
+              "x": "",
+              "y": [""],
               "groupBy": "",
-              "xLabel": "timestamp",
+              "xLabel": "",
               "yLabel": "",
               "label": "Completion Tokens",
-              "datatype": "bytes",
+              "datatype": "tokens",
               "stats": [
                 "Count",
                 "Max",
@@ -84,21 +82,18 @@
         },
         {
           "chart_type": "counter",
+          "name": "Total Requests",
           "data_source_name": "Ascent Metrics",
-          "query": " sum(llm_response_time_ms_count)",
-          "schema": "",
+          "query": "sum(llm_response_time_ms_count)",
+          "schema": "llm_response_time_ms_count",
           "options": {
             "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": [
-                "model_name"
-              ],
-              "xLabel": "timestamp",
+              "x": "",
+              "y": [""],
+              "groupBy": [""],
+              "xLabel": "",
               "yLabel": "",
-              "label": "LLM Requests",
+              "label": "Total LLM Requests",
               "datatype": "bytes",
               "stats": [
                 "Count",
@@ -127,7 +122,6 @@
               "pievalue": ""
             }
           },
-          "name": "Total Requests",
           "position": {
             "w": 2,
             "h": 5,
@@ -160,21 +154,18 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "round((sum(llm_response_time_ms_sum) / sum(llm_response_time_ms_count) / 1000) * 10) / 10&duration=1.000h",
+          "name": "Average Request Duration (sec)",
+          "query": "round(((sum(increase(llm_response_time_ms_sum[1h])) / sum(increase(llm_response_time_ms_count[1h]))) / 1000) * 10) / 10",
           "schema": "",
           "options": {
             "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": [
-                "model_name"
-              ],
-              "xLabel": "timestamp",
+              "x": "",
+              "y": [""],
+              "groupBy": [""],
+              "xLabel": "",
               "yLabel": "",
               "label": "Avg Request Time (sec)",
-              "datatype": "bytes",
+              "datatype": "",
               "stats": [
                 "Count",
                 "Max",
@@ -202,7 +193,6 @@
               "pievalue": ""
             }
           },
-          "name": "Request Duration",
           "position": {
             "w": 2,
             "h": 7,
@@ -235,16 +225,17 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_prompt_tokens_total)&duration=1.000h",
+          "name": "Prompt Tokens",
+          "query": "round(sum(increase(llm_prompt_tokens_total[1h])))",
           "schema": "",
           "options": {
             "plot": {
-              "x": "timestamp",
+              "x": "",
               "y": [
-                "value"
+                ""
               ],
               "groupBy": "",
-              "xLabel": "timestamp",
+              "xLabel": "",
               "yLabel": "",
               "label": "Prompt Tokens",
               "datatype": "number",
@@ -275,7 +266,6 @@
               "pievalue": ""
             }
           },
-          "name": "Prompt Tokens",
           "position": {
             "w": 2,
             "h": 6,
@@ -308,18 +298,19 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total) / sum(llm_response_time_ms_sum) * 1000&duration=1.000h&step=5m",
+          "name": "Token Throughput",
+          "query": "sum(rate(llm_tokens_total[5m])) / (sum(rate(llm_response_time_ms_sum[5m]))/1000)",
           "schema": "",
           "options": {
             "plot": {
-              "x": "timestamp",
+              "x": "",
               "y": [
-                "value"
+                ""
               ],
               "groupBy": "",
-              "xLabel": "timestamp",
+              "xLabel": "",
               "yLabel": "",
-              "label": "Throughput (tokens/sec)",
+              "label": "Token Throughput (tokens/sec)",
               "datatype": "bytes",
               "stats": [
                 "Count",
@@ -348,7 +339,6 @@
               "pievalue": ""
             }
           },
-          "name": "Token Throughput",
           "position": {
             "w": 2,
             "h": 5,
@@ -379,91 +369,19 @@
           }
         },
         {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total) * .001",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "USD ($)",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "Total Cost",
-          "position": {
-            "w": 2,
-            "h": 5,
-            "x": 4,
-            "y": 0,
-            "i": "896",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
           "chart_type": "pie",
           "data_source_name": "Ascent Metrics",
-          "query": "llm_tokens_total&duration=1.000h",
+          "name": "Token Usage Per Model",
+          "query": "round(sum by(model_name) (increase(llm_tokens_total[1h])),0.01)",
           "schema": "",
           "options": {
             "plot": {
-              "x": "timestamp",
+              "x": "",
               "y": [
                 "value"
               ],
               "groupBy": "",
-              "xLabel": "timestamp",
+              "xLabel": "",
               "yLabel": "",
               "label": "",
               "datatype": "bytes",
@@ -494,7 +412,6 @@
               "pievalue": "value"
             }
           },
-          "name": "Token Usage Per Model",
           "position": {
             "w": 6,
             "h": 7,
@@ -527,16 +444,17 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total)&duration=1.000h",
+          "name": "Total Tokens",
+          "query": "sum(increase(llm_tokens_total[1h]))",
           "schema": "",
           "options": {
             "plot": {
-              "x": "timestamp",
+              "x": "",
               "y": [
                 "value"
               ],
               "groupBy": "",
-              "xLabel": "timestamp",
+              "xLabel": "",
               "yLabel": "",
               "label": "Total Token Consumption",
               "datatype": "bytes",
@@ -567,7 +485,6 @@
               "pievalue": ""
             }
           },
-          "name": "Total Tokens",
           "position": {
             "w": 4,
             "h": 5,
@@ -600,7 +517,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum by (model_name) (rate(llm_tokens_total[60m])) * 60&duration=1.000h&step=5m",
+          "name": "Tokens Per Model / Minute",
+          "query": "(sum by (model_name)(rate(llm_tokens_total[5m])) * 60)&duration=1.000h&step=5m",
           "schema": "",
           "options": {
             "plot": {
@@ -642,7 +560,6 @@
               "pievalue": ""
             }
           },
-          "name": "Tokens Per Model / Minute",
           "position": {
             "w": 4,
             "h": 13,
@@ -650,225 +567,6 @@
             "y": 5,
             "i": "897",
             "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total) * .00015",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "OpenAI Cost ($)",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "OpenAI",
-          "position": {
-            "w": 2,
-            "h": 6,
-            "x": 4,
-            "y": 5,
-            "i": "1063",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total) * .00055",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "Mistral Cost ($)",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "Mistral",
-          "position": {
-            "w": 2,
-            "h": 6,
-            "x": 6,
-            "y": 5,
-            "i": "1064",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total) * .0003",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "Azure Cost ($)",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "Azure AI",
-          "position": {
-            "w": 2,
-            "h": 5,
-            "x": 6,
-            "y": 0,
-            "i": "1065",
-            "minW": 1,
             "maxW": 12,
             "minH": 4,
             "maxH": 1000,
@@ -900,7 +598,8 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_guardrail_count_total) /  sum(llm_response_time_ms_count) * 100&duration=1.000h",
+          "name": "Guardrail Execution",
+          "query": "sum(llm_guardrail_count_total) / sum(llm_response_time_ms_count) * 100&duration=1.000h",
           "schema": "",
           "options": {
             "plot": {
@@ -940,7 +639,6 @@
               "pievalue": ""
             }
           },
-          "name": "Guardrail Execution",
           "position": {
             "w": 2,
             "h": 6,
@@ -1784,7 +1482,7 @@
         {
           "chart_type": "pie",
           "data_source_name": "Ascent Metrics",
-          "query": " sum by(model_name) (llm_response_time_ms_count)",
+          "query": "sum by(model_name) (increase(llm_response_time_ms_count[1h]))",
           "schema": "",
           "options": {
             "plot": {
@@ -1932,7 +1630,7 @@
         {
           "chart_type": "gauge",
           "data_source_name": "Ascent Metrics",
-          "query": "system_cpu_utilization_ratio",
+          "query": "avg(system_cpu_utilization_ratio)",
           "schema": "",
           "options": {
             "plot": {
@@ -1975,7 +1673,7 @@
               "pievalue": ""
             }
           },
-          "name": "GPU Utilization",
+          "name": "CPU Utilization",
           "position": {
             "w": 2,
             "h": 6,
@@ -2008,7 +1706,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_tokens_total)&duration=1.000h",
+          "query": "sum(increase(llm_tokens_total[1h]))",
           "schema": "",
           "options": {
             "plot": {
@@ -2154,7 +1852,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": " sum(llm_guardrail_count_total)&duration=1.000h",
+          "query": "sum(increase(llm_guardrail_count_total[1h]))",
           "schema": "",
           "options": {
             "plot": {
@@ -2227,80 +1925,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(llm_denied_pii_total)&duration=1.000h",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "Errors",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "LLM Errors",
-          "position": {
-            "w": 2,
-            "h": 7,
-            "x": 10,
-            "y": 0,
-            "i": "958",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "round((sum(llm_response_time_ms_sum) / sum(llm_response_time_ms_count) / 1000) * 10) / 10&duration=1.000h",
+          "query": "round(((sum(increase(llm_response_time_ms_sum[1h])) / clamp_min(sum(increase(llm_response_time_ms_count[1h])),1))/1000)*10)/10",
           "schema": "",
           "options": {
             "plot": {
@@ -2347,152 +1972,6 @@
             "x": 4,
             "y": 12,
             "i": "959",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "(sum(llm_denied_topics_total) / sum(llm_response_time_ms_count)) * 30&duration=1.000h",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "% Hallucination",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "Hallucinations",
-          "position": {
-            "w": 2,
-            "h": 5,
-            "x": 4,
-            "y": 7,
-            "i": "973",
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "baseliningOptions": {
-            "timeColumn": "timestamp",
-            "valueColumn": "value",
-            "operations": [],
-            "windowSize": 12,
-            "stdFraction": 1,
-            "errorPercentage": 50,
-            "mawindow": 384,
-            "forecastDays": 1,
-            "forecastHours": 5,
-            "weekComparision": false,
-            "weekComparisionTime": 24,
-            "weekComparisionPercentage": 20,
-            "anomaly_group_by": []
-          }
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "(sum(llm_denied_topics_total) / sum(llm_response_time_ms_count))*1125&duration=1.000h",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ],
-              "groupBy": "",
-              "xLabel": "timestamp",
-              "yLabel": "",
-              "label": "% Relevance",
-              "datatype": "bytes",
-              "stats": [
-                "Count",
-                "Max",
-                "Avg"
-              ],
-              "legendVisibility": true,
-              "smooth": false,
-              "statusConfig": {
-                "enable": false,
-                "column": "value",
-                "conditions": [
-                  {
-                    "condition": "",
-                    "threshold": "",
-                    "text": "",
-                    "color": "green"
-                  }
-                ]
-              },
-              "colorSetting": {
-                "enable": false,
-                "data": []
-              },
-              "pielabel": "",
-              "pievalue": ""
-            }
-          },
-          "name": "Denied Topics",
-          "position": {
-            "w": 2,
-            "h": 5,
-            "x": 6,
-            "y": 7,
-            "i": "975",
             "minW": 1,
             "maxW": 12,
             "minH": 4,
