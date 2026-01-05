@@ -8,7 +8,7 @@
     {
       "key": "Token Usage [1h]",
       "type": "metrics",
-      "order": "1",
+      "order": 1,
       "queriesList": [
         {
           "chart_type": "counter",
@@ -605,7 +605,7 @@
     {
       "key": "Trust & Security",
       "type": "metrics",
-      "order": "2",
+      "order": 2,
       "queriesList": [
         {
           "chart_type": "counter",
@@ -1490,7 +1490,7 @@
     {
       "key": "AI Performance",
       "type": "metrics",
-      "order": "3",
+      "order": 3,
       "queriesList": [
         {
           "chart_type": "pie",
