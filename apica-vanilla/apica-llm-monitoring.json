@@ -51,7 +51,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 1
           },
           "name": "Completion Tokens",
           "position": {
@@ -127,7 +128,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 2
           },
           "position": {
             "w": 2,
@@ -202,7 +204,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 3
           },
           "position": {
             "w": 2,
@@ -275,7 +278,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 4
           },
           "position": {
             "w": 2,
@@ -348,7 +352,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 5
           },
           "position": {
             "w": 2,
@@ -421,7 +426,8 @@
               },
               "pielabel": "model_name",
               "pievalue": "value"
-            }
+            },
+            "order": 6
           },
           "position": {
             "w": 6,
@@ -494,7 +500,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 7
           },
           "position": {
             "w": 4,
@@ -569,7 +576,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 8
           },
           "position": {
             "w": 4,
@@ -649,7 +657,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 1
           },
           "position": {
             "w": 2,
@@ -721,7 +730,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 2
           },
           "name": "Toxic Prompts",
           "position": {
@@ -794,7 +804,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 3
           },
           "name": "PII Leaks",
           "position": {
@@ -867,7 +878,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 4
           },
           "name": "Denied Topics",
           "position": {
@@ -940,7 +952,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 5
           },
           "name": "Total Guardrail Executions",
           "position": {
@@ -1013,7 +1026,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 6
           },
           "name": "Blocked Topics",
           "position": {
@@ -1086,7 +1100,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 7
           },
           "name": "Blocked PII Leaks",
           "position": {
@@ -1159,7 +1174,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 8
           },
           "name": "Total LLM Requests",
           "position": {
@@ -1232,7 +1248,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 9
           },
           "name": "Blocked Prompts",
           "position": {
@@ -1307,7 +1324,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 10
           },
           "name": "Guardrail Requests Per Minute",
           "position": {
@@ -1380,7 +1398,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 11
           },
           "name": "Avg LLM Response Time",
           "position": {
@@ -1453,7 +1472,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 12
           },
           "name": "Total Guardrail Errors",
           "position": {
@@ -1535,7 +1555,8 @@
               },
               "pielabel": "model_name",
               "pievalue": "value"
-            }
+            },
+            "order": 1
           },
           "name": "Requests Per Model",
           "position": {
@@ -1608,7 +1629,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 2
           },
           "name": "Total LLM Requests",
           "position": {
@@ -1684,7 +1706,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 3
           },
           "name": "CPU Utilization",
           "position": {
@@ -1757,7 +1780,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 4
           },
           "name": "Total Token Usage",
           "position": {
@@ -1830,7 +1854,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 5
           },
           "name": "Guardrail Execution",
           "position": {
@@ -1903,7 +1928,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 6
           },
           "name": "Total Guardrail Execution",
           "position": {
@@ -1976,7 +2002,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 7
           },
           "name": "LLM Avg Response Time",
           "position": {
@@ -2051,7 +2078,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 8
           },
           "name": "Avg Response Time Per Model",
           "position": {
@@ -2124,7 +2152,8 @@
               },
               "pielabel": "",
               "pievalue": ""
-            }
+            },
+            "order": 9
           },
           "name": "Local Disk Space",
           "position": {
