@@ -81,8 +81,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "1"
+          }
         },
         {
           "chart_type": "counter",
@@ -157,8 +156,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "2"
+          }
         },
         {
           "chart_type": "counter",
@@ -233,8 +231,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "3"
+          }
         },
         {
           "chart_type": "counter",
@@ -307,8 +304,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "4"
+          }
         },
         {
           "chart_type": "counter",
@@ -381,8 +377,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "5"
+          }
         },
         {
           "chart_type": "pie",
@@ -455,8 +450,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "6"
+          }
         },
         {
           "chart_type": "counter",
@@ -529,8 +523,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "7"
+          }
         },
         {
           "chart_type": "line",
@@ -605,8 +598,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "8"
+          }
         }
       ]
     },
@@ -686,8 +678,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "1"
+          }
         },
         {
           "chart_type": "counter",
@@ -760,8 +751,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "2"
+          }
         },
         {
           "chart_type": "counter",
@@ -834,8 +824,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "3"
+          }
         },
         {
           "chart_type": "counter",
@@ -908,8 +897,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "4"
+          }
         },
         {
           "chart_type": "counter",
@@ -982,8 +970,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "5"
+          }
         },
         {
           "chart_type": "counter",
@@ -1056,8 +1043,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "6"
+          }
         },
         {
           "chart_type": "counter",
@@ -1130,8 +1116,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "7"
+          }
         },
         {
           "chart_type": "counter",
@@ -1204,8 +1189,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "8"
+          }
         },
         {
           "chart_type": "counter",
@@ -1278,8 +1262,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "9"
+          }
         },
         {
           "chart_type": "line",
@@ -1354,8 +1337,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "10"
+          }
         },
         {
           "chart_type": "counter",
@@ -1428,8 +1410,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "11"
+          }
         },
         {
           "chart_type": "counter",
@@ -1502,8 +1483,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "12"
+          }
         }
       ]
     },
@@ -1585,8 +1565,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "1"
+          }
         },
         {
           "chart_type": "counter",
@@ -1659,8 +1638,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "2"
+          }
         },
         {
           "chart_type": "gauge",
@@ -1736,8 +1714,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "3"
+          }
         },
         {
           "chart_type": "counter",
@@ -1810,8 +1787,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "4"
+          }
         },
         {
           "chart_type": "counter",
@@ -1884,8 +1860,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "5"
+          }
         },
         {
           "chart_type": "counter",
@@ -1958,8 +1933,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "6"
+          }
         },
         {
           "chart_type": "counter",
@@ -2032,8 +2006,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "7"
+          }
         },
         {
           "chart_type": "line",
@@ -2108,8 +2081,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "8"
+          }
         },
         {
           "chart_type": "gauge",
@@ -2182,8 +2154,7 @@
             "weekComparisionTime": 24,
             "weekComparisionPercentage": 20,
             "anomaly_group_by": []
-          },
-          "order": "9"
+          }
         }
       ]
     }
