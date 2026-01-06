@@ -87,12 +87,12 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "x": "durationhr",
+                            "xLabel": "Duration (hr)",
                             "y": [
-                                "value"
+                                "count"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "count"
                         },
                         "upperLimit": ""
                     },
