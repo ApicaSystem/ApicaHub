@@ -74,7 +74,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*) from queryhistory",
+                    "query": "select count(*) as value from queryhistory",
                     "schema": "queryHist"
                 },
                 {
