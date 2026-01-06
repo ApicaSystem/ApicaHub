@@ -29,7 +29,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*), createdby from queryhistory where createdby != '' and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by createdby order by count desc",
+                    "query": "select count(*), createdby from queryhistory where createdby != '' and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by createdby order by count desc",
                     "schema": "queryyHistoey"
                 },
                 {
@@ -51,7 +51,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select * from queryhistory where to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY'",
+                    "query": "select * from queryhistory where to_timestamp(createdat) > NOW() - INTERVAL '15 DAY'",
                     "schema": "queryyHistoey"
                 },
                 {
@@ -96,7 +96,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),durationsec/60 as durationmin, durationsec/3600 as durationhr from queryhistory where requesttype in (2,4) and durationsec \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by durationsec",
+                    "query": "select count(*),durationsec/60 as durationmin, durationsec/3600 as durationhr from queryhistory where requesttype in (2,4) and durationsec > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by durationsec",
                     "schema": "queryHist"
                 },
                 {
@@ -118,7 +118,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),timetofirst from queryhistory where timetofirst \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by timetofirst",
+                    "query": "select count(*),timetofirst from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by timetofirst",
                     "schema": "queryHist"
                 },
                 {
@@ -140,7 +140,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),count(*),timetofirst,requesttype from queryhistory where timetofirst \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '30 DAY' group by timetofirst,requesttype",
+                    "query": "select count(*),count(*),timetofirst,requesttype from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '30 DAY' group by timetofirst,requesttype",
                     "schema": "queryHist"
                 }
             ],

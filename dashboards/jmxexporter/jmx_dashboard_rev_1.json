@@ -429,7 +429,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "jvm_memory_bytes_used{} / (jvm_memory_bytes_max{ job=\"{{job}}\",instance=\"{{app}}\"} \u003e=0) *100&duration=1h&step=5m",
+                    "query": "jvm_memory_bytes_used{} / (jvm_memory_bytes_max{ job=\"{{job}}\",instance=\"{{app}}\"} >=0) *100&duration=1h&step=5m",
                     "schema": "jvm_memory_bytes_used"
                 },
                 {

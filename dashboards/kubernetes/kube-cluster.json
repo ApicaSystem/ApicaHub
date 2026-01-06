@@ -97,7 +97,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by (container,namespace) (kube_pod_container_status_restarts_total) \u003e 0",
+                    "query": "sum by (container,namespace) (kube_pod_container_status_restarts_total) > 0",
                     "schema": "kube_pod_container_status_restarts_total"
                 },
                 {

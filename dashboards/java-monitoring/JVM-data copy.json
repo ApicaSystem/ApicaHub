@@ -265,7 +265,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "jvm_memory_bytes_used{area=\"$memarea\",job=~'.*',instance=~'.*'} / jvm_memory_bytes_max \u003e= 0&duration=1h&step=5m",
+                    "query": "jvm_memory_bytes_used{area=\"$memarea\",job=~'.*',instance=~'.*'} / jvm_memory_bytes_max >= 0&duration=1h&step=5m",
                     "schema": ""
                 },
                 {

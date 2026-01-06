@@ -183,7 +183,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(topk(5, rate(mysql_global_status_commands_total[1h])\u003e0),0.01)&duration=6h&step=30m",
+                    "query": "round(topk(5, rate(mysql_global_status_commands_total[1h])>0),0.01)&duration=6h&step=30m",
                     "schema": "mysql_global_status_commands_total"
                 },
                 {
@@ -271,7 +271,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(topk(5, rate(mysql_global_status_commands_total[5m])\u003e0),0.01)",
+                    "query": "round(topk(5, rate(mysql_global_status_commands_total[5m])>0),0.01)",
                     "schema": "mysql_global_status_commands_total"
                 },
                 {

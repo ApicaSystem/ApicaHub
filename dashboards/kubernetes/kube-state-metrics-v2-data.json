@@ -595,7 +595,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "changes(kube_pod_container_status_restarts_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[30m])\u003e1&duration=1h&step=5m",
+                    "query": "changes(kube_pod_container_status_restarts_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[30m])>1&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_restarts_total"
                 },
                 {
@@ -931,7 +931,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(time()-kube_job_status_completion_time{customer=~'.*',hostname=~'.*',runtime=~'.*'})/60/60/24\u003e1&duration=1h&step=5m",
+                    "query": "(time()-kube_job_status_completion_time{customer=~'.*',hostname=~'.*',runtime=~'.*'})/60/60/24>1&duration=1h&step=5m",
                     "schema": "kube_job_status_completion_time"
                 },
                 {
