@@ -2,21 +2,7 @@
   "header": {
     "dateTimeRange": true,
     "data_source_type": "apica_ascent_prometheus",
-    "title": "SLO - Testing Dashboard",
-    "dropdowns": [
-      {
-        "name": "window",
-        "label": "SLO Window",
-        "default": "5m",
-        "options": [
-          { "label": "5 Minutes", "value": "5m" },
-          { "label": "30 Minutes", "value": "30m" },
-          { "label": "1 Hour", "value": "1h" },
-          { "label": "6 Hours", "value": "6h" },
-          { "label": "1 Day", "value": "1d" }
-        ]
-      }
-    ]
+    "title": "SLO - Testing Dashboard"
   },
   "tabs": [
     {
