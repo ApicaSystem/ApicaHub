@@ -1,0 +1,151 @@
+{
+  "header": {
+    "dateTimeRange": true,
+    "data_source_type": "apica_ascent_prometheus",
+    "title": "SLO - {{ slo_name }}",
+    "dropdowns": [
+      {
+        "name": "window",
+        "label": "SLO Window",
+        "default": "5m",
+        "options": [
+          { "label": "5 Minutes", "value": "5m" },
+          { "label": "30 Minutes", "value": "30m" },
+          { "label": "1 Hour", "value": "1h" },
+          { "label": "6 Hours", "value": "6h" },
+          { "label": "1 Day", "value": "1d" }
+        ]
+      }
+    ]
+  },
+  "tabs": [
+    {
+      "key": "SLO Overview",
+      "order": "1",
+      "title": "SLO Overview",
+      "type": "metrics",
+      "queriesList": [
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Total Events",
+          "options": {
+            "description": "Total SLI events",
+            "order": 1,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Total Events"
+            }
+          },
+          "query": "sum(slo:total_event_rate:5m[5m])&duration=28d&step=5m",
+          "schema": "slo:total_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Successful Events",
+          "options": {
+            "description": "Successful SLI events",
+            "order": 2,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Successful Events"
+            }
+          },
+          "query": "sum(slo:good_event_rate:5m[5m])&duration=28d&step=5m",
+          "schema": "slo:good_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Error Events",
+          "options": {
+            "description": "Error SLI events",
+            "order": 3,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Error Events"
+            }
+          },
+          "query": "(sum(slo:total_event_rate:5m[5m]) - sum(slo:good_event_rate:5m[5m]))&duration=28d&step=5m",
+          "schema": "slo:total_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "SLI Success Rate",
+          "options": {
+            "description": "SLI success ratio",
+            "order": 4,
+            "upperLimit": "1",
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Success Rate"
+            }
+          },
+          "query": "(sum(slo:good_event_rate:5m[5m]) / sum(slo:total_event_rate:5m[5m]))&duration=28d&step=5m",
+          "schema": "slo:good_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Error Budget Burn Rate",
+          "options": {
+            "description": "Error budget burn rate",
+            "order": 5,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Burn Rate"
+            }
+          },
+          "query": "((sum(slo:total_event_rate:5m[5m]) - sum(slo:good_event_rate:5m[5m])) / sum(slo:total_event_rate:5m[5m]))&duration=28d&step=5m",
+          "schema": "slo:total_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Error Budget Remaining",
+          "options": {
+            "description": "Remaining error budget",
+            "order": 6,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Remaining Budget"
+            }
+          },
+          "query": "1 - ((sum(slo:total_event_rate:5m[5m]) - sum(slo:good_event_rate:5m[5m])) / sum(slo:total_event_rate:5m[5m]))&duration=28d&step=5m",
+          "schema": "slo:total_event_rate:5m"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "name": "Traffic Volume",
+          "options": {
+            "description": "SLI traffic volume",
+            "order": 7,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": ["value"],
+              "yLabel": "Requests/sec"
+            }
+          },
+          "query": "sum(slo:total_event_rate:5m[5m])&duration=28d&step=5m",
+          "schema": "slo:total_event_rate:5m"
+        }
+      ]
+    }
+  ]
+}
