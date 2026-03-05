@@ -11,13 +11,100 @@
       "type": "metrics",
       "queriesList": [
         {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "(sum({{ good_metric }})  /  sum({{ total_metric }})) * 100",
+          "schema": "",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 1
+          },
+          "name": "SLO Health",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 30,
+            "i": "24906",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          }
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "((sum({{ total_metric }}) - sum({{ good_metric }})) / sum({{ total_metric }})) * 100",
+          "schema": "",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 2
+          },
+          "name": "Error Rate (%)",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 6,
+            "y": 10,
+            "i": "24907",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          }
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "(((sum({{ total_metric }}) - sum({{ good_metric }})) / sum({{ total_metric }})) / (1 - 0.999)) * 100",
+          "schema": "",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 3
+          },
+          "name": "Error Budget Burn (%)",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 20,
+            "i": "24908",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          }
+        },
+        {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(slo:total_event_rate:5m)&duration=1.000h&step=5m",
-          "schema": "slo:total_event_rate:5m",
+          "query": "sum({{ total_metric }})&duration=1.000h&step=5m",
+          "schema": "{{ total_metric }}",
           "options": {
             "description": "Total SLI events",
-            "order": 1,
+            "order": 4,
             "plot": {
               "x": "timestamp",
               "xLabel": "Timestamp",
@@ -32,11 +119,11 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(slo:good_event_rate:5m)&duration=1.000h&step=5m",
-          "schema": "slo:good_event_rate:5m",
+          "query": "sum({{ good_metric }})&duration=1.000h&step=5m",
+          "schema": "{{ good_metric }}",
           "options": {
             "description": "Successful SLI events",
-            "order": 2,
+            "order": 5,
             "plot": {
               "x": "timestamp",
               "xLabel": "Timestamp",
@@ -51,11 +138,11 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:total_event_rate:5m) - sum(slo:good_event_rate:5m))&duration=1.000h&step=5m",
-          "schema": "slo:total_event_rate:5m",
+          "query": "(sum({{ total_metric }}) - sum({{ good_metric }}))&duration=1.000h&step=5m",
+          "schema": "{{ total_metric }}",
           "options": {
             "description": "Error SLI events",
-            "order": 3,
+            "order": 6,
             "plot": {
               "x": "timestamp",
               "xLabel": "Timestamp",
@@ -70,11 +157,11 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:good_event_rate:5m) / sum(slo:total_event_rate:5m))&duration=1.000h&step=5m",
-          "schema": "slo:good_event_rate:5m",
+          "query": "(sum({{ good_metric }})  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
+          "schema": "{{ good_metric }}",
           "options": {
             "description": "SLI success ratio",
-            "order": 4,
+            "order": 7,
             "upperLimit": "1",
             "plot": {
               "x": "timestamp",
@@ -90,11 +177,11 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "((sum(slo:total_event_rate:5m) - sum(slo:good_event_rate:5m)) / sum(slo:total_event_rate:5m))&duration=1.000h&step=5m",
-          "schema": "slo:total_event_rate:5m",
+          "query": "((sum({{ total_metric }}) - sum({{ good_metric }}))  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
+          "schema": "{{ total_metric }}",
           "options": {
             "description": "Error budget burn rate",
-            "order": 5,
+            "order": 8,
             "plot": {
               "x": "timestamp",
               "xLabel": "Timestamp",
@@ -109,11 +196,11 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "1 - ((sum(slo:total_event_rate:5m) - sum(slo:good_event_rate:5m)) / sum(slo:total_event_rate:5m))&duration=1.000h&step=5m",
-          "schema": "slo:total_event_rate:5m",
+          "query": "1 - ((sum({{ total_metric }}) - sum({{ good_metric }}))  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
+          "schema": "{{ total_metric }}",
           "options": {
             "description": "Remaining error budget",
-            "order": 6,
+            "order": 9,
             "plot": {
               "x": "timestamp",
               "xLabel": "Timestamp",
@@ -124,54 +211,6 @@
             }
           },
           "name": "Error Budget Remaining"
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:good_event_rate:5m) / sum(slo:total_event_rate:5m)) * 100",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ]
-            },
-            "order": 7
-          },
-          "name": "SLO Health"
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "(\n(sum(slo:total_event_rate:5m) - sum(slo:good_event_rate:5m))\n/\nsum(slo:total_event_rate:5m)\n) * 100",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ]
-            },
-            "order": 8
-          },
-          "name": "Error Rate (%)"
-        },
-        {
-          "chart_type": "counter",
-          "data_source_name": "Ascent Metrics",
-          "query": "(\n(\n(sum(slo:total_event_rate:5m) - sum(slo:good_event_rate:5m))\n/\nsum(slo:total_event_rate:5m)\n)\n/\n(1 - 0.999)\n) * 100",
-          "schema": "",
-          "options": {
-            "plot": {
-              "x": "timestamp",
-              "y": [
-                "value"
-              ]
-            },
-            "order": 9
-          },
-          "name": "Error Budget Burn (%)"
         }
       ]
     }
