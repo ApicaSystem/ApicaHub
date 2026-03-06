@@ -1,0 +1,1665 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "data_source_type": "",
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Rum - Core Vital Metrics",
+            "order": 1,
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "web_vital_fid_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "referenceLine": null,
+                            "datatype": "bytes",
+                            "stats": [
+                                "Max",
+                                "Avg",
+                                "Count",
+                                "P90",
+                                "P95",
+                                "P99"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#34c592"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 1
+                    },
+                    "name": "FID - First Input Delay",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 0,
+                        "i": "16352",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "web_vital_fid_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Max",
+                                "Avg",
+                                "Count",
+                                "P90",
+                                "P95"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": true,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#111212"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 2
+                    },
+                    "name": "INP - Interaction to Next Paint",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 0,
+                        "i": "16353",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "web_vital_ttfp_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": true,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#257720"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 3
+                    },
+                    "name": "TTFP - Time to First Byte",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 10,
+                        "i": "16356",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "web_vital_lcp_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#2830d1"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 4
+                    },
+                    "name": "LCP - Largest Contentful Paint",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 10,
+                        "i": "16357",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(network_errors_rum_total[5m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": true,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#b36262"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 5
+                    },
+                    "name": "Network error rate",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 20,
+                        "i": "18527",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(http_requests_rum_total[5m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": true,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": true,
+                                "data": [
+                                    {
+                                        "name": "value",
+                                        "color": "#bcd546"
+                                    }
+                                ]
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 6
+                    },
+                    "name": "HTTP Request Rate",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 20,
+                        "i": "18536",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "pie",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [
+                                "Severity"
+                            ],
+                            "legendVisibility": true,
+                            "x": "timestamp",
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "name",
+                            "pievalue": "value",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 7
+                    },
+                    "name": "Web vital metics distribution",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 30,
+                        "i": "19215",
+                        "minW": 1,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "Severity",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "sunburst",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [],
+                            "legendVisibility": true,
+                            "x": "timestamp",
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [
+                                "Sender",
+                                "AppName",
+                                "browser.language"
+                            ],
+                            "value_key": "Severity",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 8
+                    },
+                    "name": "Sender - App - Browser level Severity",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 30,
+                        "i": "19260",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "Severity",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "funnel",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [
+                                "Severity"
+                            ],
+                            "legendVisibility": true,
+                            "x": "timestamp",
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "interval",
+                                "valueColumn": "Severity",
+                                "valueColumnTitle": "severity",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 9
+                    },
+                    "name": "Severity Funnel",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 40,
+                        "i": "19266",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "Severity",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "honeycomb",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [
+                                "Severity"
+                            ],
+                            "legendVisibility": true,
+                            "x": "timestamp",
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": true,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": ">",
+                                        "threshold": "100",
+                                        "text": "Uper",
+                                        "color": "#0f0080"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            },
+                            "dsHover": [
+                                "name",
+                                "value",
+                                "session_id"
+                            ],
+                            "hcHover": "session_id"
+                        },
+                        "order": 10
+                    },
+                    "name": "User Session - Threshold > 100 ms",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 40,
+                        "i": "19288",
+                        "minW": 3,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "Severity",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "bubble",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [
+                                "value"
+                            ],
+                            "legendVisibility": true,
+                            "x": "timestamp",
+                            "groupBy": [
+                                "session_id",
+                                "name"
+                            ],
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Min",
+                                "Max",
+                                "Avg",
+                                "Count",
+                                "P50",
+                                "P95"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "value",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 11
+                    },
+                    "name": "Web-Vital grouped by session over time",
+                    "position": {
+                        "w": 6,
+                        "h": 12,
+                        "x": 0,
+                        "y": 50,
+                        "i": "19334",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "Severity",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "Ascent Logs",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1h\nkeyword: \"\"",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "y": [
+                                "value"
+                            ],
+                            "legendVisibility": true,
+                            "x": "name",
+                            "groupBy": [
+                                "page_info.host",
+                                "page_info.pathname"
+                            ],
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 12
+                    },
+                    "name": "Web-vitals by Page",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 50,
+                        "i": "19353",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {}
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(session_counter_rum_total[5m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 13
+                    },
+                    "name": "Session rate per hour",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 60,
+                        "i": "19669",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                }
+            ]
+        },
+        {
+            "key": "RUM - Errors",
+            "order": 3,
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(network_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "order": 1
+                    },
+                    "name": "Network error rate",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 0,
+                        "i": "19702",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(js_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 2
+                    },
+                    "name": "Javascript error rate",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 0,
+                        "i": "19714",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "count_over_time(auth_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "plot": {
+                            "x": "timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "groupBy": "",
+                            "xLabel": "timestamp",
+                            "yLabel": "",
+                            "label": "",
+                            "datatype": "bytes",
+                            "stats": [
+                                "Count",
+                                "Max",
+                                "Avg"
+                            ],
+                            "legendVisibility": true,
+                            "smooth": false,
+                            "statusConfig": {
+                                "enable": false,
+                                "column": "value",
+                                "conditions": [
+                                    {
+                                        "condition": "",
+                                        "threshold": "",
+                                        "text": "",
+                                        "color": "green"
+                                    }
+                                ]
+                            },
+                            "colorSetting": {
+                                "enable": false,
+                                "data": []
+                            },
+                            "pielabel": "",
+                            "pievalue": "",
+                            "hierarchy_keys": [],
+                            "value_key": "",
+                            "funnelConfig": {
+                                "stepColumn": "timestamp",
+                                "stepColumnTitle": "step",
+                                "valueColumn": "value",
+                                "valueColumnTitle": "value",
+                                "sorting": {
+                                    "enable": false,
+                                    "sortColumn": "",
+                                    "sortOrder": 1
+                                }
+                            },
+                            "bubbleConfig": {
+                                "sizeColumn": "",
+                                "minSize": 5,
+                                "maxSize": 30
+                            },
+                            "sankeyConfig": {
+                                "flowColumns": [],
+                                "valueColumn": "value"
+                            },
+                            "heatmapConfig": {
+                                "xColumn": "",
+                                "yColumn": "",
+                                "valueColumn": "value"
+                            }
+                        },
+                        "order": 3
+                    },
+                    "name": "Authentication error count",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 0,
+                        "y": 10,
+                        "i": "19715",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "query": "rate(first_render_errors_rum_total[5m])&duration=168.000h&step=60m",
+                    "schema": "",
+                    "options": {
+                        "order": 4
+                    },
+                    "name": "First render error rate",
+                    "position": {
+                        "w": 6,
+                        "h": 10,
+                        "x": 6,
+                        "y": 10,
+                        "i": "19720",
+                        "minW": 4,
+                        "maxW": 12,
+                        "minH": 4,
+                        "maxH": 1000,
+                        "moved": false,
+                        "static": false
+                    },
+                    "baseliningOptions": {
+                        "timeColumn": "timestamp",
+                        "valueColumn": "value",
+                        "operations": [],
+                        "windowSize": 12,
+                        "stdFraction": 1,
+                        "errorPercentage": 50,
+                        "mawindow": 384,
+                        "forecastDays": 1,
+                        "forecastHours": 5,
+                        "weekComparision": false,
+                        "weekComparisionTime": 24,
+                        "weekComparisionPercentage": 20,
+                        "anomaly_group_by": []
+                    }
+                }
+            ]
+        }
+    ],
+    "RUM - Logs": {
+        "type": "logs",
+        "name": "RUM - Logs",
+        "namespace": "RUMDemo",
+        "app_name": "Otel_App"
+    },
+    "RUM-Trace": {
+        "type": "logs",
+        "name": "RUM-Trace",
+        "namespace": "tracing",
+        "app_name": "Otel_App"
+    }
+}
