@@ -13,8 +13,8 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum({{ good_metric }})  /  sum({{ total_metric }})) * 100",
-          "schema": "",
+          "query": "(sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})  /   clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) * 100",
+          "schema": "slo:good_event_rate:5m",
           "options": {
             "plot": {
               "x": "timestamp",
@@ -42,8 +42,8 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "((sum({{ total_metric }}) - sum({{ good_metric }})) / sum({{ total_metric }})) * 100",
-          "schema": "",
+          "query": "((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) * 100",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
               "x": "timestamp",
@@ -71,8 +71,8 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "(((sum({{ total_metric }}) - sum({{ good_metric }})) / sum({{ total_metric }})) / (1 - 0.999)) * 100",
-          "schema": "",
+          "query": "(((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - 0.999)) * 100",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
               "x": "timestamp",
@@ -100,8 +100,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum({{ total_metric }})&duration=1.000h&step=5m",
-          "schema": "{{ total_metric }}",
+          "query": "sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Total SLI events",
             "order": 4,
@@ -119,8 +119,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum({{ good_metric }})&duration=1.000h&step=5m",
-          "schema": "{{ good_metric }}",
+          "query": "sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})",
+          "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "Successful SLI events",
             "order": 5,
@@ -138,8 +138,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum({{ total_metric }}) - sum({{ good_metric }}))&duration=1.000h&step=5m",
-          "schema": "{{ total_metric }}",
+          "query": "(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}))",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Error SLI events",
             "order": 6,
@@ -157,8 +157,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum({{ good_metric }})  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
-          "schema": "{{ good_metric }}",
+          "query": "(sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})  /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1))",
+          "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "SLI success ratio",
             "order": 7,
@@ -177,8 +177,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "((sum({{ total_metric }}) - sum({{ good_metric }}))  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
-          "schema": "{{ total_metric }}",
+          "query": "1 - (((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - 0.999))",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Error budget burn rate",
             "order": 8,
@@ -196,8 +196,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "1 - ((sum({{ total_metric }}) - sum({{ good_metric }}))  /  sum({{ total_metric }}))&duration=1.000h&step=5m",
-          "schema": "{{ total_metric }}",
+          "query": "1 - ((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}))  /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1))",
+          "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Remaining error budget",
             "order": 9,
