@@ -13,7 +13,7 @@
                 {
                     "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
-                    "query": "web_vital_fid_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "query": "web_vital_fid_milliseconds_sum{}&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -123,7 +123,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "web_vital_fid_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "query": "web_vital_fid_milliseconds_sum{}&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -231,7 +231,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "web_vital_ttfp_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "query": "web_vital_ttfp_milliseconds_sum{}&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -337,7 +337,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "web_vital_lcp_milliseconds_sum{}&duration=168.000h&step=60m",
+                    "query": "web_vital_lcp_milliseconds_sum{}&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -443,7 +443,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(network_errors_rum_total[5m])&duration=168.000h&step=60m",
+                    "query": "rate(network_errors_rum_total[5m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -549,7 +549,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(http_requests_rum_total[5m])&duration=168.000h&step=60m",
+                    "query": "rate(http_requests_rum_total[5m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -655,7 +655,7 @@
                 {
                     "chart_type": "pie",
                     "data_source_name": "Ascent Logs",
-                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1.000h\nkeyword: \"\"",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -756,7 +756,7 @@
                 {
                     "chart_type": "sunburst",
                     "data_source_name": "Ascent Logs",
-                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1.000h\nkeyword: \"\"",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -859,7 +859,7 @@
                 {
                     "chart_type": "funnel",
                     "data_source_name": "Ascent Logs",
-                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1.000h\nkeyword: \"\"",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -960,7 +960,7 @@
                 {
                     "chart_type": "honeycomb",
                     "data_source_name": "Ascent Logs",
-                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1.000h\nkeyword: \"\"",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -1067,7 +1067,7 @@
                 {
                     "chart_type": "bubble",
                     "data_source_name": "Ascent Logs",
-                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 168.000h\nkeyword: \"\"",
+                    "query": "namespace: RUMDemo\napplication: Otel_App\nduration: 1.000h\nkeyword: \"\"",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -1264,7 +1264,7 @@
                 {
                     "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(session_counter_rum_total[5m])&duration=168.000h&step=60m",
+                    "query": "rate(session_counter_rum_total[5m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -1372,7 +1372,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(network_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "query": "rate(network_errors_rum_total[60m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "order": 1
@@ -1410,7 +1410,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(js_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "query": "rate(js_errors_rum_total[60m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -1511,7 +1511,7 @@
                 {
                     "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
-                    "query": "count_over_time(auth_errors_rum_total[60m])&duration=168.000h&step=60m",
+                    "query": "count_over_time(auth_errors_rum_total[60m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "plot": {
@@ -1612,7 +1612,7 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "query": "rate(first_render_errors_rum_total[5m])&duration=168.000h&step=60m",
+                    "query": "rate(first_render_errors_rum_total[5m])&duration=1.000h&step=60m",
                     "schema": "",
                     "options": {
                         "order": 4
