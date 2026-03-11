@@ -71,7 +71,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "(((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - 0.999)) * 100",
+          "query": "(((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - {{slo_target_percentage}})) * 100",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
@@ -82,7 +82,7 @@
             },
             "order": 3
           },
-          "name": "Error Budget Burn (%)",
+          "name": "Error Budget Burn Rate",
           "position": {
             "w": 6,
             "h": 10,
@@ -177,7 +177,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "1 - (((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - 0.999))",
+          "query": "1 - (((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) / clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) / (1 - {{slo_target_percentage}}))",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Error budget burn rate",
@@ -210,7 +210,7 @@
               "yLabel": "Remaining Budget"
             }
           },
-          "name": "Error Budget Remaining"
+          "name": "Remaining budget"
         }
       ]
     }
