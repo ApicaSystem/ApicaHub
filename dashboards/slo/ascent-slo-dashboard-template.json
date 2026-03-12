@@ -13,7 +13,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})  /   clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) * 100",
+          "query": "(clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d]))  /   sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d])), 1)*100)",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "plot": {
@@ -29,7 +29,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})) /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1)) * 100",
+          "query": "clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}} / (1 - {{slo_target_percentage}})",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
@@ -40,7 +40,7 @@
             },
             "order": 2
           },
-          "name": "Error Rate (%)"
+          "name": "Remaining Error Budget"
         },
         {
           "chart_type": "counter",
@@ -56,12 +56,12 @@
             },
             "order": 3
           },
-          "name": "Error Budget Burn Rate"
+          "name": "Current Burn Rate"
         },
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})",
+          "query": "sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1.000h&step=1m",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Total SLI events",
@@ -80,7 +80,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})",
+          "query": "sum(avg_over_time(slo:good_event_rate:5m{slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1h&step=1m",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "Successful SLI events",
@@ -99,7 +99,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}))",
+          "query": "(sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) - sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])))&duration=1h&step=1m",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Error SLI events",
@@ -118,7 +118,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"})  /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1))",
+          "query": "(clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) /  sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}}[1h])), 1)*100)&duration=1h&step=1m",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "SLI success ratio",
@@ -157,7 +157,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "1 - ((sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}) - sum(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}))  /  clamp_min(sum(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}),1))",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))&duration=1h&step=1m",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Remaining error budget",
