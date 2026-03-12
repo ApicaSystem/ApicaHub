@@ -80,7 +80,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "sum(avg_over_time(slo:good_event_rate:5m{slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1h&step=1m",
+          "query": "sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1h&step=1m",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "Successful SLI events",
@@ -118,7 +118,7 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "(clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) /  sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}}[1h])), 1)*100)&duration=1h&step=1m",
+          "query": "(clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) /  sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1)*100)&duration=1h&step=1m",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "description": "SLI success ratio",
@@ -157,7 +157,8 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))&duration=1h&step=1m",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}})*100)&duration=1h&step=1m",
+  
           "schema": "slo:total_event_rate:5m",
           "options": {
             "description": "Remaining error budget",
