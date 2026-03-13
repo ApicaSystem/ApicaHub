@@ -29,7 +29,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}} / (1 - {{slo_target_percentage}})",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))*100",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
