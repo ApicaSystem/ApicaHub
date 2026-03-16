@@ -9,7 +9,7 @@
           "key": "slo_target_percentage",
           "query_id": "",
           "type": "text",
-          "queryColumn": "{{slo_target_percentage}}",
+          "queryColumn": "slo_target_percentage",
           "enumOptions": "",
           "multiValuesOptions": null,
           "order": 1
