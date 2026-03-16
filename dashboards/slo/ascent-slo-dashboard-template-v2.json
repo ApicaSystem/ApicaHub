@@ -2,32 +2,7 @@
   "header": {
     "dateTimeRange": true,
     "data_source_type": "",
-    "dropdowns": [
-      {
-        "slo_target_percentage": {
-          "title": "slo_target_percentage",
-          "key": "slo_target_percentage",
-          "query_id": "",
-          "type": "text",
-          "queryColumn": "slo_target_percentage",
-          "enumOptions": "",
-          "multiValuesOptions": null,
-          "order": 1
-        }
-      },
-      {
-        "slo_uuid": {
-          "title": "slo_uuid",
-          "key": "slo_uuid",
-          "query_id": "",
-          "type": "text",
-          "queryColumn": "slo_uuid",
-          "enumOptions": "",
-          "multiValuesOptions": null,
-          "order": 1
-        }
-      }
-    ]
+    "dropdowns": []
   },
   "tabs": [
     {
