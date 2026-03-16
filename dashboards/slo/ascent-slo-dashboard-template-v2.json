@@ -1,0 +1,845 @@
+{
+  "header": {
+    "dateTimeRange": true,
+    "data_source_type": "",
+    "dropdowns": [
+      {
+        "slo_target_percentage": {
+          "title": "slo_target_percentage",
+          "key": "slo_target_percentage",
+          "query_id": "",
+          "type": "text",
+          "queryColumn": "{{slo_target_percentage}}",
+          "enumOptions": "",
+          "multiValuesOptions": null,
+          "order": 1
+        }
+      },
+      {
+        "slo_uuid": {
+          "title": "slo_uuid",
+          "key": "slo_uuid",
+          "query_id": "",
+          "type": "text",
+          "queryColumn": "slo_uuid",
+          "enumOptions": "",
+          "multiValuesOptions": null,
+          "order": 1
+        }
+      }
+    ]
+  },
+  "tabs": [
+    {
+      "key": "SLO Overview",
+      "order": 1,
+      "type": "metrics",
+      "queriesList": [
+        {
+          "chart_type": "stat",
+          "data_source_name": "Ascent Metrics",
+          "query": "(clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d]))  /   sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d])), 1)*100)&duration=1.000h&step=5m",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ],
+              "groupBy": "",
+              "xLabel": "timestamp",
+              "yLabel": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": false,
+                "data": []
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            },
+            "order": 1
+          },
+          "name": "SLO Health",
+          "position": {
+            "w": 2,
+            "h": 6,
+            "x": 10,
+            "y": 0,
+            "i": "164",
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 15,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))*100",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 2
+          },
+          "name": "Remaining Error Budget",
+          "position": {
+            "w": 2,
+            "h": 6,
+            "x": 10,
+            "y": 6,
+            "i": "165",
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 15,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {}
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "(1 - clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1)) / (1 - {{slo_target_percentage}})",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 3
+          },
+          "name": "Current Burn Rate",
+          "position": {
+            "w": 2,
+            "h": 7,
+            "x": 10,
+            "y": 12,
+            "i": "166",
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 15,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {}
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Total SLI events",
+            "order": 4,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Total Events",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#686af9"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "Total Events",
+          "position": {
+            "w": 12,
+            "h": 11,
+            "x": 0,
+            "y": 39,
+            "i": "167",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h]))&duration=1.000h&step=5m",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "description": "Successful SLI events",
+            "order": 5,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Successful Events",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#00ff0b"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "Successful Events",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 29,
+            "i": "168",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "(sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) - sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])))&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Error SLI events",
+            "order": 6,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Error Events",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#ff0202"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "Error Events",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 6,
+            "y": 29,
+            "i": "169",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "(clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) /  sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1)*100)&duration=1.000h&step=5m",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "description": "SLI success ratio",
+            "order": 7,
+            "upperLimit": "1",
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Success Rate",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#00ff32"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "SLI Success Rate",
+          "position": {
+            "w": 10,
+            "h": 10,
+            "x": 0,
+            "y": 0,
+            "i": "170",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "((1 - clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1)) / 0.01)&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Error budget burn rate",
+            "order": 8,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Burn Rate",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#ff0000"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "Error Budget Burn Rate",
+          "position": {
+            "w": 12,
+            "h": 10,
+            "x": 0,
+            "y": 19,
+            "i": "171",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[1h])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}})*100)&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Remaining error budget",
+            "order": 9,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Remaining Budget",
+              "groupBy": "",
+              "label": "",
+              "datatype": "bytes",
+              "stats": [
+                "Count",
+                "Max",
+                "Avg"
+              ],
+              "legendVisibility": true,
+              "smooth": false,
+              "statusConfig": {
+                "enable": false,
+                "column": "value",
+                "conditions": [
+                  {
+                    "condition": "",
+                    "threshold": "",
+                    "text": "",
+                    "color": "green"
+                  }
+                ]
+              },
+              "colorSetting": {
+                "enable": true,
+                "data": [
+                  {
+                    "name": "value",
+                    "color": "#ffce03"
+                  }
+                ]
+              },
+              "pielabel": "",
+              "pievalue": "",
+              "hierarchy_keys": [],
+              "value_key": "",
+              "funnelConfig": {
+                "stepColumn": "timestamp",
+                "stepColumnTitle": "step",
+                "valueColumn": "value",
+                "valueColumnTitle": "value",
+                "sorting": {
+                  "enable": false,
+                  "sortColumn": "",
+                  "sortOrder": 1
+                }
+              },
+              "bubbleConfig": {
+                "sizeColumn": "",
+                "minSize": 5,
+                "maxSize": 30
+              },
+              "sankeyConfig": {
+                "flowColumns": [],
+                "valueColumn": "value"
+              },
+              "heatmapConfig": {
+                "xColumn": "",
+                "yColumn": "",
+                "valueColumn": "value"
+              }
+            }
+          },
+          "name": "Remaining budget",
+          "position": {
+            "w": 10,
+            "h": 9,
+            "x": 0,
+            "y": 10,
+            "i": "172",
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {
+            "timeColumn": "timestamp",
+            "valueColumn": "value",
+            "operations": [],
+            "windowSize": 12,
+            "stdFraction": 1,
+            "errorPercentage": 50,
+            "mawindow": 384,
+            "forecastDays": 1,
+            "forecastHours": 5,
+            "weekComparision": false,
+            "weekComparisionTime": 24,
+            "weekComparisionPercentage": 20,
+            "anomaly_group_by": []
+          }
+        }
+      ]
+    }
+  ]
+}
