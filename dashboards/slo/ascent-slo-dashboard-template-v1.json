@@ -1,0 +1,179 @@
+{
+  "header": {
+    "dateTimeRange": true,
+    "data_source_type": "apica_ascent_prometheus",
+    "dropdowns": []
+  },
+  "tabs": [
+    {
+      "key": "SLO Overview",
+      "order": 1,
+      "type": "metrics",
+      "queriesList": [
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "(clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}]))  /   sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])), 1)*100)",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 1
+          },
+          "name": "SLO Health"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))*100",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 2
+          },
+          "name": "Remaining Error Budget"
+        },
+        {
+          "chart_type": "counter",
+          "data_source_name": "Ascent Metrics",
+          "query": "(1 - clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[2h])) / sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[2h])), 1)) / (1 - {{slo_target_percentage}})",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "plot": {
+              "x": "timestamp",
+              "y": [
+                "value"
+              ]
+            },
+            "order": 3
+          },
+          "name": "Current Burn Rate"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m]))&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Total SLI events",
+            "order": 4,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Total Events"
+            }
+          },
+          "name": "Total Events"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m]))&duration=1h&step=5m",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "description": "Successful SLI events",
+            "order": 5,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Successful Events"
+            }
+          },
+          "name": "Successful Events"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "(sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])) - sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])))&duration=1h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Error SLI events",
+            "order": 6,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Error Events"
+            }
+          },
+          "name": "Error Events"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "(clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])) /  sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])), 1)*100)&duration=1h&step=5m",
+          "schema": "slo:good_event_rate:5m",
+          "options": {
+            "description": "SLI success ratio",
+            "order": 7,
+            "upperLimit": "1",
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Success Rate"
+            }
+          },
+          "name": "SLI Success Rate"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "((1 - clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])), 1)) / (1- {{slo_target_percentage}}))&duration=1.000h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Error budget burn rate",
+            "order": 8,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Burn Rate"
+            }
+          },
+          "name": "Error Budget Burn Rate"
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[5m])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}})*100)&duration=1h&step=5m",
+          "schema": "slo:total_event_rate:5m",
+          "options": {
+            "description": "Remaining error budget",
+            "order": 9,
+            "plot": {
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "Remaining Budget"
+            }
+          },
+          "name": "Remaining budget"
+        }
+      ]
+    }
+  ]
+}
