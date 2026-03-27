@@ -13,7 +13,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "(clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d]))  /   sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d])), 1)*100)",
+          "query": "(clamp_max(sum(sum_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}]))  /   sum(sum_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])), 1)*100)",
           "schema": "slo:good_event_rate:5m",
           "options": {
             "plot": {
@@ -29,7 +29,7 @@
         {
           "chart_type": "counter",
           "data_source_name": "Ascent Metrics",
-          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[28d])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))*100",
+          "query": "((clamp_max(sum(avg_over_time(slo:good_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])) / sum(avg_over_time(slo:total_event_rate:5m{slo_uuid=\"{{slo_uuid}}\"}[{{slo_window}}])), 1) - {{slo_target_percentage}}) / (1 - {{slo_target_percentage}}))*100",
           "schema": "slo:total_event_rate:5m",
           "options": {
             "plot": {
