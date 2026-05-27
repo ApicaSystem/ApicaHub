@@ -1,0 +1,64 @@
+# Stitch a multi-line JSON document that arrives as one line per row.
+
+input:
+  http_server:
+    address: 0.0.0.0:8080
+    path: /events
+
+buffer:
+  system_window:
+    timestamp_mapping: root = now()
+    size: ${WINDOW_SIZE:5s}
+    allowed_lateness: ${ALLOWED_LATENESS:2s}
+
+pipeline:
+  processors:
+    # parse the body as JSON.
+    - mapping: |
+        let parsed = content().parse_json().catch(null)
+        root = if $parsed != null && $parsed.type() == "object" {
+          $parsed
+        } else {
+          { "raw": content().string() }
+        }
+
+    # Group by the timestamp value.
+    # Override with TIMESTAMP_FIELD env var if your upstream uses a different field name (e.g., "Received", "@timestamp", etc.).
+    - group_by_value:
+        value: ${! json(env("TIMESTAMP_FIELD").or("timestamp")) }
+
+    # Combine the grouped fragments. 
+    - archive:
+        format: concatenate
+
+    # Re-shape into a ascent-ready event with namespace + app_name.
+    - mapping: |
+        let key = env("TIMESTAMP_FIELD").or("timestamp")
+        root.timestamp = this.0.get($key)
+        root.fragment_count = this.length()
+        root.message = this.map_each(f -> f.raw.or(f.string())).join("\n")
+        root.namespace = env("NAMESPACE").or("default")
+        root.app_name  = env("APP_NAME").or("default")
+
+output:
+  http_client:
+    url: ${APICA_INGEST_URL}
+    verb: POST
+    headers:
+      Authorization: "Bearer ${X_API_KEY}"
+      Content-Type: "application/json"
+    batch_as_multipart: false
+    max_in_flight: 4
+    batching:
+      count: 50
+      period: 1s
+      processors:
+        - archive:
+            format: json_array
+
+metrics:
+  prometheus: {}
+
+logger:
+  level: ${LOG_LEVEL:INFO}
+  format: json

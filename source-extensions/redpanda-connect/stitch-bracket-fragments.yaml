@@ -1,0 +1,98 @@
+# Required client behaviour: POST a JSON array of events as one request, not one event per request. 
+# The pipeline unarchives the array into a batch, groups same-Received events together, and stitches each group.
+#
+#   POST /events
+#   Content-Type: application/json
+#   [
+#     {"Received": "<ts1>", "Log message": "}"},
+#     {"Received": "<ts1>", "Log message": "["},
+#     ...
+#   ]
+
+input:
+  http_server:
+    address: 0.0.0.0:8080
+    path: /events
+    timeout: 30s
+
+pipeline:
+  processors:
+    # Normalise body to a JSON array of events.
+    - mapping: |
+        let parsed = content().parse_json().catch(null)
+        root = if $parsed != null && $parsed.type() == "array" {
+          $parsed
+        } else if $parsed != null && $parsed.type() == "object" {
+          [$parsed]
+        } else {
+          [{"message": content().string()}]
+        }
+
+    # Split the array into a batch of N individual messages so the rest of the pipeline can group and stitch across them.
+    - unarchive:
+        format: json_array
+
+    # Canonicalise per-message fields.
+    - mapping: |
+        root = this
+        root.message  = (this.message | this."Log message").or(content().string())
+        root.received = (this.received | this."Received" | this.timestamp).or("")
+
+    # Decode #012 (octal newline) so events that arrived already-bundled by an upstream syslog become a real multi-line body.
+    - mapping: |
+        root = this
+        root.message = this.message.or("").string().replace("#012", "\n")
+
+    # Group same-Received events into sub-batches so the stitcher can decide per-group whether to merge.
+    - group_by_value:
+        value: ${! this.get(env("TIMESTAMP_FIELD").or("received")).or("unknown") }
+
+    # Collapse each sub-batch into a single array message so Bloblang can walk it.
+    - archive:
+        format: json_array
+
+    # Stitching logic
+    #
+    # Strategy: if ANY event in the same-Received group looks like a structural fragment (bare bracket / brace, "..." continuation, or
+    # an indented "  key: value" line), assume the whole group is one logical multi-line event and merge it into a single output event.
+    # Otherwise pass every event in the group through unchanged.
+    #
+    # Trade-off -> a same-Received group with one stray bracket and many unrelated standalone events will get merged. This is a known
+    # limitation of any downstream stitcher operating on data where the forwarder has discarded host / process metadata. 
+    # This should be fixed at the source if this matters.
+    - mapping: |
+        let has_fragment = this.any(e -> e.message.or("").string().trim() == "{" || e.message.or("").string().trim() == "}" || e.message.or("").string().trim() == "[" || e.message.or("").string().trim() == "]" || e.message.or("").string().trim() == "}," || e.message.or("").string().trim() == "]," || e.message.or("").string().trim() == "..." || (e.message.or("").string().length() > 0 && e.message.or("").string().slice(0, 1) == " "))
+        root = if $has_fragment { [this.index(0).without("message").merge({"message": this.map_each(e -> e.message.or("").string()).join("\n"), "stitched_fragments": this.length()})] } else { this.map_each(e -> e.merge({"stitched_fragments": 1})) }
+
+    # Expand stitched groups back into individual events.
+    - unarchive:
+        format: json_array
+
+    # Stamp Ascent keys.
+    - mapping: |
+        root = this
+        root.namespace = this.namespace.or(env("NAMESPACE").or("default"))
+        root.app_name  = this.app_name.or(env("APP_NAME").or("default"))
+
+output:
+  http_client:
+    url: ${APICA_INGEST_URL}
+    verb: POST
+    headers:
+      Authorization: "Bearer ${X_API_KEY}"
+      Content-Type: "application/json"
+    batch_as_multipart: false
+    max_in_flight: 4
+    batching:
+      count: 100
+      period: 1s
+      processors:
+        - archive:
+            format: json_array
+
+metrics:
+  prometheus: {}
+
+logger:
+  level: ${LOG_LEVEL:INFO}
+  format: json
