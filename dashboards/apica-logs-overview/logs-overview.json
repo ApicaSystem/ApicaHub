@@ -13,9 +13,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Daily GB/h",
+                    "name": "GB per hour (30d)",
                     "options": {
-                        "description": "Daily GB/h",
+                        "description": "Data ingested per hour across the cluster, sampled hourly over 30 days",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
@@ -25,7 +25,7 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "GB / hour"
                         },
                         "upperLimit": ""
                     },
@@ -37,7 +37,7 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "Log events (24h)",
                     "options": {
-                        "description": "Log events (24h)",
+                        "description": "Total log events ingested in the last 24 hours, in millions",
                         "label": "million",
                         "order": 2,
                         "plot": {
@@ -60,7 +60,7 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "Ingest capacity utilization",
                     "options": {
-                        "description": "Ingest capacity utilization",
+                        "description": "Ingest rate as a percentage of assumed capacity. NOTE: capacity is hardcoded at 1 GB/hour per pod (the trailing *1 in the query); the number is only meaningful if that matches your real per-pod ceiling",
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
@@ -70,7 +70,7 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "%"
                         },
                         "upperLimit": ""
                     },
@@ -82,7 +82,7 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "Messages / sec",
                     "options": {
-                        "description": "Messages / sec",
+                        "description": "Current message ingestion rate across the cluster, averaged over 5 minutes",
                         "label": "logs/sec",
                         "order": 4,
                         "plot": {
@@ -105,29 +105,29 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
-                        "description": "# Messages/sec by Namespace",
+                        "description": "Message ingestion rate per tenant namespace (msg/sec), sampled hourly over 30 days",
                         "order": 5,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "exported_namespace",
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "msg / sec"
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[5m])),1)&duration=30d&step=1h",
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[1h])),1)&duration=30d&step=1h",
                     "schema": "logiq_namespace_app_message_count"
                 },
                 {
                     "chart_type": "counter",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Total ingested bytes (30d)",
+                    "name": "Total GB ingested (30d)",
                     "options": {
-                        "description": "Total ingested bytes (30d)",
+                        "description": "Total data ingested across the cluster over the last 30 days",
                         "label": "GB",
                         "order": 6,
                         "plot": {
@@ -148,23 +148,23 @@
                 {
                     "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Connections",
+                    "name": "HTTP Connection Rate (6h)",
                     "options": {
-                        "description": "Connections",
+                        "description": "HTTP client connect and disconnect rate per second on ingest pods, over the last 6 hours",
                         "order": 7,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "operation",
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Connections / sec"
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~\"logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d\",connectionType=\"HTTP\"}[5m]))&duration=6h&step=5m",
+                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~\"logiq-flash-\\\\d{1,3}\",connectionType=\"HTTP\"}[5m]))&duration=6h&step=5m",
                     "schema": "logiq_client_connect_count"
                 },
                 {
@@ -172,7 +172,7 @@
                     "data_source_name": "Ascent Metrics",
                     "name": "GB per day",
                     "options": {
-                        "description": "GB per day",
+                        "description": "Data ingested per day across the cluster, over the last 30 days",
                         "order": 8,
                         "plot": {
                             "errorColumn": "",
@@ -182,12 +182,56 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "GB / day"
                         },
                         "upperLimit": ""
                     },
                     "query": "round(sum(increase(logiq_data_received_bytes[24h]))/1000000000,0.001)&duration=30d&step=24h",
                     "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Connection Rate by Protocol (6h)",
+                    "options": {
+                        "description": "New client connections per second on ingest pods, split by ingest protocol, over the last 6 hours",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "connectionType",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Connections / sec"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum by (connectionType) (rate(logiq_client_connect_count{pod=~\"logiq-flash-\\\\d{1,3}\",operation=\"connect\"}[5m]))&duration=6h&step=5m",
+                    "schema": "logiq_client_connect_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Ascent Metrics",
+                    "name": "Messages/sec by Protocol (6h)",
+                    "options": {
+                        "description": "Message ingestion rate split by ingest protocol, over the last 6 hours; panel 4 is the same measure with all protocols summed together",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "connectionType",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "msg / sec"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (connectionType) (rate(logiq_message_count[5m])),1)&duration=6h&step=5m",
+                    "schema": "logiq_message_count"
                 }
             ],
             "title": "Overview",
