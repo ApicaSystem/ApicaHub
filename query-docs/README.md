@@ -22,5 +22,6 @@ python3 -c "from urllib.parse import parse_qs; q=input(); print(parse_qs(q if q.
 |---|---|
 | `apica-monitoring` | [apica-monitoring.md](apica-monitoring.md) |
 | `namespace-app-distribution` | [namespace-app-distribution.md](namespace-app-distribution.md) |
+| `apica-query-statistics` | [apica-query-statistics.md](apica-query-statistics.md) |
 
-Not yet documented: `apica-flow`, `apica-logs-overview`, `apica-query-statistics`, `apica-real-usage-monitoring`, `apica-sw`, `apica-vanilla`, `aws-cloudtrail`, `consul-dashboard`, `ec2-monitoring`, `fluent-bit`, `host-monitoring`, `java-monitoring`, `jmxexporter`, `kafka`, `kube-cost`, `kubernetes`, `memcached`, `mongodb`, `mysql`, `postgres`, `prometheus`, `rabbitmq`, `redis`, `slo`, `windows-monitoring`.
+Not yet documented: `apica-flow`, `apica-logs-overview`, `apica-real-usage-monitoring`, `apica-sw`, `apica-vanilla`, `aws-cloudtrail`, `consul-dashboard`, `ec2-monitoring`, `fluent-bit`, `host-monitoring`, `java-monitoring`, `jmxexporter`, `kafka`, `kube-cost`, `kubernetes`, `memcached`, `mongodb`, `mysql`, `postgres`, `prometheus`, `rabbitmq`, `redis`, `slo`, `windows-monitoring`.
