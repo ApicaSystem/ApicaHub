@@ -13,31 +13,31 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Flash",
-                    "name": "Users (15d)",
+                    "name": "Queries per User (15d)",
                     "options": {
-                        "description": "Users (15d)",
+                        "description": "Number of queries run by each user in the last 15 days, most active first",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "x": "createdby",
+                            "xLabel": "User",
                             "y": [
-                                "value"
+                                "count"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Queries"
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*), createdby from queryhistory where createdby != '' and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by createdby order by count desc",
-                    "schema": "queryyHistoey"
+                    "query": "select count(*) as count, createdby from queryhistory where createdby != '' and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by createdby order by count desc",
+                    "schema": "queryhistory"
                 },
                 {
                     "chart_type": "Table",
                     "data_source_name": "Flash",
                     "name": "Query history (15d)",
                     "options": {
-                        "description": "Query history (15d)",
+                        "description": "Most recent 500 queries from the last 15 days, newest first",
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
@@ -51,15 +51,15 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select * from queryhistory where to_timestamp(createdat) > NOW() - INTERVAL '15 DAY'",
-                    "schema": "queryyHistoey"
+                    "query": "select to_timestamp(createdat) as created, createdby, namespace, applicationnames, keyword, requesttype, durationsec, timetofirst from queryhistory where to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' order by createdat desc limit 500",
+                    "schema": "queryhistory"
                 },
                 {
                     "chart_type": "counter",
                     "data_source_name": "Flash",
-                    "name": "Query count",
+                    "name": "Query count (15d)",
                     "options": {
-                        "description": "Query count",
+                        "description": "Total number of queries run in the last 15 days",
                         "label": "Queries",
                         "order": 3,
                         "plot": {
@@ -74,37 +74,37 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*) as value from queryhistory",
-                    "schema": "queryHist"
+                    "query": "select count(*) as value from queryhistory where to_timestamp(createdat) > NOW() - INTERVAL '15 DAY'",
+                    "schema": "queryhistory"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Flash",
                     "name": "Query search range (15d)",
                     "options": {
-                        "description": "Query search range (15d)",
+                        "description": "How far back users search: Search and AdvanceSearch queries in the last 15 days, bucketed by the length of the time range searched",
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "durationhr",
-                            "xLabel": "Duration (hr)",
+                            "x": "searchrange",
+                            "xLabel": "Search range",
                             "y": [
                                 "count"
                             ],
-                            "yLabel": "count"
+                            "yLabel": "Queries"
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),durationsec/60 as durationmin, durationsec/3600 as durationhr from queryhistory where requesttype in (2,4) and durationsec > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by durationsec",
-                    "schema": "queryHist"
+                    "query": "select case when durationsec < 3600 then '<1h' when durationsec < 86400 then '1-24h' when durationsec < 604800 then '1-7d' when durationsec < 2592000 then '7-30d' else '>30d' end as searchrange, count(*) as count from queryhistory where requesttype in (2,4) and durationsec > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by searchrange order by min(durationsec)",
+                    "schema": "queryhistory"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Flash",
                     "name": "TTFR (Seconds) (15d)",
                     "options": {
-                        "description": "TTFR (Seconds) (15d)",
+                        "description": "Distribution of time-to-first-record in seconds over the last 15 days; queries that never returned a record are excluded",
                         "order": 5,
                         "plot": {
                             "errorColumn": "",
@@ -114,34 +114,34 @@
                             "y": [
                                 "count"
                             ],
-                            "yLabel": "count"
+                            "yLabel": "Queries"
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),timetofirst from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by timetofirst",
-                    "schema": "queryHist"
+                    "query": "select count(*) as count, timetofirst from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by timetofirst order by timetofirst",
+                    "schema": "queryhistory"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Flash",
-                    "name": "Bubble - TTFR (seconds)",
+                    "name": "TTFR by Request Type (15d)",
                     "options": {
-                        "description": "Bubble - TTFR (seconds)",
+                        "description": "Time-to-first-record distribution over the last 15 days, split by request type; panel 5 is the same data without the breakdown",
                         "order": 6,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "request_type",
                             "x": "timetofirst",
                             "xLabel": "TTFR (sec)",
                             "y": [
                                 "count"
                             ],
-                            "yLabel": "count"
+                            "yLabel": "Queries"
                         },
                         "upperLimit": ""
                     },
-                    "query": "select count(*),count(*),timetofirst,requesttype from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '30 DAY' group by timetofirst,requesttype",
-                    "schema": "queryHist"
+                    "query": "select count(*) as count, timetofirst, case requesttype when 1 then 'Query' when 2 then 'Search' when 3 then 'None' when 4 then 'AdvanceSearch' when 5 then 'Report' when 6 then 'Replay' else 'Unknown' end as request_type from queryhistory where timetofirst > 0 and to_timestamp(createdat) > NOW() - INTERVAL '15 DAY' group by timetofirst, requesttype order by timetofirst",
+                    "schema": "queryhistory"
                 }
             ],
             "title": "Overview",

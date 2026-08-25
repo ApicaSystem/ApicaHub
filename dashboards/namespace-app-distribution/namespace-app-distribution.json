@@ -11,21 +11,21 @@
             "order": "1",
             "queriesList": [
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
                     "name": "Aggregate Messages by Namespace (30d)",
                     "options": {
-                        "description": "Aggregate Messages by Namespace (30d)",
+                        "description": "Total messages ingested per tenant namespace over the last 30 days",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "x": "exported_namespace",
+                            "xLabel": "Namespace",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Messages"
                         },
                         "upperLimit": ""
                     },
@@ -33,43 +33,43 @@
                     "schema": "logiq_namespace_app_message_count"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
                     "name": "Namespace, App distribution (EVENTS) [24h]",
                     "options": {
-                        "description": "Namespace, App distribution (EVENTS) [24h]",
+                        "description": "Events ingested per namespace in the last 24 hours, split by app; the asmplus namespace is excluded because it emits one app per synthetic check",
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "groupBy": "app",
+                            "x": "exported_namespace",
+                            "xLabel": "Namespace",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Events"
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(logiq:namespace_app_count_daily:increase,1)",
-                    "schema": "logiq:namespace_app_count_daily:increase,1)"
+                    "query": "round(logiq:namespace_app_count_daily:increase{exported_namespace!=\"asmplus\"},1)",
+                    "schema": "logiq:namespace_app_count_daily:increase"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
                     "name": "Messages by Namespace (30d)",
                     "options": {
-                        "description": "Messages by Namespace (30d)",
+                        "description": "Messages per tenant namespace as rolling 24h totals, sampled hourly over 30 days",
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "exported_namespace",
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Messages / day"
                         },
                         "upperLimit": ""
                     },
@@ -77,70 +77,70 @@
                     "schema": "logiq_namespace_app_message_count"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
                     "name": "Namespace, App distribution (GB) [24h]",
                     "options": {
-                        "description": "Namespace, App distribution (GB) [24h]",
+                        "description": "Data volume in GB ingested per namespace in the last 24 hours, split by app; the asmplus namespace is excluded because it emits one app per synthetic check",
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "groupBy": "app",
+                            "x": "exported_namespace",
+                            "xLabel": "Namespace",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "GB"
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(logiq:namespace_app_bytes_daily:increase/1000000000,0.001)",
-                    "schema": "logiq:namespace_app_bytes_daily:increase/1000000000,0.001)"
+                    "query": "round(logiq:namespace_app_bytes_daily:increase{exported_namespace!=\"asmplus\"}/1000000000,0.001)",
+                    "schema": "logiq:namespace_app_bytes_daily:increase"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Ascent Metrics",
                     "name": "# Messages/sec by Namespace",
                     "options": {
-                        "description": "# Messages/sec by Namespace",
+                        "description": "Message ingestion rate per tenant namespace (msg/sec), sampled hourly over 30 days",
                         "order": 5,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "exported_namespace",
                             "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "msg / sec"
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[5m])),1)&duration=39d&step=1h",
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[1h])),1)&duration=30d&step=1h",
                     "schema": "logiq_namespace_app_message_count"
                 },
                 {
                     "chart_type": "bar",
                     "data_source_name": "Ascent Metrics",
-                    "name": "Aggregate Messages by Namespace (30d)",
+                    "name": "Aggregate GB by Namespace (30d)",
                     "options": {
-                        "description": "Aggregate Messages by Namespace (30d)",
+                        "description": "Total data volume in GB ingested per tenant namespace over the last 30 days",
                         "order": 6,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "timestamp",
-                            "xLabel": "Timestamp",
+                            "x": "exported_namespace",
+                            "xLabel": "Namespace",
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "GB"
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(sum by (exported_namespace) (increase(logiq_namespace_app_message_count[30d])),1)",
-                    "schema": "logiq_namespace_app_message_count"
+                    "query": "round(sum by (exported_namespace) (increase(logiq_namespace_app_received_bytes[30d]))/1000000000,0.001)",
+                    "schema": "logiq_namespace_app_received_bytes"
                 }
             ],
             "title": "Overview",
