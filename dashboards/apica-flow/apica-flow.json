@@ -1,5 +1,8 @@
 {
   "version": "1",
+  "configuration": {
+    "minStep": 180
+  },
   "header": {
     "dateTimeRange": true,
     "data_source_type": "apica_ascent_prometheus",
@@ -292,49 +295,11 @@
         {
           "chart_type": "size",
           "data_source_name": "Ascent Metrics",
-          "name": "Delivery Drops",
-          "position": {
-            "w": 2,
-            "h": 10,
-            "x": 2,
-            "y": 7,
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 20,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Events handed to a forwarder but never delivered, in the selected time range.",
-            "label": "Delivery Drops",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "",
-              "datatype": "number",
-              "sizeConfig": {
-                "valueColumn": "value"
-              }
-            },
-            "order": 8
-          },
-          "query": "sum(increase(apica_forwarder_events_dropped_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
-          "schema": "apica_forwarder_events_dropped_total"
-        },
-        {
-          "chart_type": "size",
-          "data_source_name": "Ascent Metrics",
           "name": "Stalled Pipelines",
           "position": {
             "w": 2,
             "h": 10,
-            "x": 4,
+            "x": 2,
             "y": 7,
             "minW": 1,
             "maxW": 12,
@@ -387,9 +352,9 @@
           "data_source_name": "Ascent Metrics",
           "name": "Events In vs Out (per second)",
           "position": {
-            "w": 6,
+            "w": 8,
             "h": 10,
-            "x": 6,
+            "x": 4,
             "y": 7,
             "minW": 4,
             "maxW": 12,
@@ -797,80 +762,6 @@
       "type": "metrics",
       "queriesList": [
         {
-          "chart_type": "area",
-          "data_source_name": "Ascent Metrics",
-          "name": "Rule Outcomes (per second)",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 0,
-            "y": 0,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Rule runs per second by outcome: unmatched, matched, transformed, dropped, bypassed, failed.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "outcome"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "runs/s",
-              "stacked": true
-            },
-            "upperLimit": "",
-            "order": 1
-          },
-          "query": "sum by (outcome)(rate(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_rule_outcomes_total"
-        },
-        {
-          "chart_type": "line",
-          "data_source_name": "Ascent Metrics",
-          "name": "Match Rate by Rule",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 6,
-            "y": 0,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Share of rule runs that matched (matched, transformed or dropped). A rule stuck at 0 never matches.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "pipelineName",
-                "ruleName"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "% matched"
-            },
-            "upperLimit": "",
-            "order": 2
-          },
-          "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome=~'matched|transformed|dropped'}[{{__interval}}])) / (sum by (pipelineName, ruleName)(rate(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0) * 100&duration=1h&step=5m",
-          "schema": "apica_pipeline_rule_outcomes_total"
-        },
-        {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
           "name": "Rule Failures by Rule",
@@ -878,7 +769,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 10,
+            "y": 40,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -932,7 +823,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 10,
+            "y": 40,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -964,49 +855,12 @@
         {
           "chart_type": "area",
           "data_source_name": "Ascent Metrics",
-          "name": "Bypassed Rules by Reason",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 0,
-            "y": 20,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Rule runs skipped by reason: cardinality, missing_key.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "reason"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "runs",
-              "stacked": true
-            },
-            "upperLimit": "",
-            "order": 5
-          },
-          "query": "sum by (reason)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='bypassed'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_rule_outcomes_total"
-        },
-        {
-          "chart_type": "area",
-          "data_source_name": "Ascent Metrics",
           "name": "Skipped Events by Reason",
           "position": {
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 20,
+            "y": 50,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1043,7 +897,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 30,
+            "y": 0,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1081,7 +935,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 30,
+            "y": 10,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1112,80 +966,14 @@
           "schema": "apica_pipeline_savings_bytes"
         },
         {
-          "chart_type": "table",
-          "data_source_name": "Ascent Metrics",
-          "name": "Top Rules by Bytes Saved",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 0,
-            "y": 40,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "The 20 rules that removed the most bytes in the selected time range.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": ""
-            },
-            "order": 9
-          },
-          "query": "topk(20, sum by (pipelineName, ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])))&duration=1h",
-          "schema": "apica_pipeline_savings_bytes"
-        },
-        {
-          "chart_type": "table",
-          "data_source_name": "Ascent Metrics",
-          "name": "Slowest Rules (p99 seconds)",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 6,
-            "y": 40,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "The 20 rules with the highest p99 time per event in the selected time range.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": ""
-            },
-            "order": 10
-          },
-          "query": "topk(20, histogram_quantile(0.99, sum by (pipelineName, ruleName, le)(rate(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__range}}]))))&duration=1h",
-          "schema": "apica_pipeline_rule_duration_seconds_bucket"
-        },
-        {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
           "name": "Events Filtered by Rule (per second)",
           "position": {
             "w": 6,
             "h": 10,
-            "x": 0,
-            "y": 50,
+            "x": 6,
+            "y": 0,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1221,8 +1009,8 @@
           "position": {
             "w": 6,
             "h": 10,
-            "x": 6,
-            "y": 50,
+            "x": 0,
+            "y": 20,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1259,7 +1047,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 60,
+            "y": 10,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1292,49 +1080,12 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "name": "JS Rule Steps Skipped",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 6,
-            "y": 60,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "JavaScript rule steps skipped because JavaScript rules (Tech Preview) are off.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "pipelineName",
-                "ruleName"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "steps"
-            },
-            "upperLimit": "",
-            "order": 14
-          },
-          "query": "sum by (pipelineName, ruleName)(increase(apica_pipeline_js_rule_skipped_total{pipelineName=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_js_rule_skipped_total"
-        },
-        {
-          "chart_type": "line",
-          "data_source_name": "Ascent Metrics",
           "name": "Code Rule Fetches Abandoned",
           "position": {
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 70,
+            "y": 50,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1363,47 +1114,14 @@
           "schema": "apica_pipeline_code_rule_fetch_abandoned"
         },
         {
-          "chart_type": "table",
-          "data_source_name": "Ascent Metrics",
-          "name": "Rules per Pipeline by Type",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 6,
-            "y": 70,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Number of rules of each type in each pipeline. Current state.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": ""
-            },
-            "order": 16
-          },
-          "query": "count by (pipelineName, ruleType)(apica_pipeline_rules_mapping{pipelineName=~'.*', service='logiq-flash'} > 0)",
-          "schema": "apica_pipeline_rules_mapping"
-        },
-        {
           "chart_type": "size",
           "data_source_name": "Ascent Metrics",
           "name": "New Streams",
           "position": {
             "w": 3,
             "h": 10,
-            "x": 0,
-            "y": 80,
+            "x": 9,
+            "y": 20,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -1440,8 +1158,8 @@
           "position": {
             "w": 3,
             "h": 10,
-            "x": 3,
-            "y": 80,
+            "x": 6,
+            "y": 20,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -1474,49 +1192,12 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "name": "Stream Rule Input Events (per second)",
-          "position": {
-            "w": 6,
-            "h": 10,
-            "x": 6,
-            "y": 80,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Events per second entering stream rules.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "pipelineName",
-                "ruleName"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "events/s"
-            },
-            "upperLimit": "",
-            "order": 19
-          },
-          "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_stream_ingest_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_stream_ingest_count"
-        },
-        {
-          "chart_type": "line",
-          "data_source_name": "Ascent Metrics",
           "name": "Stream Rule Input Bytes (per second)",
           "position": {
             "w": 6,
             "h": 10,
-            "x": 6,
-            "y": 90,
+            "x": 0,
+            "y": 30,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1549,50 +1230,12 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
-          "name": "Stream Rule Output Bytes (per second)",
+          "name": "New Stream Bytes (per second)",
           "position": {
             "w": 6,
             "h": 10,
-            "x": 0,
-            "y": 90,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Bytes per second of parent events stored after stream rules ran.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": [
-                "pipelineName",
-                "ruleName"
-              ],
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "bytes/s",
-              "datatype": "bytes"
-            },
-            "upperLimit": "",
-            "order": 21
-          },
-          "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_stream_exit_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_stream_exit_bytes"
-        },
-        {
-          "chart_type": "line",
-          "data_source_name": "Ascent Metrics",
-          "name": "New Stream Bytes (per second)",
-          "position": {
-            "w": 12,
-            "h": 10,
-            "x": 0,
-            "y": 100,
+            "x": 6,
+            "y": 30,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -1633,7 +1276,57 @@
         {
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
+          "query": "sum by (target)(rate(logiq_logflow_namespace_app_forward_bytes{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1.000h&step=1m",
+          "schema": "logiq_logflow_namespace_app_forward_bytes",
+          "options": {
+            "description": "Bytes per second sent to each forward target.",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": [
+                "target"
+              ],
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "bytes/s",
+              "datatype": "bytes"
+            },
+            "upperLimit": "",
+            "order": 1
+          },
+          "name": "Bytes Forwarded by Target (per second)",
+          "position": {
+            "w": 12,
+            "h": 10,
+            "x": 0,
+            "y": 0,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "baseliningOptions": {}
+        },
+        {
+          "chart_type": "line",
+          "data_source_name": "Ascent Metrics",
           "name": "Enqueued vs Sent by Forwarder (per second)",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 10,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
           "options": {
             "description": "Events per second enqueued to each forwarder and reported sent. A growing gap means a backlog.",
             "plot": {
@@ -1650,7 +1343,7 @@
               "yLabel": "events/s"
             },
             "upperLimit": "",
-            "order": 1
+            "order": 2
           },
           "query": "label_replace(sum by (forward)(rate(apica_forwarder_events_enqueued_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 'direction', 'enqueued', '', '') or label_replace(sum by (forward)(rate(apica_forwarder_events_sent_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 'direction', 'sent', '', '')&duration=1h&step=5m",
           "schema": "apica_forwarder_events_enqueued_total"
@@ -1659,6 +1352,18 @@
           "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Delivery Drops by Reason",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 6,
+            "y": 10,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
           "options": {
             "description": "Events per time step handed to a forwarder but never delivered, by forwarder and reason.",
             "plot": {
@@ -1676,7 +1381,7 @@
               "stacked": true
             },
             "upperLimit": "",
-            "order": 2
+            "order": 3
           },
           "query": "sum by (forward, reason)(increase(apica_forwarder_events_dropped_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_forwarder_events_dropped_total",
@@ -1702,6 +1407,18 @@
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
           "name": "Forward Buffer Bytes",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 20,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
           "options": {
             "description": "Bytes waiting in each forwarder's buffer.",
             "plot": {
@@ -1719,7 +1436,7 @@
               "datatype": "bytes"
             },
             "upperLimit": "",
-            "order": 3
+            "order": 4
           },
           "query": "sum by (forward, persist)(apica_forward_buffer_gauge{service='logiq-flash'})&duration=1h&step=5m",
           "schema": "apica_forward_buffer_gauge"
@@ -1728,6 +1445,18 @@
           "chart_type": "line",
           "data_source_name": "Ascent Metrics",
           "name": "Forward Buffer Events",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 6,
+            "y": 20,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
           "options": {
             "description": "Events waiting in each forwarder's buffer.",
             "plot": {
@@ -1744,7 +1473,7 @@
               "yLabel": "events"
             },
             "upperLimit": "",
-            "order": 4
+            "order": 5
           },
           "query": "sum by (forward, persist)(apica_forward_buffer_events_gauge{service='logiq-flash'})&duration=1h&step=5m",
           "schema": "apica_forward_buffer_events_gauge"
