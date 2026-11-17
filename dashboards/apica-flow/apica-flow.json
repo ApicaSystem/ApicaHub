@@ -209,7 +209,7 @@
             "static": false
           },
           "options": {
-            "description": "Bytes in minus bytes out across the selected pipelines, in the selected time range.",
+            "description": "Bytes removed by pipeline rules (dropped events, removed or masked fields, shortened messages) in the selected time range.",
             "label": "Bytes Filtered",
             "plot": {
               "errorColumn": "",
@@ -227,8 +227,8 @@
             },
             "order": 5
           },
-          "query": "round(sum(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) - sum(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])), 0.01) or vector(0)&duration=1h",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "round(sum(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])), 0.01) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_savings_bytes"
         },
         {
           "chart_type": "counter",
@@ -247,12 +247,12 @@
             "static": false
           },
           "options": {
-            "description": "Share of ingested bytes that pipelines did not pass on: 1 - bytes out / bytes in, over the selected time range.",
+            "description": "Bytes removed by pipeline rules as a share of bytes in, over the selected time range.",
             "label": "%",
             "order": 6
           },
-          "query": "round((1 - sum(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / (sum(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0)) * 100, 0.01) or vector(0)&duration=1h",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "round(sum(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / (sum(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 0.01) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_savings_bytes"
         },
         {
           "chart_type": "size",
@@ -621,7 +621,7 @@
           "schema": "apica_pipeline_events_out"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Total Bytes Reduction In vs Out %",
           "position": {
@@ -637,7 +637,7 @@
             "static": false
           },
           "options": {
-            "description": "1 - bytes out / bytes in across all selected pipelines, per time step.",
+            "description": "Bytes removed by pipeline rules as a share of bytes in, across all selected pipelines, per time step.",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -652,11 +652,11 @@
             "upperLimit": "",
             "order": 17
           },
-          "query": "round((1 - sum(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) / (sum(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0)) * 100, 0.01)&duration=1h&step=5m",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "round(sum(rate(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) / (sum(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0) * 100, 0.01)&duration=1h&step=5m",
+          "schema": "apica_pipeline_savings_bytes"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Total Events Reduction In vs Out %",
           "position": {
@@ -691,7 +691,7 @@
           "schema": "apica_pipeline_events_in"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Bytes Saved per Pipeline %",
           "position": {
@@ -707,7 +707,7 @@
             "static": false
           },
           "options": {
-            "description": "1 - bytes out / bytes in per pipeline. 50 means the pipeline passes on half of what it receives.",
+            "description": "Bytes removed by rules as a share of bytes in, per pipeline. 50 means rules removed half of what the pipeline received.",
             "plot": {
               "errorColumn": "",
               "groupBy": [
@@ -724,11 +724,11 @@
             "upperLimit": "",
             "order": 19
           },
-          "query": "round((1 - sum by (pipelineName)(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) / (sum by (pipelineName)(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0)) * 100, 0.01)&duration=1h&step=5m",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "round(sum by (pipelineName)(rate(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) / (sum by (pipelineName)(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0) * 100, 0.01)&duration=1h&step=5m",
+          "schema": "apica_pipeline_savings_bytes"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Events Saved per Pipeline %",
           "position": {
@@ -765,7 +765,7 @@
           "schema": "apica_pipeline_events_in"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Bytes Saved per Pipeline",
           "position": {
@@ -781,7 +781,7 @@
             "static": false
           },
           "options": {
-            "description": "Bytes in minus bytes out per pipeline, per time step.",
+            "description": "Bytes removed by rules per time step, per pipeline.",
             "plot": {
               "errorColumn": "",
               "groupBy": [
@@ -799,11 +799,11 @@
             "upperLimit": "",
             "order": 21
           },
-          "query": "round(sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) - sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 0.01)&duration=1h&step=5m",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "round(sum by (pipelineName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 0.01)&duration=1h&step=5m",
+          "schema": "apica_pipeline_savings_bytes"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Events Saved per Pipeline",
           "position": {
@@ -915,7 +915,7 @@
           "schema": "apica_pipeline_events_in"
         },
         {
-          "chart_type": "line",
+          "chart_type": "area",
           "data_source_name": "Ascent Metrics",
           "name": "Rule Latency per Pipeline (p95, ms)",
           "position": {
@@ -968,7 +968,7 @@
             "static": false
           },
           "options": {
-            "description": "The 20 pipelines with the highest bytes reduction (1 - bytes out / bytes in) in the selected time range.",
+            "description": "The 20 pipelines whose rules removed the largest share of their bytes in, in the selected time range.",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -981,8 +981,8 @@
             },
             "order": 26
           },
-          "query": "topk(20, round((1 - sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0)) * 100, 0.01))&duration=1h",
-          "schema": "apica_ingest_pipeline_bytes_in"
+          "query": "topk(20, round(sum by (pipelineName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 0.01))&duration=1h",
+          "schema": "apica_pipeline_savings_bytes"
         }
       ]
     },
