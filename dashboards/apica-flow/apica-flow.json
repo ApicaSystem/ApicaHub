@@ -1,7 +1,7 @@
 {
   "version": "1",
   "configuration": {
-    "minStep": 180
+    "minStep": 300
   },
   "header": {
     "dateTimeRange": true,
