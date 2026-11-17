@@ -45,7 +45,7 @@
           "data_source_name": "Ascent Metrics",
           "name": "Active Pipelines",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
             "x": 0,
             "y": 0,
@@ -83,9 +83,9 @@
           "data_source_name": "Ascent Metrics",
           "name": "Events In",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
-            "x": 2,
+            "x": 3,
             "y": 0,
             "minW": 1,
             "maxW": 12,
@@ -121,9 +121,9 @@
           "data_source_name": "Ascent Metrics",
           "name": "Events Out",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
-            "x": 4,
+            "x": 6,
             "y": 0,
             "minW": 1,
             "maxW": 12,
@@ -157,11 +157,87 @@
         {
           "chart_type": "size",
           "data_source_name": "Ascent Metrics",
+          "name": "Bytes In",
+          "position": {
+            "w": 3,
+            "h": 7,
+            "x": 0,
+            "y": 7,
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 20,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Bytes that entered pipelines in the selected time range.",
+            "label": "Bytes In",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "bytes",
+              "sizeConfig": {
+                "valueColumn": "value"
+              }
+            },
+            "order": 5
+          },
+          "query": "sum(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_ingest_pipeline_bytes_in"
+        },
+        {
+          "chart_type": "size",
+          "data_source_name": "Ascent Metrics",
+          "name": "Bytes Out",
+          "position": {
+            "w": 3,
+            "h": 7,
+            "x": 3,
+            "y": 7,
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 20,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Bytes that left pipelines in the selected time range.",
+            "label": "Bytes Out",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "bytes",
+              "sizeConfig": {
+                "valueColumn": "value"
+              }
+            },
+            "order": 6
+          },
+          "query": "sum(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_ingest_pipeline_bytes_out"
+        },
+        {
+          "chart_type": "size",
+          "data_source_name": "Ascent Metrics",
           "name": "Events Filtered",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
-            "x": 6,
+            "x": 9,
             "y": 0,
             "minW": 1,
             "maxW": 12,
@@ -197,10 +273,10 @@
           "data_source_name": "Ascent Metrics",
           "name": "Bytes Saved",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
-            "x": 8,
-            "y": 0,
+            "x": 6,
+            "y": 7,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -225,7 +301,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 5
+            "order": 7
           },
           "query": "sum(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
           "schema": "apica_pipeline_savings_bytes"
@@ -235,10 +311,10 @@
           "data_source_name": "Ascent Metrics",
           "name": "Volume Reduction",
           "position": {
-            "w": 2,
+            "w": 3,
             "h": 7,
-            "x": 10,
-            "y": 0,
+            "x": 9,
+            "y": 7,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -249,7 +325,7 @@
           "options": {
             "description": "Share of ingested bytes that pipelines did not pass on: 1 - bytes out / bytes in, over the selected time range.",
             "label": "% reduction",
-            "order": 6
+            "order": 8
           },
           "query": "round((1 - sum(increase(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / (sum(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0)) * 100, 0.1) or vector(0)&duration=1h",
           "schema": "apica_ingest_pipeline_bytes_in"
@@ -262,7 +338,7 @@
             "w": 2,
             "h": 10,
             "x": 0,
-            "y": 7,
+            "y": 14,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -287,7 +363,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 7
+            "order": 9
           },
           "query": "sum(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='failed'}[{{__range}}])) or vector(0)&duration=1h",
           "schema": "apica_pipeline_rule_outcomes_total"
@@ -300,7 +376,7 @@
             "w": 2,
             "h": 10,
             "x": 2,
-            "y": 7,
+            "y": 14,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -325,7 +401,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 9
+            "order": 10
           },
           "query": "count(sum by (pipelineName)(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[15m])) > 0 unless on (pipelineName) (sum by (pipelineName)(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[15m])) > 0 or sum by (pipelineName)(rate(apica_pipeline_dropped_logs_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[15m])) > 0)) or vector(0)",
           "schema": "apica_pipeline_events_in",
@@ -355,7 +431,7 @@
             "w": 8,
             "h": 10,
             "x": 4,
-            "y": 7,
+            "y": 14,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -378,9 +454,9 @@
               "yLabel": "events/s"
             },
             "upperLimit": "",
-            "order": 10
+            "order": 11
           },
-          "query": "label_replace(sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 'direction', 'in', '', '') or label_replace(sum(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 'direction', 'out', '', '')&duration=1h&step=5m",
+          "query": "label_replace(round(sum(rate(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))), 'direction', 'in', '', '') or label_replace(round(sum(rate(apica_pipeline_events_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))), 'direction', 'out', '', '')&duration=1h&step=5m",
           "schema": "apica_pipeline_events_in"
         },
         {
@@ -391,7 +467,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 17,
+            "y": 24,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -416,7 +492,7 @@
               "stacked": true
             },
             "upperLimit": "",
-            "order": 11
+            "order": 12
           },
           "query": "sum by (pipelineName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_savings_bytes"
@@ -429,7 +505,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 17,
+            "y": 24,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -452,7 +528,7 @@
               "yLabel": "% reduction"
             },
             "upperLimit": "",
-            "order": 12
+            "order": 13
           },
           "query": "(1 - sum by (pipelineName)(rate(apica_ingest_pipeline_bytes_out{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) / (sum by (pipelineName)(rate(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])) > 0)) * 100&duration=1h&step=5m",
           "schema": "apica_ingest_pipeline_bytes_in"
@@ -465,7 +541,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 27,
+            "y": 34,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -488,7 +564,7 @@
               "yLabel": "seconds"
             },
             "upperLimit": "",
-            "order": 13
+            "order": 14
           },
           "query": "label_replace(histogram_quantile(0.5, sum by (le)(rate(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__interval}}]))), 'quantile', 'p50', '', '') or label_replace(histogram_quantile(0.95, sum by (le)(rate(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__interval}}]))), 'quantile', 'p95', '', '') or label_replace(histogram_quantile(0.99, sum by (le)(rate(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__interval}}]))), 'quantile', 'p99', '', '')&duration=1h&step=5m",
           "schema": "apica_pipeline_rule_duration_seconds_bucket"
@@ -501,7 +577,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 27,
+            "y": 34,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -521,7 +597,7 @@
               ],
               "yLabel": ""
             },
-            "order": 14
+            "order": 15
           },
           "query": "topk(20, sum by (pipelineName)(increase(apica_pipeline_events_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])))&duration=1h",
           "schema": "apica_pipeline_events_in"
