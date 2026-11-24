@@ -4004,11 +4004,11 @@
           "schema": "apica_pipeline_dedupe_counter"
         },
         {
-          "chart_type": "pivottable",
+          "chart_type": "table",
           "data_source_name": "Ascent Metrics",
-          "name": "Rules Status and Savings",
+          "name": "Rule Savings Bytes %",
           "position": {
-            "w": 12,
+            "w": 6,
             "h": 15,
             "minW": 4,
             "maxW": 12,
@@ -4020,32 +4020,56 @@
             "y": 70
           },
           "options": {
-            "description": "Every rule with its status and savings over the selected time range. Active rules first. Savings are NaN for inactive rules, which don't run.",
+            "description": "Bytes each active rule removed as a share of bytes into its pipeline, over the selected time range. 0 means the rule removed nothing.",
             "plot": {
-              "pivottable": {
-                "rows": [
-                  "status",
-                  "ruleName",
-                  "pipelineName"
-                ],
-                "cols": [
-                  "stat"
-                ],
-                "vals": [
-                  "value"
-                ],
-                "aggregatorName": "First",
-                "rendererName": "Table",
-                "rowOrder": "key_a_to_z",
-                "hiddenAttributes": [
-                  "timestamp"
-                ]
-              }
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "number"
             },
             "order": 22
           },
-          "query": "label_replace(round(((clamp_max(sum by (pipelineName, ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / on (pipelineName) group_left() (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 100) or on (pipelineName, ruleName) (label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0, 'status', 'Active', '', '') * 0))) * on (pipelineName, ruleName) group_left (status) (label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0, 'status', 'Active', '', '')), 0.01), 'stat', 'Savings Bytes %', '', '') or label_replace(round(((sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='dropped'}[{{__range}}])) / (sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100 or on (pipelineName, ruleName) (label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0, 'status', 'Active', '', '') * 0))) * on (pipelineName, ruleName) group_left (status) (label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0, 'status', 'Active', '', '')), 0.01), 'stat', 'Savings Events %', '', '') or label_replace(label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) == 0, 'status', 'Inactive', '', '') * NaN, 'stat', 'Savings Bytes %', '', '') or label_replace(label_replace(max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) == 0, 'status', 'Inactive', '', '') * NaN, 'stat', 'Savings Events %', '', '')&duration=1h",
-          "schema": "apica_pipeline_rules_namespace_app_mapping"
+          "query": "round(clamp_max(sum by (pipelineName, ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / on (pipelineName) group_left() (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 100) or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01)&duration=1h",
+          "schema": "apica_pipeline_savings_bytes"
+        },
+        {
+          "chart_type": "table",
+          "data_source_name": "Ascent Metrics",
+          "name": "Rule Savings Events %",
+          "position": {
+            "w": 6,
+            "h": 15,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false,
+            "x": 6,
+            "y": 70
+          },
+          "options": {
+            "description": "Events each active rule dropped as a share of the events it ran on, over the selected time range. 0 means the rule dropped nothing.",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "number"
+            },
+            "order": 23
+          },
+          "query": "round(sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='dropped'}[{{__range}}])) / (sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100 or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01)&duration=1h",
+          "schema": "apica_pipeline_rule_outcomes_total"
         },
         {
           "chart_type": "line",
@@ -4079,7 +4103,7 @@
               "yLabel": "failures"
             },
             "upperLimit": "",
-            "order": 30
+            "order": 31
           },
           "query": "sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='failed'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_rule_outcomes_total",
@@ -4133,7 +4157,7 @@
               "stacked": true
             },
             "upperLimit": "",
-            "order": 31
+            "order": 32
           },
           "query": "sum by (reason)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='failed'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_rule_outcomes_total"
@@ -4170,7 +4194,7 @@
               "stacked": true
             },
             "upperLimit": "",
-            "order": 33
+            "order": 34
           },
           "query": "sum by (reason)(increase(apica_pipeline_skipped_events_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_skipped_events_total"
@@ -4208,7 +4232,7 @@
               "stacked": true
             },
             "upperLimit": "",
-            "order": 23
+            "order": 24
           },
           "query": "sum by (kind)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_savings_bytes"
@@ -4245,7 +4269,7 @@
               "yLabel": "events"
             },
             "upperLimit": "",
-            "order": 25
+            "order": 26
           },
           "query": "sum by (pipelineName, ruleName)(increase(apica_pipeline_dedupe_counter{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_dedupe_counter"
@@ -4283,7 +4307,7 @@
               "datatype": "bytes"
             },
             "upperLimit": "",
-            "order": 24
+            "order": 25
           },
           "query": "sum by (pipelineName, ruleName)(increase(apica_pipeline_dedupe_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_dedupe_bytes"
@@ -4319,7 +4343,7 @@
               "yLabel": "fetches"
             },
             "upperLimit": "",
-            "order": 32
+            "order": 33
           },
           "query": "sum by (name)(increase(apica_pipeline_code_rule_fetch_abandoned{service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_code_rule_fetch_abandoned"
@@ -4357,7 +4381,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 27
+            "order": 28
           },
           "query": "sum(increase(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
           "schema": "apica_pipeline_new_stream_count"
@@ -4395,7 +4419,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 26
+            "order": 27
           },
           "query": "sum(increase(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
           "schema": "apica_pipeline_stream_exit_count"
@@ -4433,7 +4457,7 @@
               "datatype": "bytes"
             },
             "upperLimit": "",
-            "order": 28
+            "order": 29
           },
           "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_stream_ingest_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_stream_ingest_bytes"
@@ -4471,7 +4495,7 @@
               "datatype": "bytes"
             },
             "upperLimit": "",
-            "order": 29
+            "order": 30
           },
           "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
           "schema": "apica_pipeline_new_stream_bytes"
