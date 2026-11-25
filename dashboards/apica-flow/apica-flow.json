@@ -4128,7 +4128,7 @@
             "y": 60
           },
           "options": {
-            "description": "Bytes each active rule removed as a share of bytes into its pipeline, over the selected time range. 0 means the rule removed nothing.",
+            "description": "Bytes each active rule removed as a share of bytes into its pipeline, over the selected time range. 0 means the rule removed nothing. Highest first.",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -4143,7 +4143,7 @@
             "order": 22,
             "minStep": 300
           },
-          "query": "round(clamp_max(sum by (pipelineName, ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / on (pipelineName) group_left() (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 100) or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01)&duration=1h",
+          "query": "sort_desc(round(clamp_max(sum by (pipelineName, ruleName)(increase(apica_pipeline_savings_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) / on (pipelineName) group_left() (sum by (pipelineName)(increase(apica_ingest_pipeline_bytes_in{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100, 100) or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01))&duration=1h",
           "schema": "apica_pipeline_savings_bytes"
         },
         {
@@ -4163,7 +4163,7 @@
             "y": 60
           },
           "options": {
-            "description": "Events each active rule dropped as a share of the events it ran on, over the selected time range. 0 means the rule dropped nothing.",
+            "description": "Events each active rule dropped as a share of the events it ran on, over the selected time range. 0 means the rule dropped nothing. Highest first.",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -4178,7 +4178,7 @@
             "order": 23,
             "minStep": 300
           },
-          "query": "round(sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='dropped'}[{{__range}}])) / (sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100 or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01)&duration=1h",
+          "query": "sort_desc(round(sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash', outcome='dropped'}[{{__range}}])) / (sum by (pipelineName, ruleName)(increase(apica_pipeline_rule_outcomes_total{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 100 or on (pipelineName, ruleName) (max by (pipelineName, ruleName)(apica_pipeline_rules_namespace_app_mapping{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}) > 0) * 0, 0.01))&duration=1h",
           "schema": "apica_pipeline_rule_outcomes_total"
         },
         {
