@@ -3276,40 +3276,6 @@
           },
           "query": "round(sum by (forward)(rate(apica_forwarder_events_sent_total{exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}])), 0.01)&duration=1h&step=5m",
           "schema": "apica_forwarder_events_sent_total"
-        },
-        {
-          "chart_type": "table",
-          "data_source_name": "Ascent Metrics",
-          "name": "Pipeline to Dataflow Mapping",
-          "position": {
-            "w": 12,
-            "h": 18,
-            "x": 0,
-            "y": 145,
-            "minW": 4,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 1000,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Namespace and app each pipeline runs on, with its execution order. Current state.",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": ""
-            },
-            "order": 57,
-            "minStep": 300
-          },
-          "query": "max by (pipelineName, exported_namespace, app, execution_order)(apica_ingest_pipeline_status{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'} > 0)",
-          "schema": "apica_ingest_pipeline_status"
         }
       ]
     },
@@ -3821,7 +3787,7 @@
             "y": 15
           },
           "options": {
-            "description": "Time one rule takes on one event, in milliseconds, over the selected time range: one row per rule and stat. avg is exact; min and max are the 0.1% and 99.9% quantiles estimated from histogram buckets, so they are approximate.",
+            "description": "Time one rule takes on one event, in milliseconds, over the selected time range: one row per rule and stat. avg is exact; min and max are the 0.1% and 99.9% quantiles estimated from histogram buckets, so they are approximate. Slowest first.",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -3835,7 +3801,7 @@
             "order": 10,
             "minStep": 300
           },
-          "query": "label_replace(round(histogram_quantile(0.001, sum by (ruleName, le)(increase(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__range}}]))) * 1000 >= 0, 0.01), 'stat', 'min', '', '') or label_replace(round(sum by (ruleName)(increase(apica_pipeline_rule_duration_seconds_sum{pipelineName=~'.*', service='logiq-flash'}[{{__range}}])) / (sum by (ruleName)(increase(apica_pipeline_rule_duration_seconds_count{pipelineName=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 1000, 0.01), 'stat', 'avg', '', '') or label_replace(round(histogram_quantile(0.999, sum by (ruleName, le)(increase(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__range}}]))) * 1000 >= 0, 0.01), 'stat', 'max', '', '')&duration=1h",
+          "query": "sort_desc(label_replace(round(histogram_quantile(0.001, sum by (ruleName, le)(increase(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__range}}]))) * 1000 >= 0, 0.01), 'stat', 'min', '', '') or label_replace(round(sum by (ruleName)(increase(apica_pipeline_rule_duration_seconds_sum{pipelineName=~'.*', service='logiq-flash'}[{{__range}}])) / (sum by (ruleName)(increase(apica_pipeline_rule_duration_seconds_count{pipelineName=~'.*', service='logiq-flash'}[{{__range}}])) > 0) * 1000, 0.01), 'stat', 'avg', '', '') or label_replace(round(histogram_quantile(0.999, sum by (ruleName, le)(increase(apica_pipeline_rule_duration_seconds_bucket{pipelineName=~'.*', service='logiq-flash'}[{{__range}}]))) * 1000 >= 0, 0.01), 'stat', 'max', '', ''))&duration=1h",
           "schema": "apica_pipeline_rule_duration_seconds_bucket"
         },
         {
@@ -4211,7 +4177,7 @@
               ],
               "yLabel": "bytes",
               "datatype": "bytes",
-              "stacked": true
+              "stacked": false
             },
             "upperLimit": "",
             "order": 24,
@@ -4610,7 +4576,7 @@
                 "value"
               ],
               "yLabel": "events",
-              "stacked": true
+              "stacked": false
             },
             "upperLimit": "",
             "order": 3,
