@@ -4270,7 +4270,7 @@
           "position": {
             "w": 3,
             "h": 10,
-            "x": 0,
+            "x": 6,
             "y": 95,
             "minW": 1,
             "maxW": 12,
@@ -4296,7 +4296,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 27,
+            "order": 29,
             "minStep": 300
           },
           "query": "sum(increase(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
@@ -4309,7 +4309,7 @@
           "position": {
             "w": 3,
             "h": 10,
-            "x": 6,
+            "x": 9,
             "y": 95,
             "minW": 1,
             "maxW": 12,
@@ -4335,7 +4335,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 29,
+            "order": 30,
             "minStep": 300
           },
           "query": "sum(increase(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
@@ -4428,7 +4428,7 @@
           "position": {
             "w": 3,
             "h": 10,
-            "x": 3,
+            "x": 0,
             "y": 95,
             "minW": 1,
             "maxW": 12,
@@ -4454,7 +4454,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 28,
+            "order": 27,
             "minStep": 300
           },
           "query": "sum(increase(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
@@ -4467,7 +4467,7 @@
           "position": {
             "w": 3,
             "h": 10,
-            "x": 9,
+            "x": 3,
             "y": 95,
             "minW": 1,
             "maxW": 12,
@@ -4493,7 +4493,7 @@
                 "valueColumn": "value"
               }
             },
-            "order": 30,
+            "order": 28,
             "minStep": 300
           },
           "query": "sum(increase(apica_pipeline_stream_exit_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
