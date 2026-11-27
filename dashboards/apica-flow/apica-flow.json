@@ -4154,8 +4154,8 @@
           "position": {
             "w": 6,
             "h": 10,
-            "x": 0,
-            "y": 85,
+            "x": 6,
+            "y": 75,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -4194,7 +4194,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 105,
+            "y": 85,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -4232,7 +4232,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 105,
+            "y": 85,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -4266,12 +4266,12 @@
         {
           "chart_type": "size",
           "data_source_name": "Ascent Metrics",
-          "name": "New Streams",
+          "name": "Events Sent to New Streams",
           "position": {
             "w": 3,
             "h": 10,
-            "x": 9,
-            "y": 75,
+            "x": 0,
+            "y": 95,
             "minW": 1,
             "maxW": 12,
             "minH": 4,
@@ -4280,47 +4280,8 @@
             "static": false
           },
           "options": {
-            "description": "New streams created by stream rules in the selected time range.",
-            "label": "New Streams",
-            "plot": {
-              "errorColumn": "",
-              "groupBy": "",
-              "x": "timestamp",
-              "xLabel": "Timestamp",
-              "y": [
-                "value"
-              ],
-              "yLabel": "",
-              "datatype": "number",
-              "sizeConfig": {
-                "valueColumn": "value"
-              }
-            },
-            "order": 28,
-            "minStep": 300
-          },
-          "query": "sum(increase(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
-          "schema": "apica_pipeline_new_stream_count"
-        },
-        {
-          "chart_type": "size",
-          "data_source_name": "Ascent Metrics",
-          "name": "Stream Output Events",
-          "position": {
-            "w": 3,
-            "h": 10,
-            "x": 6,
-            "y": 75,
-            "minW": 1,
-            "maxW": 12,
-            "minH": 4,
-            "maxH": 20,
-            "moved": false,
-            "static": false
-          },
-          "options": {
-            "description": "Parent events stored after stream rules ran, in the selected time range.",
-            "label": "Stream Output Events",
+            "description": "Events that stream rules wrote to new streams in the selected time range.",
+            "label": "Events Sent to New Streams",
             "plot": {
               "errorColumn": "",
               "groupBy": "",
@@ -4338,48 +4299,47 @@
             "order": 27,
             "minStep": 300
           },
-          "query": "sum(increase(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
-          "schema": "apica_pipeline_stream_exit_count"
+          "query": "sum(increase(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_new_stream_count"
         },
         {
-          "chart_type": "area",
+          "chart_type": "size",
           "data_source_name": "Ascent Metrics",
-          "name": "Stream Rule Input Bytes (per second)",
+          "name": "Events Kept in Original Stream",
           "position": {
-            "w": 6,
+            "w": 3,
             "h": 10,
             "x": 6,
-            "y": 85,
-            "minW": 4,
+            "y": 95,
+            "minW": 1,
             "maxW": 12,
             "minH": 4,
-            "maxH": 1000,
+            "maxH": 20,
             "moved": false,
             "static": false
           },
           "options": {
-            "description": "Bytes per second entering stream rules.",
+            "description": "Events that stayed in the original stream after stream rules ran, in the selected time range.",
+            "label": "Events Kept in Original Stream",
             "plot": {
               "errorColumn": "",
-              "groupBy": [
-                "pipelineName",
-                "ruleName"
-              ],
+              "groupBy": "",
               "x": "timestamp",
               "xLabel": "Timestamp",
               "y": [
                 "value"
               ],
-              "yLabel": "bytes/s",
-              "datatype": "bytes",
-              "stacked": false
+              "yLabel": "",
+              "datatype": "number",
+              "sizeConfig": {
+                "valueColumn": "value"
+              }
             },
-            "upperLimit": "",
             "order": 29,
             "minStep": 300
           },
-          "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_stream_ingest_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": "apica_pipeline_stream_ingest_bytes"
+          "query": "sum(increase(apica_pipeline_stream_exit_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_stream_exit_count"
         },
         {
           "chart_type": "area",
@@ -4389,7 +4349,7 @@
             "w": 6,
             "h": 10,
             "x": 0,
-            "y": 95,
+            "y": 115,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -4415,7 +4375,7 @@
               "stacked": false
             },
             "upperLimit": "",
-            "order": 30,
+            "order": 33,
             "minStep": 300
           },
           "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
@@ -4429,7 +4389,7 @@
             "w": 6,
             "h": 10,
             "x": 6,
-            "y": 95,
+            "y": 115,
             "minW": 4,
             "maxW": 12,
             "minH": 4,
@@ -4455,11 +4415,169 @@
               "datatype": "number"
             },
             "upperLimit": "",
-            "order": 31,
+            "order": 34,
             "minStep": 300
           },
           "query": "sum by (pipelineName, ruleName)(rate(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__interval}}]))&duration=1h&step=5m",
-          "schema": ""
+          "schema": "apica_pipeline_new_stream_count"
+        },
+        {
+          "chart_type": "size",
+          "data_source_name": "Ascent Metrics",
+          "name": "Bytes Sent to New Streams",
+          "position": {
+            "w": 3,
+            "h": 10,
+            "x": 3,
+            "y": 95,
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 20,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Bytes that stream rules wrote to new streams in the selected time range.",
+            "label": "Bytes Sent to New Streams",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "bytes",
+              "sizeConfig": {
+                "valueColumn": "value"
+              }
+            },
+            "order": 28,
+            "minStep": 300
+          },
+          "query": "sum(increase(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_new_stream_bytes"
+        },
+        {
+          "chart_type": "size",
+          "data_source_name": "Ascent Metrics",
+          "name": "Bytes Kept in Original Stream",
+          "position": {
+            "w": 3,
+            "h": 10,
+            "x": 9,
+            "y": 95,
+            "minW": 1,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 20,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Bytes that stayed in the original stream after stream rules ran, in the selected time range.",
+            "label": "Bytes Kept in Original Stream",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": "",
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "",
+              "datatype": "bytes",
+              "sizeConfig": {
+                "valueColumn": "value"
+              }
+            },
+            "order": 30,
+            "minStep": 300
+          },
+          "query": "sum(increase(apica_pipeline_stream_exit_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}])) or vector(0)&duration=1h",
+          "schema": "apica_pipeline_stream_exit_bytes"
+        },
+        {
+          "chart_type": "area",
+          "data_source_name": "Ascent Metrics",
+          "name": "New Stream Bytes Created (running total)",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 0,
+            "y": 105,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Running total of bytes written to new streams since the start of the selected time range.",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": [
+                "pipelineName",
+                "ruleName"
+              ],
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "bytes",
+              "datatype": "bytes",
+              "stacked": false
+            },
+            "upperLimit": "",
+            "order": 31,
+            "minStep": 300
+          },
+          "query": "sum by (pipelineName, ruleName)(clamp_min(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'} - min_over_time(apica_pipeline_new_stream_bytes{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}] @ end()), 0))&duration=1h&step=5m",
+          "schema": "apica_pipeline_new_stream_bytes"
+        },
+        {
+          "chart_type": "area",
+          "data_source_name": "Ascent Metrics",
+          "name": "New Stream Events Created (running total)",
+          "position": {
+            "w": 6,
+            "h": 10,
+            "x": 6,
+            "y": 105,
+            "minW": 4,
+            "maxW": 12,
+            "minH": 4,
+            "maxH": 1000,
+            "moved": false,
+            "static": false
+          },
+          "options": {
+            "description": "Running total of events written to new streams since the start of the selected time range.",
+            "plot": {
+              "errorColumn": "",
+              "groupBy": [
+                "pipelineName",
+                "ruleName"
+              ],
+              "x": "timestamp",
+              "xLabel": "Timestamp",
+              "y": [
+                "value"
+              ],
+              "yLabel": "events",
+              "stacked": false,
+              "datatype": "number"
+            },
+            "upperLimit": "",
+            "order": 32,
+            "minStep": 300
+          },
+          "query": "sum by (pipelineName, ruleName)(clamp_min(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'} - min_over_time(apica_pipeline_new_stream_count{pipelineName=~'.*', exported_namespace=~'.*', app=~'.*', service='logiq-flash'}[{{__range}}] @ end()), 0))&duration=1h&step=5m",
+          "schema": "apica_pipeline_new_stream_count"
         }
       ]
     },
